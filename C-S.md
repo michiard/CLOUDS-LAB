@@ -22,4 +22,22 @@
 ### HELP
 + `-help [cmd]`:: hopefully this is self-describing
 
+#### Examples:
+`$HADOOP_PATH/bin/hadoop dfs -ls /`
+`$HADOOP_PATH/bin/hadoop dfs -copyFromLocal myfile remotefile`
 
+## Launching Hadoop Jobs - Ccommand line
++ Copy the jar file of your job to a cluster machine (let's call it machine_name)
+`scp localJarFile studentXX@machine_name:~/`
+
++ SSH to machine_name:
+`ssh studentXX@192.168.199.101`
+
++ Launch the job:
+`$HADOOP_PATH/hadoop jar jarFile.jar ClassNameWithPackage [job args]`
+
+++ `If the output directory exists:`
+`$HADOOP_PATH/hadoop dfs -rmr output`
+
+#### Example:
+`$HADOOP_PATH/bin/hadoop jar fr.eurecom.dsg.WordCount /user/hadoop/wikismall.xml output 2`
