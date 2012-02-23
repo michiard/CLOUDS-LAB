@@ -40,9 +40,10 @@
 
 `$HADOOP_PATH/hadoop jar jarFile.jar ClassNameWithPackage [job args]`
 
-     ++ If the output directory exists:
+Note that if the output directory exists (and you don't want it) you need to remove it:
 
-     `$HADOOP_PATH/hadoop dfs -rmr output`
+`$HADOOP_PATH/hadoop dfs -rmr output`
+
 
 #### Example:
 `$HADOOP_PATH/bin/hadoop jar fr.eurecom.dsg.WordCount /user/hadoop/wikismall.xml output 2`
