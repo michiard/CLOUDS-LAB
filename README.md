@@ -1,4 +1,4 @@
-# Instructions for the Laboratory sessions on MapReduce, Hive and Pig
+# Laboratory session on MapReduce, Hive and Pig
 
 This page supports the Lecture on practical exercises on Hadoop MapReduce. 
 In the following some basic software requirements to work with the exercises.
@@ -10,7 +10,7 @@ The tutorial and this lecture have been profoundly influenced by two "must-have"
 
 ## Software setup
 To work with the exercises, you need to download and install java sdk and eclipse. 
-You also need to download and install Hadoop 0.20.203.0.
+You also need to download and install Hadoop.
 
 ### Links:
 + Java download page:
@@ -27,7 +27,7 @@ You also need to download and install Hadoop 0.20.203.0.
     </ul>
 
 ### Additional documentation for the laboratory:
-The following [<a href="http://www.eurecom.fr/~michiard/downloads/CCSS/cs.pdf" name="Cheat Sheet" target="_self">Link</a>] contains a
+The following [<a href="https://github.com/michiard/CLOUDS-LAB/blob/master/C-S.md" name="Cheat Sheet" target="_self">Link</a>] contains a
 "cheat-sheet" to help students with common commands on Hadoop.
 
 
