@@ -2,7 +2,7 @@
     MapReduce. In the following, you will find links to the lecture
     itself, a link to a broader tutorial covering also the theory
     behind MapReduce, and some basic software requirements to work
-    with the exercises.</br>
+    with the exercises.
 
     The tutorial and this lecture have been profoundly influenced by
     two "must-have" books on Hadoop and MapReduce:
