@@ -15,4 +15,11 @@
 + `-cp <src> <dst>`:: copy files
 + `-rmr <path>`:: remove files
 
+### Copy/Put files from a remote machine into the HADOOP cluster
++ `-copyFromLocal <localsrc> <dst>`:: copy a local file to the HDFS
++ `-copyToLocal <src> <localdst>`:: copy a file on the HDFS to the local disk
+
+### HELP
++ `-help [cmd]`:: hopefully this is self-describing
+
 
