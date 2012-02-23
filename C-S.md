@@ -32,7 +32,7 @@
 
 `scp localJarFile studentXX@machine_name:~/`
 
-+ SSH to machine_name:
++ SSH to `machine_name`:
 
 `ssh studentXX@machine_name`
 
@@ -40,9 +40,58 @@
 
 `$HADOOP_PATH/hadoop jar jarFile.jar ClassNameWithPackage [job args]`
 
-++ `If the output directory exists:`
+     + `If the output directory exists:`
 
-`$HADOOP_PATH/hadoop dfs -rmr output`
+     `$HADOOP_PATH/hadoop dfs -rmr output`
 
 #### Example:
 `$HADOOP_PATH/bin/hadoop jar fr.eurecom.dsg.WordCount /user/hadoop/wikismall.xml output 2`
+
+
+## Reading (Textual) Input Data in the Mapper
+
+This is the class you're looking for:: `org.apache.hadoop.mapreduce.lib.input.TextInputFormat<K,V>`
+
+Precisely, this is the class hierarchy:
+
+
+'java.lang.Object'
+
+
+'org.apache.hadoop.mapreduce.InputFormat<K,V>'
+
+
+'org.apache.hadoop.mapreduce.lib.input.FileInputFormat<LongWritable,Text>'
+
+
+'org.apache.hadoop.mapreduce.lib.input.TextInputFormat'
+
+
+Basically, this is an `InputFormat` specifically designed for plain text files. 
+Files are broken into lines. Either linefeed or carriage-return are used to signal end of line.
+Keys are the position in the file, and values are the line of text. You need to take
+care of the following:
+
+Key Type: `LongWritable`
+
+Value Type: `Text`
+
+## Writing (Textual) Output Data in the Reducer
+
+This is the class you're looking for:: `org.apache.hadoop.mapreduce.lib.output.TextOutputFormat<K,V>`
+
+Precisely, this is the class hierarchy:
+
+
+`java.lang.Object`
+
+
+`org.apache.hadoop.mapreduce.OutputFormat<K,V>`
+
+
+`org.apache.hadoop.mapreduce.lib.output.FileOutputFormat<K,V>`
+
+
+`org.apache.hadoop.mapreduce.lib.output.TextOutputFormat<K,V>`
+
+Essentially, this `OutputFormat` writes plain text files. `TextOutputFormat` calls `toString()` for each key and value pair in output, so any (`Writable`) type can be used.
