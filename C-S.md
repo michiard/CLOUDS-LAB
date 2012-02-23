@@ -55,16 +55,16 @@ This is the class you're looking for:: `org.apache.hadoop.mapreduce.lib.input.Te
 Precisely, this is the class hierarchy:
 
 
-'java.lang.Object'
+`java.lang.Object`
 
 
-'org.apache.hadoop.mapreduce.InputFormat<K,V>'
+`org.apache.hadoop.mapreduce.InputFormat<K,V>`
 
 
-'org.apache.hadoop.mapreduce.lib.input.FileInputFormat<LongWritable,Text>'
+`org.apache.hadoop.mapreduce.lib.input.FileInputFormat<LongWritable,Text>`
 
 
-'org.apache.hadoop.mapreduce.lib.input.TextInputFormat'
+`org.apache.hadoop.mapreduce.lib.input.TextInputFormat`
 
 
 Basically, this is an `InputFormat` specifically designed for plain text files. 
