@@ -33,7 +33,7 @@ hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.WordCountIMC 3 <input_file> <
 hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.WordCountCombinator 3 <input_file> <output_path>
 ```
 
-To test your code use the file [<a href="inputs/quote">quote</a>]. Expected result in the file [<a href="inputs/wc_quote.out">wordcount quote result</a>].
+To test your code use the file [<a href="mapreduce-lab/inputs/quote">quote</a>]. Expected result in the file [<a href="mapreduce-lab/inputs/wc_quote.out">wordcount quote result</a>].
 
 
 ## Pair
@@ -56,8 +56,8 @@ The final version should get in input three arguments: the number of reducers, t
 ```
 hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.Pair 1 <input_file> <output_path>
 ```
-To test your code use the file [<a href="inputs/quote">quote</a>].
-Expected result in the file [<a href="inputs/pair_quote.out">pair quote result</a>].
+To test your code use the file [<a href="mapreduce-lab/inputs/quote">quote</a>].
+Expected result in the file [<a href="mapreduce-lab/inputs/pair_quote.out">pair quote result</a>].
 
 
 ## Stripes
@@ -73,8 +73,8 @@ There are two files for this exercise:
 ```
 hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.Stripes 2 <input_file> <output_path>
 ```
-To test your code use the file [<a href="inputs/quote">quote</a>].
-Expected result in the file [<a href="inputs/stripe_quote.out">stripes quote result</a>].
+To test your code use the file [<a href="mapreduce-lab/inputs/quote">quote</a>].
+Expected result in the file [<a href="mapreduce-lab/inputs/stripe_quote.out">stripes quote result</a>].
 
 
 ## Order Inversion
@@ -88,8 +88,8 @@ There is one file for this exercise called *OrderInversion.java*. The run method
 hadoop jar <compiled_jar> fr.eurecom.fr.mapreduce.OrderInversion 4 <input_file> <output_path>
 ```
 
-To test your code use the file [<a href="inputs/quote">quote</a>].
-Expected result in the file [<a href="inputs/oi_quote.out">order inversion quote result</a>].
+To test your code use the file [<a href="mapreduce-lab/inputs/quote">quote</a>].
+Expected result in the file [<a href="mapreduce-lab/inputs/oi_quote.out">order inversion quote result</a>].
 
 ## Joins
 In MapReduce the term join refers to merging two different dataset stored as unstructured files on HDFS. As for databases, in MapReduce there are many different kind of joins, each one with its use-cases and constraints. In this laboratory the user will implement two different kind of MapReduce joins techniques:
