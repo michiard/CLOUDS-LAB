@@ -14,20 +14,19 @@ You also need to download and install Hadoop.
 
 ### Links:
 + Java download page:
-        [<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" name="Java download"
-        target="_self">Link</a>]</li>
+        [Link][javasdk]
        
 + Hadoop download page (hadoop-0.20.203.0):
-        [<a href="http://www.apache.org/dyn/closer.cgi/hadoop/common/" name="Hadoop download"
-        target="_self">Link</a>]</li>
+        [Link][hadoop]
     
 + Eclipse download page:
-        [<a href="http://www.eclipse.org/downloads/" name="Eclipse download"
-    target="_self">Link</a>]</li>    
-    </ul>
+        [Link][eclipse]
+
+[javasdk]: http://www.oracle.com/technetwork/java/javase/downloads/index.html "Java download"
+[hadoop]: http://www.apache.org/dyn/closer.cgi/hadoop/common/ "Hadoop download"
+[eclipse]: http://www.eclipse.org/downloads/ "Eclipse download"
 
 ### Additional documentation for the laboratory:
-The following [<a href="https://github.com/michiard/CLOUDS-LAB/blob/master/C-S.md" name="Cheat Sheet" target="_self">Link</a>] contains a
-"cheat-sheet" to help students with common commands on Hadoop.
+The following [Link][cheatsheet] contains a "cheat-sheet" to help students with common commands on Hadoop.
 
-
+[cheatsheet]: https://github.com/michiard/CLOUDS-LAB/blob/master/C-S.md "Cheatsheet"
