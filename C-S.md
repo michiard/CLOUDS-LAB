@@ -4,30 +4,30 @@
 `$HADOOP_PATH/bin/hadoop dfs <CMD>`
 
 ### Inspect files	
-+ `-ls <path>`:: list all files in `<path>`
-+ `-cat <src>`:: print `<src>` on `stdout`
-+ `-tail [-f] <file>`:: output the last part of the `<file>`
-+ `-du <path>`:: show `<path>` space utilization
++ `-ls <path>`: list all files in `<path>`
++ `-cat <src>`: print `<src>` on `stdout`
++ `-tail [-f] <file>`: output the last part of the `<file>`
++ `-du <path>`: show `<path>` space utilization
 
 ### Create/remove files	
-+ `-mkdir <path>`:: create a directory
-+ `-mv <src> <dst>`:: move (rename) files
-+ `-cp <src> <dst>`:: copy files
-+ `-rmr <path>`:: remove files
++ `-mkdir <path>`: create a directory
++ `-mv <src> <dst>`: move (rename) files
++ `-cp <src> <dst>`: copy files
++ `-rmr <path>`: remove files
 
 ### Copy/Put files from a remote machine into the HADOOP cluster
-+ `-copyFromLocal <localsrc> <dst>`:: copy a local file to the HDFS
-+ `-copyToLocal <src> <localdst>`:: copy a file on the HDFS to the local disk
++ `-copyFromLocal <localsrc> <dst>`: copy a local file to the HDFS
++ `-copyToLocal <src> <localdst>`: copy a file on the HDFS to the local disk
 
 ### HELP
-+ `-help [cmd]`:: hopefully this is self-describing
++ `-help [cmd]`: hopefully this is self-describing
 
 #### Examples:
 `$HADOOP_PATH/bin/hadoop dfs -ls /`
 
 `$HADOOP_PATH/bin/hadoop dfs -copyFromLocal myfile remotefile`
 
-## Launching Hadoop Jobs - Ccommand line
+## Launching Hadoop Jobs - Command line
 + Copy the jar file of your job to a cluster machine (let's call it `machine_name`)
 
 `scp localJarFile studentXX@machine_name:~/`
@@ -51,7 +51,7 @@ Note that if the output directory exists (and you don't want it) you need to rem
 
 ## Reading (Textual) Input Data in the Mapper
 
-This is the class you're looking for:: `org.apache.hadoop.mapreduce.lib.input.TextInputFormat<K,V>`
+This is the class you're looking for: `org.apache.hadoop.mapreduce.lib.input.TextInputFormat<K,V>`
 
 Precisely, this is the class hierarchy:
 
@@ -79,7 +79,7 @@ Value Type: `Text`
 
 ## Writing (Textual) Output Data in the Reducer
 
-This is the class you're looking for:: `org.apache.hadoop.mapreduce.lib.output.TextOutputFormat<K,V>`
+This is the class you're looking for: `org.apache.hadoop.mapreduce.lib.output.TextOutputFormat<K,V>`
 
 Precisely, this is the class hierarchy:
 
