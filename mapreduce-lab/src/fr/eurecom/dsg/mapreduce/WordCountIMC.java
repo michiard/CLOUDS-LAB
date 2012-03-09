@@ -24,9 +24,9 @@ public class WordCountIMC extends Configured implements Tool {
 	public int run(String[] args) throws Exception {
 		
 		Configuration conf = this.getConf();
-    int numberReducers = conf.getInt("wc_numred", 1);
-    String inputFile = conf.get("wc_input1");
-    String outputPath = conf.get("wc_output");
+        int numberReducers = conf.getInt("wc_numred", 1);
+        Path inputFile = new Path(conf.get("wc_input1"));
+        Path outputPath = new Path(conf.get("wc_output"));
 		
 		Job job = null; // TODO: define new job instead of null using conf e setting a name
 		
@@ -45,7 +45,7 @@ public class WordCountIMC extends Configured implements Tool {
 	public static void main(String args[]) throws Exception {
 	  Configuration conf = new Configuration();
 	  LabConfigurator.parseArgs(args, conf, 1);
-	  int res = ToolRunner.run(new Configuration(), new WordCountIMC(), args);
+	  int res = ToolRunner.run(conf, new WordCountIMC(), args);
     System.exit(res);
 	}
 }

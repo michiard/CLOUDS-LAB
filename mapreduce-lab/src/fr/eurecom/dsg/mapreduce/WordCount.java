@@ -25,8 +25,8 @@ public class WordCount extends Configured implements Tool {
 		
 		Configuration conf = this.getConf();
 		int numberReducers = conf.getInt("wc_numred", 1);
-    String inputFile = conf.get("wc_input1");
-    String outputPath = conf.get("wc_output");
+        Path inputFile = new Path(conf.get("wc_input1"));
+        Path outputPath = new Path(conf.get("wc_output"));
 		
 		Job job = null; // TODO: define new job instead of null using conf e setting a name
 		
