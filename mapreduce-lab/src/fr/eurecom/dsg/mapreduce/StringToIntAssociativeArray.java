@@ -2,10 +2,6 @@ package fr.eurecom.dsg.mapreduce;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import org.apache.hadoop.io.Writable;
 /*
