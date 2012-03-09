@@ -30,3 +30,15 @@ You also need to download and install Hadoop.
 The following [Link][cheatsheet] contains a "cheat-sheet" to help students with common commands on Hadoop.
 
 [cheatsheet]: https://github.com/michiard/CLOUDS-LAB/blob/master/C-S.md "Cheatsheet"
+
+### How to create an Eclipse project containing the laboratory source code:
++ Download the course source code from [the download page][download]
++ Open Eclipse and select *File -> New -> Java Project*
++ Give a name to the project, click the *Next* button and select the *Libraries* tab
++ Click on *Add External JARs...* and select *hadoop-core-0.20.203.0.jar* from the Hadoop directory. Click on the *Finish* button
++ Select the new project then select *File -> Import*
++ Select the laboratory source inside the CKOUDS-LAB directory. Each laboratory has its own source directory, for example the mapreduce laboratory is inside the directory *CLOUDS-LAB/mapreduce-lab*
++ Select the *src* subdirectory and click on the *finish* button
+
+
+[download]: https://github.com/michiard/CLOUDS-LAB/downloads "CLOUDS-LAB download"
