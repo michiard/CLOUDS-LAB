@@ -1,4 +1,4 @@
-# Laboratory material for the Clouds course: [link][course]
+# Laboratory material for the Clouds course: [Link][course]
 [course]: http://www.eurecom.fr/~michiard/clouds.html "Course Web Page"
 
 This page supports the Lectures on Hadoop MapReduce, Hadoop Pig and Hadoop HBase. Each lecture has an associated Lab, consisting in a directory holding a description of the exercises, source code, solutions and output data. Input data is currently stored in a private Hadoop deployment at Eurecom; in some cases, scripts to generate input data or small input samples are provided.
@@ -37,10 +37,15 @@ You also need to download and install Hadoop core jar files.
 Note that this configuration works for studens machines in Laboratory rooms 1 and 2, and is tailored to the private Hadoop deployment at Eurecom.
 ```
 export JAVA_HOME=/home/Admin_Data/hadoop/jdk1.6.0_24
+
 export PIG_HADOOP_VERSION=20
+
 export PIG_CLASSPATH=/home/Admin_Data/hadoop/hadoop/conf/
+
 export HADOOP_HOME=/home/Admin_Data/hadoop/hadoop/
+
 export PATH=$HADOOP_HOME/bin:$PATH
+
 export PATH=/homes/michiard/pig-0.9.2/bin:$PATH
 ```
 
@@ -52,4 +57,4 @@ export PATH=/homes/michiard/pig-0.9.2/bin:$PATH
 
 + Laboratory on HBase (Work in progress)
 
-
+[mr-lab]: https://github.com/michiard/CLOUDS-LAB/tree/master/mapreduce-lab "MapReduce Lab"
