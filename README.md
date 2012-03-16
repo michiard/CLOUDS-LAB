@@ -1,16 +1,19 @@
-# Laboratory session on MapReduce, Hive and Pig
+# Laboratory material for the Clouds course: [link][course]
+[course]: http://www.eurecom.fr/~michiard/clouds.html "Course Web Page"
 
-This page supports the Lecture on practical exercises on Hadoop MapReduce. 
-In the following some basic software requirements to work with the exercises.
+This page supports the Lectures on Hadoop MapReduce, Hadoop Pig and Hadoop HBase. Each lecture has an associated Lab, consisting in a directory holding a description of the exercises, source code, solutions and output data. Input data is currently stored in a private Hadoop deployment at Eurecom; in some cases, scripts to generate input data or small input samples are provided.
 
-The tutorial and this lecture have been profoundly influenced by two "must-have" books on Hadoop and MapReduce:
+Ackwnoledgements: many exercises have been profoundly influenced by two "must-have" books on Hadoop and MapReduce:
 
 + Tom White, **Hadoop, The Definitive Guide**, Y!Press, O'Reilly
 + Jimmy Lin, Chris Dyer, **Data-Intensive Text Processing with MapReduce**, Morgan Claypool ed.
 
+# Pre-requisites for the exercises
+Next, we provide some information on the software setup required to use the laboratory material. The underlying assumption is that students know how to use git.
+
 ## Software setup
 To work with the exercises, you need to download and install java sdk and eclipse. 
-You also need to download and install Hadoop.
+You also need to download and install Hadoop core jar files.
 
 ### Links:
 + Java download page:
@@ -18,27 +21,35 @@ You also need to download and install Hadoop.
        
 + Hadoop download page (hadoop-0.20.203.0):
         [Link][hadoop]
+
++ Hadoop Pig download page (pig-0.9.2):
+	[Link][pig]
     
 + Eclipse download page:
         [Link][eclipse]
 
 [javasdk]: http://www.oracle.com/technetwork/java/javase/downloads/index.html "Java download"
 [hadoop]: http://www.apache.org/dyn/closer.cgi/hadoop/common/ "Hadoop download"
+[pig]: http://apache.multidist.com/pig/pig-0.9.2/pig-0.9.2.tar.gz "Pig download"
 [eclipse]: http://www.eclipse.org/downloads/ "Eclipse download"
 
-### Additional documentation for the laboratory:
-The following [Link][cheatsheet] contains a "cheat-sheet" to help students with common commands on Hadoop.
+## Configuring Bash:
+Note that this configuration works for studens machines in Laboratory rooms 1 and 2, and is tailored to the private Hadoop deployment at Eurecom.
+```
+export JAVA_HOME=/home/Admin_Data/hadoop/jdk1.6.0_24
+export PIG_HADOOP_VERSION=20
+export PIG_CLASSPATH=/home/Admin_Data/hadoop/hadoop/conf/
+export HADOOP_HOME=/home/Admin_Data/hadoop/hadoop/
+export PATH=$HADOOP_HOME/bin:$PATH
+export PATH=/homes/michiard/pig-0.9.2/bin:$PATH
+```
 
-[cheatsheet]: https://github.com/michiard/CLOUDS-LAB/blob/master/C-S.md "Cheatsheet"
+# Links to the three Laboratories
 
-### How to create an Eclipse project containing the laboratory source code:
-+ Download the course source code from [the download page][download]
-+ Open Eclipse and select *File -> New -> Java Project*
-+ Give a name to the project, click the *Next* button and select the *Libraries* tab
-+ Click on *Add External JARs...* and select *hadoop-core-0.20.203.0.jar* from the Hadoop directory. Click on the *Finish* button
-+ Select the new project then select *File -> Import*
-+ Select the laboratory source inside the CKOUDS-LAB directory. Each laboratory has its own source directory, for example the mapreduce laboratory is inside the directory *CLOUDS-LAB/mapreduce-lab*
-+ Select the *src* subdirectory and click on the *finish* button
++ Laboratory on Scalable Algorithm Design in MapReduce [link][mr-lab]
+
++ Laboratory on Pig and Pig Latin (Work in progress)
+
++ Laboratory on HBase (Work in progress)
 
 
-[download]: https://github.com/michiard/CLOUDS-LAB/downloads "CLOUDS-LAB download"
