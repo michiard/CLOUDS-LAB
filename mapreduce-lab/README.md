@@ -19,7 +19,7 @@ The following [Link][cheatsheet] contains a "cheat-sheet" to help students with 
 [download]: https://github.com/michiard/CLOUDS-LAB/downloads "CLOUDS-LAB download"
 
 # Exercises
-Note, exercises are organized in ascending order of difficulty. An high level overview of this laboratory (excluding the exercises on joins) is available at this [link][mrlab]
+Note, exercises are organized in ascending order of difficulty. An high level overview of this laboratory (excluding the exercises on joins) is available at this [link][mr-lab]
 
 [mr-lab]: http://www.eurecom.fr/~michiard/teaching/clouds/mr-lab.pdf "Algorithm Design"
 
