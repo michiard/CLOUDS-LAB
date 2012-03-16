@@ -35,7 +35,9 @@ You also need to download and install Hadoop core jar files.
 
 ## Configuring Bash:
 Note that this configuration works for studens machines in Laboratory rooms 1 and 2, and is tailored to the private Hadoop deployment at Eurecom.
+
 ```
+
 export JAVA_HOME=/home/Admin_Data/hadoop/jdk1.6.0_24
 
 export PIG_HADOOP_VERSION=20
@@ -47,11 +49,12 @@ export HADOOP_HOME=/home/Admin_Data/hadoop/hadoop/
 export PATH=$HADOOP_HOME/bin:$PATH
 
 export PATH=/homes/michiard/pig-0.9.2/bin:$PATH
+
 ```
 
 # Links to the three Laboratories
 
-+ Laboratory on Scalable Algorithm Design in MapReduce [link][mr-lab]
++ Laboratory on Scalable Algorithm Design in MapReduce [Link][mr-lab]
 
 + Laboratory on Pig and Pig Latin (Work in progress)
 
