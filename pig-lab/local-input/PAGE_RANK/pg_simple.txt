@@ -1,0 +1,7 @@
+www.A.com     1     { (www.B.com), (www.C.com), (www.D.com), (www.E.com) }
+www.B.com     1     { (www.D.com), (www.E.com) }
+www.C.com     1     { (www.D.com) }
+www.D.com     1     { (www.B.com) }
+www.E.com     1     { (www.A.com) }
+www.F.com     1     { (www.B.com), (www.C.com) }
+

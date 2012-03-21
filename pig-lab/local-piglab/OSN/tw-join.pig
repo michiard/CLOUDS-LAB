@@ -1,0 +1,13 @@
+-- TODO: load the input dataset, located in ./local-input/OSN/tw.txt
+--A = LOAD ...
+
+-- TODO: compute all the two-hop paths 
+--twohop = JOIN ... 
+
+-- TODO: project the twohop relation such that in output you display only the start and end nodes of the two hop path
+--p_result = FOREACH ...
+
+-- TODO: make sure you avoid loops (e.g., if user 12 and 13 follow eachother) 
+--result = FILTER ...
+
+STORE result INTO './local-output/OSN/twj/';
