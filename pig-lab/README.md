@@ -106,13 +106,11 @@ The format of the dataset (both local and cluster) is the following:
 + Therefore, you can access a profile of user 12 via http://api.twitter.com/1/users/show.xml?user_id=12.
 
 Example:
+
 ```
 12   	13
-
 12   	14
-
 12   	15
-
 16   	17
 ```
 
