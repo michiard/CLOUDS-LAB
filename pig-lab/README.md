@@ -12,7 +12,7 @@ Finally, note that some exercises will be devoted to embedding Pig Latin scripts
 
 [mr-tutorial]: http://www.eurecom.fr/~michiard/teaching/clouds/tutorial-mapreduce.pdf "MapReduce Tutorial"
 [pig-tutorial]: http://www.eurecom.fr/~michiard/teaching/clouds/tutorial-high_level.pdf "Pig Tutorial"
-[pig-doc] http://pig.apache.org/docs/r0.9.2/ "Pig Documentation"
+[pig-doc]: http://pig.apache.org/docs/r0.9.2/ "Pig Documentation"
 
 ## Software setup:
 This laboratory relies on a private Hadoop deployment: HDFS and MapReduce are available on 40 machines of the Lab rooms 1 and 2. As for the MapReduce laboratory, the system setup is not intended to be "production level": in particular, students will use machines that are part of the cluster to interact with it. Note also that the overall available storage is roughly 3 TB, which is going to be shared among all students, both for input files (that have been uploaded to HDFS) and for output files.
@@ -30,14 +30,15 @@ Students are required to install Pig in their local homes (follow the link below
 
 # Exercises
 The general rule to work on the exercises is the following:
+
 + First work locally: ``` pig -x local```: you can use both the interactive shell or directly work on pig scripts, to operate on data residing in the local filesystem
-+ Then submit job to the cluster: ``` pig -x mapreduce```: in this case you need to make sure pig has been appropriately configured. In case of doubts, contact the teaching assistants. ** NOTE ** : remember that a script that works locally may require some minor modifications when submitted to the Hadoop cluster. For example, you may want to explicitly set the degree of parallelism for the "reduce" phase, using the ```PARALLEL``` clause.
++ Then submit job to the cluster: ``` pig -x mapreduce```: in this case you need to make sure pig has been appropriately configured. In case of doubts, contact the teaching assistants. **NOTE** : remember that a script that works locally may require some minor modifications when submitted to the Hadoop cluster. For example, you may want to explicitly set the degree of parallelism for the "reduce" phase, using the ```PARALLEL``` clause.
 
 ## Exercise 1:: Word Count
 
 Count the occurrences of each word in a text file. This is exactly the same exercise included in the MapReduce laboratory. In this exercise we will let Pig (query plan, physical plan and execution plan optimizers) do the work of producing appropriate combiners to reduce I/O utilization during the shuffle phase.
 
-### Writing your first Pig Latin script: ** LOCAL EXECUTION **
+### Writing your first Pig Latin script: **LOCAL EXECUTION**
 It is important to launch pig in local execution mode: ```pig -x local```. The following lines of code can also be submitted to the interactive pig shell (grunt). Use your favorite editor/IDE and open the file ```pig-lab/local-piglab/WORD_COUNT/word_count.pig```. For convenience, the code for this exercise is reported below:
 
 ```
@@ -59,6 +60,7 @@ store E into './local-output/WORD_COUNT/';
 ```
 
 As you can notice, this exercise is solved (to be precise, this is a possible implementation). Students should get familiar with Pig's troubleshooting instruments, which are:
+
 + ```DESCRIBE relation```: this is very useful to understand the schema applied to each relation. Note that understanding schema propagation in Pig requires some time.
 + ```DUMP relation```: this command is similar to the ```STORE``` command, except that it outputs on stdout the selected relation.
 + ```ILLUSTRATE relation```: this command is useful to get a sample of the data in a relation.
@@ -67,11 +69,12 @@ For example, the student may want to understand why a parsing/cleanup phase is n
 
 [pig-load]: http://pig.apache.org/docs/r0.9.2/basic.html#load "Pig Load"
 
-### Executing the word_count Pig Latin script: ** CLUSTER EXECUTION **
+### Executing the word_count Pig Latin script: **CLUSTER EXECUTION**
 Now that you are ready to submit you first pig script to the cluster, you need to specify the execution mode: ```pig -x mapreduce```. When you interact with HDFS (e.g., when you create an output file) you will see a directory corresponding to your unix credentials (login) under the ```/user/``` directory.
 
 
 Note that the pig script you wrote for local execution requires some modifications to be run on the cluster:
+
 + Change input path: ```/pig-lab/input/WORD_COUNT/sample.txt/```
 + Change output path: ```/user/ - your unix login - /output/WORD_COUNT```
 + Set parallelism where appropriate: this is left for the student.
@@ -105,10 +108,14 @@ The format of the dataset (both local and cluster) is the following:
 Example:
 ```
 12   	13
+
 12   	14
+
 12   	15
+
 16   	17
 ```
+
 + Users 13, 14 and 15 are followers of user 12.
 + User 17 is a follower of user 16.
 
@@ -116,7 +123,7 @@ Example:
 Open the pig script ```./pig-lab/local-piglab/OSN/tw-count.pig``` in your favorite editor. Your goal is to fill-in the TODOs and produce in output the number of followers for each user ID: in the example above, we would like to have that user 12 has 3 followers and user 16 has 1 follower.
 An optional exercise is to count, for each user ID, the number of followed users. Another optional exercise is to find outliers, that is to find users for which the follower count exceeds an arbitrary threshold.
 
-First, work **locally*; when your script is working as you expect, you can move to the cluster execution, by specifying the appropriate input and output directories.
+First, work **locally**; when your script is working as you expect, you can move to the cluster execution, by specifying the appropriate input and output directories.
 
 [tw-data]: http://an.kaist.ac.kr/traces/WWW2010.html "Twitter datasets" 
 
@@ -139,7 +146,7 @@ First, work **locally*; when your script is working as you expect, you can move 
 
 ## Exercise 3:: Working with Network Data
 
-## Exercise 4:: Implementing PageRank in Pig (uses Pig embeddings in Python)
+## Exercise 4:: Implementing PageRank in Pig
 
 
 
