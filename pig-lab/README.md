@@ -198,5 +198,6 @@ Optional exercises: exceptionally, advanced students can work on the implementat
 
 ## Exercise 4:: Implementing PageRank in Pig
 
+**WORK IN PROGRESS**
 
 
