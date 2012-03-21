@@ -129,7 +129,7 @@ First, work **locally**; when your script is working as you expect, you can move
 ### Find the number of two-hop paths in the Twitter network
 This exercise is related to the JOIN example discussed during the class on relational algebra and Hadoop Pig. You goal is to find all two-hop social relations in the Twitter dataset: for example, if user 12 is followed by user 13 and user 13 is followed by user 19, then there is a two-hop relation between user 12 and user 19. Open the pig script ```./pig-lab/local-piglab/OSN/tw-join.pig``` and fill-in the TODOs to produce the desired output.
 
-First, work **locally*; when your script is working as you expect, you can move to the cluster execution, by specifying the appropriate input and output directories.
+First, work **locally**; when your script is working as you expect, you can move to the cluster execution, by specifying the appropriate input and output directories.
 
 ### How-to inspect your results and check your job in the cluster
 
