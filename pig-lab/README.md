@@ -198,6 +198,43 @@ Optional exercises: exceptionally, advanced students can work on the implementat
 
 ## Exercise 4:: Implementing PageRank in Pig
 
-**WORK IN PROGRESS**
+The goal of this exercise is to understand how to embed Pig Latin in Python. This exercise was conceived as a coding example by Julien Le Dem (Data Systems Engineer, Twitter) to illustrate Pig embedding. In short, Pig natively lacks support of control flow statements: if/else, while loop, for loop, etc. Starting with Pig 0.9 it is now possible to write a python (other languages are available as well) program and embed Pig scripts, leveraging all language features provided by Python, including control flow. This is especially important as it simplifies the implementation of **iterative algorithms**.
+
+The original source for this exercise, plus a related post on how to implement *k-*means in Pig are available here:
+
++ PageRank: http://techblug.wordpress.com/2011/07/29/pagerank-implementation-in-pig/
++ *k-*means: http://hortonworks.com/blog/new-apache-pig-features-part-2-embedding/
+
+The goal of this exercise is to study the PageRank algorithm, and compare implementation and execution details of two approaches: a native MapReduce implementation and the Pig implementation. A brief (and simplified) introduction to PageRank is available in the last section of the laboratory notes for the MapReduce laboratory [Link][mr-lab]. 
+
+[mr-lab]: http://www.eurecom.fr/~michiard/teaching/clouds/mr-lab.pdf "Algorithm Design"
+
+### MapReduce implementation
+Following the procedure detailed in [Link][mr-lab-git], create an Eclipse project and import the MapReduce implementation of PageRank. Source code is available here: [Link][mr-pr]. Note that this is a "naive" implementation of PageRank. Students are invited to inspect the code, including the "driver" program to handle iterations. Note also the input format expected by this implementation of PageRank. Input datasets for this exercise are available upon request.
+
+[mr-lab-git]: https://github.com/michiard/CLOUDS-LAB/tree/master/mapreduce-lab "MapReduce Lab"
+[mr-pr]: https://github.com/michiard/CLOUDS-LAB/tree/master/mapreduce-lab/solved/src/fr/eurecom/dsg/mapreduce/pagerank "PageRank"
 
 
+### Pig implementation
+Official documentation explaining all the details behind embedding is available here: [Link][pig-embedding]. Students are invited to open (in their favorite IDE) the first version of the Python/Pig PageRank implementation, namely ```pg_v1.py```.
+
+With reference to the official documentation, this implementation first ```compile()``` the pig script, then pass parameters using ```bind(params)``` and ```runSingle()``` for each iteration of the PageRank algorithm. The output of each iteration becomes the input of the previous one. Students are invited to first work **locally*, then submit the job to the cluster:
+
++ Local execution: use the ```./local-input/PAGE_RANK/pg_simple.txt``` input file.
+
++ Cluster execution: use the ```/pig-lab/input/PAGE_RANK/web_graph.txt``` input file located in HDFS. Please note that this file is about 6.6 GB.
+
+### Optional exercises
+The following is a list of optional exercises:
+
++ Study a slightly improved version of PageRank, by inspecting ```pg_v2.py```
+
++ Modify the MapReduce implementation of PageRank described above such that it can accept as input the same format used for the Python/Pig implementation
+
++ Proceed with an alternative implementation of PageRank in MapReduce, following Chapter 5 of the book **Mining of Massive Datasets**, by *Anand Rajaraman and Jeff Ullman*, Cambridge University Press.
+
++ Implement the *k-*means algorithm whether in MapReduce or in Python/Pig (use http://hortonworks.com/blog/new-apache-pig-features-part-2-embedding/)
+
+
+[pig-embedding]: http://pig.apache.org/docs/r0.9.2/cont.html#embed-python "Pig Embedding"

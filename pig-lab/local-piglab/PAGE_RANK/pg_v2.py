@@ -38,11 +38,11 @@ STORE max_diff
 """)
 
 d = 0.5
-docs_in= "input/pg_simple.txt"
+docs_in= "./local-input/pg_simple.txt"
 
 for i in range(10):
-	docs_out = "output/pg_v2/pagerank_data_" + str(i + 1)
-	max_diff = "output/pg_v2/max_diff_" + str(i + 1)
+	docs_out = "./local-output/pg_v2/pagerank_data_" + str(i + 1)
+	max_diff = "./local-output/pg_v2/max_diff_" + str(i + 1)
 	Pig.fs("rmr " + docs_out)
 	Pig.fs("rmr " + max_diff)
 	stats = P.bind().runSingle()

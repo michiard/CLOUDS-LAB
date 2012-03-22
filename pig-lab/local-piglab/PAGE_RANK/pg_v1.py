@@ -28,10 +28,10 @@ STORE new_pagerank
     USING PigStorage('\t');
 """)
 
-params = { 'd': '0.5', 'docs_in': 'input/pg_simple.txt' }
+params = { 'd': '0.5', 'docs_in': './local-input/pg_simple.txt' }
 
 for i in range(10):
-	out = "output/pg_v1/pagerank_data_" + str(i + 1)
+	out = "./local-output/pg_v1/pagerank_data_" + str(i + 1)
 	params["docs_out"] = out
 	Pig.fs("rmr " + out)
 	stats = P.bind(params).runSingle()
