@@ -203,7 +203,7 @@ The goal of this exercise is to understand how to embed Pig Latin in Python. Thi
 The original source for this exercise, plus a related post on how to implement *k-*means in Pig are available here:
 
 + PageRank: http://techblug.wordpress.com/2011/07/29/pagerank-implementation-in-pig/
-+ *k-*means: http://hortonworks.com/blog/new-apache-pig-features-part-2-embedding/
++ *k*-means: http://hortonworks.com/blog/new-apache-pig-features-part-2-embedding/
 
 The goal of this exercise is to study the PageRank algorithm, and compare implementation and execution details of two approaches: a native MapReduce implementation and the Pig implementation. A brief (and simplified) introduction to PageRank is available in the last section of the laboratory notes for the MapReduce laboratory [Link][mr-lab]. 
 
@@ -234,7 +234,7 @@ The following is a list of optional exercises:
 
 + Proceed with an alternative implementation of PageRank in MapReduce, following Chapter 5 of the book **Mining of Massive Datasets**, by *Anand Rajaraman and Jeff Ullman*, Cambridge University Press.
 
-+ Implement the *k-*means algorithm whether in MapReduce or in Python/Pig (use http://hortonworks.com/blog/new-apache-pig-features-part-2-embedding/)
++ Implement the *k*-means algorithm whether in MapReduce or in Python/Pig (use http://hortonworks.com/blog/new-apache-pig-features-part-2-embedding/)
 
 
 [pig-embedding]: http://pig.apache.org/docs/r0.9.2/cont.html#embed-python "Pig Embedding"
