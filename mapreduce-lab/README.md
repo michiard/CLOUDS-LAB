@@ -13,7 +13,7 @@ The following [Link][cheatsheet] contains a "cheat-sheet" to help students with 
 + Give a name to the project, click the *Next* button and select the *Libraries* tab
 + Click on *Add External JARs...* and select *hadoop-core-0.20.203.0.jar* from the Hadoop directory. Click on the *Finish* button
 + Select the new project then select *File -> Import*
-+ Select the laboratory source inside the CKOUDS-LAB directory. Each laboratory has its own source directory, for example the mapreduce laboratory is inside the directory *CLOUDS-LAB/mapreduce-lab*
++ Select the laboratory source inside the CLOUDS-LAB directory. Each laboratory has its own source directory, for example the mapreduce laboratory is inside the directory *CLOUDS-LAB/mapreduce-lab*
 + Select the *src* subdirectory and click on the *finish* button
 
 [download]: https://github.com/michiard/CLOUDS-LAB/downloads "CLOUDS-LAB download"
@@ -59,7 +59,7 @@ A Pair is a tuple composed by two elements that can be used to ship two objects 
 ### Instructions
 There are two files for this exercise:
 
-+ *TextPair.java*: data structure to be implemented by the student. Besides the implementation of the data structure itself, the student has to implement the serialization Hadoop API (write and readFields).
++ *TextPair.java*: data structure to be implemented by the student. Besides the implementation of the data structure itself, the student has to implement the serialization Hadoop API (write and read Fields).
 + *Pair.java*: the implementation of a pair example using *TextPair.java* as datatype. **The student must not change this file**.
 
 ### Example of usage
