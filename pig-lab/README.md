@@ -1,6 +1,6 @@
 # Hadoop Pig Laboratory
 
-This laboratory is dedicated to Hadoop Pig and consists of a series of exercises that somewhat mimic those in the MapReduce laboratory. Besides getting familiar with Pig Latin and writing scripts to analyze data, the goal of this laboratory is to relate the design of Pig scripts to their underlying implementation in MapReduce.
+This laboratory is dedicated to Hadoop Pig and consists of a series of exercises that somewhat mimic those in the MapReduce laboratory. Besides getting familiar with Pig Latin and writing scripts to analyze data, the goal of this laboratory is to relate the design of Pig scripts to their underlying implementation in MapReduce. This means that students should inspect what the Pig compiler generates, for example using the ```explain``` command, and reason about Job performance by inspecting Hadoop logs and statistics.
 
 
 ## Additional documentation for the laboratory:
@@ -8,17 +8,17 @@ The underlying assumption is that students taking part to this laboratory are fa
 Additional documentation that is useful for the exercises is available here: [Link][pig-doc]. Note that we will use Hadoop Pig 0.9.2.
 
 
-Finally, note that some exercises will be devoted to embedding Pig Latin scripts in Python. Basic knowledge of python is required to such exercises.
+Finally, note that some exercises will be devoted to embedding Pig Latin scripts in Python. Basic knowledge of python is required for such exercises.
 
 [mr-tutorial]: http://www.eurecom.fr/~michiard/teaching/clouds/tutorial-mapreduce.pdf "MapReduce Tutorial"
 [pig-tutorial]: http://www.eurecom.fr/~michiard/teaching/clouds/tutorial-high_level.pdf "Pig Tutorial"
 [pig-doc]: http://pig.apache.org/docs/r0.9.2/ "Pig Documentation"
 
 ## Software setup:
-This laboratory relies on a private Hadoop deployment: HDFS and MapReduce are available on 40 machines of the Lab rooms 1 and 2. As for the MapReduce laboratory, the system setup is not intended to be "production level": in particular, students will use machines that are part of the cluster to interact with it. Note also that the overall available storage is roughly 3 TB, which is going to be shared among all students, both for input files (that have been uploaded to HDFS) and for output files.
+This laboratory relies on a private Hadoop deployment at Eurecom; students can clearly deploy their own (pseudo) cluster and work on the exercises as well. As for the MapReduce laboratory, the system setup is not intended to be "production level": in particular, students will use machines that are part of the cluster to interact with it.
 
 
-Students are required to install Pig in their local homes (follow the link below to download Hadoop Pig 0.9.2). In case you use vim to edit your scripts, it is suggested to install the plugin below for syntax highlighting. Students can also use Eclipse, and try (at their own risk) to install the PigPen plugin, which is available from the link below.
+Students can use the Pig installation we setup in the lab or can proceed with installing Pig in their local homes (follow the link below to download Hadoop Pig 0.9.2). In case you use vim to edit your scripts, it is suggested to install the plugin below for syntax highlighting. Students can also use Eclipse, and try (at their own risk) to install the PigPen plugin, which is available from the link below.
 
 + Hadoop Pig download page (pig-0.9.2): [Link][pig-download]
 + vim plugin for Pig Latin syntax: [Link][vim-pig]
