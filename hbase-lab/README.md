@@ -15,7 +15,7 @@ In the following, we synthesize a dataset to be used in the exercise. Usernames 
 Before working on HBase, let us look at a traditional database design, with normalized relationships.
 The Entity Relationship Diagram for our service is reported in the following figure (Fig. 1). The corresponding SQL schema is shown immediately below.
 
-![ER-Diagram] (hbase-lab/figure/er.png)
+![ER-Diagram] (figure/er.png)
 
 Fig. 1  -  ER Diagram
 
@@ -84,13 +84,9 @@ WHERE shorturl.shortId="6PMQ" and shorturl.urlId=url.id;
 
 ```
 +---------------------------------------+--------+
-
 | url                                   | id     |
-
 +---------------------------------------+--------+
-
 | http://www.theatermania.com/broadway/ | 710842 |
-
 +---------------------------------------+--------+
 
 1 row in set (0.00 sec)
@@ -183,27 +179,16 @@ ORDER BY shorturl.datestamp DESC;
 
 ```
 +---------+------------------------------------+---------+
-
 | shortId | url                                | id      |
-
 +---------+------------------------------------+---------+
-
 | ELHB    | http://www.3dluvr.com/pascalb/     |    NULL |
-
 | 6PMU    | http://www.mcfc.co.uk/             | 2164834 |
-
 | VSJ0    | http://www.history.co.uk/home.html | 2366641 |
-
 | VSJ0    | http://www.history.co.uk/home.html | 2366642 |
-
 | VSJ0    | http://www.history.co.uk/home.html | 2366643 |
-
 | VSJ0    | http://www.history.co.uk/home.html | 2366644 |
-
 | VSJ0    | http://www.history.co.uk/home.html | 2366645 |
-
 | VSJ0    | http://www.history.co.uk/home.html | 2366646 |
-
 +---------+------------------------------------+---------+
 
 8 rows in set (0.12 sec)
@@ -269,35 +254,20 @@ LIMIT 12;
 
 ```
 +---------+-----------------+------------------+----------+
-
 | shortId | YEAR(datestamp) | MONTH(datestamp) | count(*) |
-
 +---------+-----------------+------------------+----------+
-
 |  325056 |            2012 |                3 |       12 |
-
 |  325056 |            2012 |                2 |       11 |
-
 |  325056 |            2012 |                1 |        9 |
-
 |  325056 |            2011 |               12 |       11 |
-
 |  325056 |            2011 |               11 |       17 |
-
 |  325056 |            2011 |               10 |       26 |
-
 |  325056 |            2011 |                9 |       26 |
-
 |  325056 |            2011 |                8 |       23 |
-
 |  325056 |            2011 |                7 |       14 |
-
 |  325056 |            2011 |                6 |       29 |
-
 |  325056 |            2011 |                5 |       32 |
-
 |  325056 |            2011 |                4 |       31 |
-
 +---------+-----------------+------------------+----------+
 
 12 rows in set (0.04 sec)
@@ -331,15 +301,17 @@ Data access patterns:
 
 **Q2. List all the existing tables (note that you will see also the table created by your colleagues) using the HBase Shell**
 
-** Q3. Insert into the table 100 lines from users.json in the table you created**
-*[HINT] the input file -- users.json -- is located in the HDFS deployed in the laboratory, under the directory /hbase-lab/*
-*[HINT]: You need to access the directory hbase-lab in git, and modify appropriately the java program located in the sub-directory: hbase-lab/exercise1-q3/*
+**Q3. Insert into the table 100 lines from users.json in the table you created**
+
++ *[HINT] the input file -- users.json -- is located in the HDFS deployed in the laboratory, under the directory /hbase-lab/*
++ *[HINT]: You need to access the directory hbase-lab in git, and modify appropriately the java program located in the sub-directory: hbase-lab/exercise1-q3/*
 
 
 **Q4. Scan the table you filled in Q3 using the HBase Shell.**
 
 **Q5. Which RegionServers are the regions assigned to? Which range of keys does each RegionServer serve? What is the cluster utilization?**
-*[Hint]: Use the HBase shell and scan the .META. table*
+
++ *[Hint]: Use the HBase shell and scan the .META. table*
 
 **Q6. Insert the all remaining data (from the file user.json) in the user-HOST_NAME table (where HOST_NAME is the name of the machine you’re working on).**
 
@@ -359,13 +331,15 @@ Data access patterns:
 
 
 **Q1. Design a table to save the urls. Which row-key would you choose? How many column families?**
-**Q1.1 What does point n.5 in the data access patterns imply?**
-*[HINT]: Using the HBase Shell, create the table and label it ‘url-HOST_NAME’*
+
++ **Q1.1 What does point n.5 in the data access patterns imply?**
++ *[HINT]: Using the HBase Shell, create the table and label it ‘url-HOST_NAME’*
 
 
 **Q2. Write a java program to load the url data in the table you created. To do so, you can adapt the code used to load user data in exercise 1.**
-*[HINT] the input file -- urls.json -- is located in the HDFS deployed in the laboratory, under the directory /hbase-lab/*
-*[HINT]: while loading the data, continue to the next exercises, as this procedure may take some time (roughly 10 minutes)*
+
++ *[HINT] the input file -- urls.json -- is located in the HDFS deployed in the laboratory, under the directory /hbase-lab/*
++ *[HINT]: while loading the data, continue to the next exercises, as this procedure may take some time (roughly 10 minutes)*
 
 ### **EXERCISE 3: Working with Shorturls and statistics**
 In this section we will design the tables used to keep the shortids and the click information/statistics.
@@ -391,11 +365,12 @@ Try to answer all the following questions before designing the tables: such ques
 
 **Q3. Is point 4 in the data access patterns described above backend-related? Do you think that it should be addressed in the database? How would you address it?**
 
-** Q4. Think about point 5 in the data access patterns described above. Remember the SQL way to retrieve these counters. Is it scalable? Could you improve the scalability using Hadoop MapReduce? How? What are the pros and cons? Is it necessary to save the data related to each click?**
+**Q4. Think about point 5 in the data access patterns described above. Remember the SQL way to retrieve these counters. Is it scalable? Could you improve the scalability using Hadoop MapReduce? How? What are the pros and cons? Is it necessary to save the data related to each click?**
 
 **Q5. How many tables would you need to satisfy all data access patterns described above?**
-**Q5.1. Using the HBase Shell, create the table needed to save the shorturl (call it shorturl-HOST_NAME)**
-**Q5.2. Using the HBase Shell, create the table required to save the statistics. Do you need an additional table?**
+
++ **Q5.1. Using the HBase Shell, create the table needed to save the shorturl (call it shorturl-HOST_NAME)**
++ **Q5.2. Using the HBase Shell, create the table required to save the statistics. Do you need an additional table?**
 
 **Q6. With the created tables, can you satisfy point 3 of the data access patterns defined above? How is that query treated in SQL? Do you need additional tables?**
 
