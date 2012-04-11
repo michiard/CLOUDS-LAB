@@ -15,7 +15,7 @@ In the following, we synthesize a dataset to be used in the exercise. Usernames 
 Before working on HBase, let us look at a traditional database design, with normalized relationships.
 The Entity Relationship Diagram for our service is reported in the following figure (Fig. 1). The corresponding SQL schema is shown immediately below.
 
-![ER-Diagram] (hbase-lab/figure/er.png)
+![ER-Diagram](/michiard/CLOUDS-LAB/raw/master/hbase-lab/figure/er.png)
 
 Fig. 1  -  ER Diagram
 
@@ -75,9 +75,7 @@ Therefore, given a shorturl, we need to get the corresponding URL:
 
 ```SQL
 SELECT url.url, shorturl.id
-
 FROM shorturl, url
-
 WHERE shorturl.shortId="6PMQ" and shorturl.urlId=url.id;
 ```
 
@@ -99,7 +97,6 @@ Using the id retrieved from the previous query, we can update the statistics:
 
 ```SQL
 INSERT INTO click
-
 VALUE (0, '2012-03-19 14:00:01', 1, 'IT');
 
 Query OK, 1 row affected (0.00 sec)
@@ -113,9 +110,7 @@ In SQL:
 
 ```SQL
 SELECT username, lastname, email
-
 FROM user
-
 WHERE username="mrfernan" and credentials="jW4BVuJt";
 ```
 
@@ -133,19 +128,12 @@ Moreover, since the user can create a lot of ShorURLs, we want to list them orde
 
 ```SQL
 SELECT shorturl.shortId, url.url, count(click.id)
-
 FROM user, shorturl, url, click
-
 WHERE user.username="cainarachi" and
-
      shorturl.userId = user.id and
-
      shorturl.urlId = url.id and
-
      click.shortId=shorturl.id
-
 GROUP by shorturl.id
-
 ORDER BY shorturl.datestamp DESC;
 ```
 
@@ -165,15 +153,10 @@ The previous query has a problem: the user cainarachi created 3 shortIds (http:/
 
 ```SQL
 SELECT shorturl.shortId, url.url, click.id
-
 FROM user INNER JOIN shorturl ON user.id=shorturl.userId
-
          INNER JOIN url ON url.id=shorturl.urlId
-
          LEFT JOIN click ON click.shortId=shorturl.id
-
 WHERE user.username="cainarachi"
-
 ORDER BY shorturl.datestamp DESC;
 ```
 
@@ -200,17 +183,11 @@ We can see that shortId 681023 has no clicks, so the corresponding click.id is N
 
 ```SQL
 SELECT shorturl.shortId, url.url, count(click.id)
-
 FROM user INNER JOIN shorturl ON user.id=shorturl.userId
-
          INNER JOIN url ON url.id=shorturl.urlId
-
          LEFT JOIN click ON click.shortId=shorturl.id
-
 WHERE user.username="cainarachi"
-
 GROUP by shorturl.id
-
 ORDER BY shorturl.datestamp DESC;
 ```
 
@@ -240,15 +217,10 @@ Finally, given a shorturl, a user needs to visualize the statistics related, e.g
 
 ```SQL
 SELECT shortId, YEAR(datestamp), MONTH(datestamp), count(*)
-
 FROM click
-
 WHERE click.shortId=325056
-
 GROUP BY YEAR(datestamp), MONTH(datestamp)
-
 ORDER BY datestamp DESC
-
 LIMIT 12;
 ```
 
@@ -390,9 +362,7 @@ Write the HBase equivalent of the SQL query reported below (See also section “
 
 ```SQL
 SELECT url.url, shorturl.id
-
 FROM shorturl, url
-
 WHERE shorturl.shortId="6PMQ" and shorturl.urlId=url.id;
 ```
 
@@ -405,17 +375,11 @@ Write the HBase equivalent the SQL query reported below (see section “Users’
 
 ```SQL
 SELECT shorturl.shortId, url.url, count(click.id)
-
 FROM user INNER JOIN shorturl ON user.id=shorturl.userId
-
          INNER JOIN url ON url.id=shorturl.urlId
-
          LEFT JOIN click ON click.shortId=shorturl.id
-
 WHERE user.username="cainarachi"
-
 GROUP by shorturl.id
-
 ORDER BY shorturl.datestamp DESC;
 ```
 
