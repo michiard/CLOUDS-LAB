@@ -15,7 +15,7 @@ In the following, we synthesize a dataset to be used in the exercise. Usernames 
 Before working on HBase, let us look at a traditional database design, with normalized relationships.
 The Entity Relationship Diagram for our service is reported in the following figure (Fig. 1). The corresponding SQL schema is shown immediately below.
 
-![ER-Diagram] (figure/er.png)
+![ER-Diagram] (hbase-lab/figure/er.png)
 
 Fig. 1  -  ER Diagram
 
