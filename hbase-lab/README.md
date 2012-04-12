@@ -279,7 +279,8 @@ Data access patterns:
 
 
 **Q1. Create a table (user-HOST_NAME) to save users’ information, using the HBase Shell (where HOST_NAME is the name of the machine you’re working on)**
-+ *[HINT] [HBase Shell][hbaseshell]
+
++ *[HINT] [HBase Shell][hbaseshell]*
 [hbaseshell]: http://wiki.apache.org/hadoop/Hbase/Shell "HBase Shell Wiki"
 
 **Q2. List all the existing tables (note that you will see also the table created by your colleagues) using the HBase Shell**
