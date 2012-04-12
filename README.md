@@ -10,6 +10,7 @@ For information, the Hadoop cluster consists in 40 nodes, each with a quad-core 
 + Tom White, **Hadoop, The Definitive Guide**, Y!Press, O'Reilly
 + Jimmy Lin, Chris Dyer, **Data-Intensive Text Processing with MapReduce**, Morgan Claypool ed.
 + Anand Rajaraman and Jeff Ullman, **Mining of Massive Datasets**, Cambridge University Press
++ Lars George, **HBase: The Definitive Guide**, O'Reilly
 + Hortonworks Blog: http://hortonworks.com/blog/
 
 # Pre-requisites for the exercises
@@ -33,12 +34,16 @@ You also need to download and install Hadoop core jar files.
 + Hadoop Pig download page (pig-0.9.2):
 	[Link][pig]
     
++ HBase download page (hbase-0.92.0):
+    [Link][hbase]
+
 + Eclipse download page:
         [Link][eclipse]
 
 [javasdk]: http://www.oracle.com/technetwork/java/javase/downloads/index.html "Java download"
 [hadoop]: http://www.apache.org/dyn/closer.cgi/hadoop/common/ "Hadoop download"
 [pig]: http://apache.multidist.com/pig/pig-0.9.2/pig-0.9.2.tar.gz "Pig download"
+[hbase]: http://apache.multidist.com/hbase/hbase-0.92.0/hbase-0.92.0.tar.gz "HBase download"
 [eclipse]: http://www.eclipse.org/downloads/ "Eclipse download"
 
 ## Configuring Bash:
@@ -54,9 +59,13 @@ export PIG_CLASSPATH=/home/Admin_Data/hadoop/hadoop/conf/
 
 export HADOOP_HOME=/home/Admin_Data/hadoop/hadoop/
 
+export HBASE_HOME=/home/Admin_Data/hadoop/hbase/
+
 export PATH=$HADOOP_HOME/bin:$PATH
 
 export PATH=/home/Admin_Data/hadoop/pig-0.9.2/bin:$PATH
+
+export PATH=$HBASE_HOME/bin:$PATH
 
 ```
 

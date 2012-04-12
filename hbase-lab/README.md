@@ -10,14 +10,23 @@ The objective of this laboratory is to design a simple schema for such a service
 ### A note on the dataset
 In the following, we synthesize a dataset to be used in the exercise. Usernames and long URLs are _real_: we extracted them from an openly available dataset from http://delicio.us. Short URLs and Cliks are synthetic, with non-uniform distributions: Short URLs are base-64 encoded, clicks are log-normally distributed, click inter-arrival time is exponentially distributed starting from the time a short URL is created.
 
+### How to create an Eclipse project containing the laboratory source code:
++ Download the course source code from [the download page][download]
++ Open Eclipse and select *File -> New -> Java Project*
++ Give a name to the project, click the *Next* button and select the *Libraries* tab
++ Click on *Add External JARs...* and select all the jars from the Hadoop and HBase directoriers (from both base dirs and lib dirs). Click on the *Finish* button
++ Select the new project then select *File -> Import*
++ Select the laboratory source inside the CLOUDS-LAB directory. Each laboratory has its own source directory, for example the mapreduce laboratory is inside the directory *CLOUDS-LAB/mapreduce-lab*
++ Select the *src* subdirectory and click on the *finish* button
+
+[download]: https://github.com/michiard/CLOUDS-LAB/downloads "CLOUDS-LAB download"
+
 ## Background: A SQL implementation
 
 Before working on HBase, let us look at a traditional database design, with normalized relationships.
-The Entity Relationship Diagram for our service is reported in the following figure (Fig. 1). The corresponding SQL schema is shown immediately below.
+The Entity Relationship Diagram for our service is reported in the following figure. The corresponding SQL schema is shown immediately below it.
 
 ![ER-Diagram](/michiard/CLOUDS-LAB/raw/master/hbase-lab/figure/er.png)
-
-Fig. 1  -  ER Diagram
 
 ```SQL
 
@@ -354,6 +363,8 @@ For this laboratory, we created and filled all the tables needed for our example
 
 Our schema is reported below, please look at it carefully and try to understand the design logic and the architectural choices we did. In order to be able to continue with the exercises, you need to be familiar with it.
 
+
+![HBase-Schema](/michiard/CLOUDS-LAB/raw/master/hbase-lab/figure/hbase-schema.png)
 
 
 In the next part, we will translate the SQL queries of the first part of the lab into HBase queries.
