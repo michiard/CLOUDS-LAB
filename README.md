@@ -66,7 +66,7 @@ export PATH=/home/Admin_Data/hadoop/pig-0.9.2/bin:$PATH
 
 + Laboratory on Pig and Pig Latin [Link][pig-lab]
 
-+ Laboratory on HBase
++ Laboratory on HBase [Link][hbase-lab]
 
 [mr-lab]: https://github.com/michiard/CLOUDS-LAB/tree/master/mapreduce-lab "MapReduce Lab"
 [pig-lab]: https://github.com/michiard/CLOUDS-LAB/tree/master/pig-lab "Pig Lab"

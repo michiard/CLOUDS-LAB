@@ -285,9 +285,11 @@ Data access patterns:
 
 + *[Hint]: Use the HBase shell and scan the .META. table*
 
-**Q6. Insert the all remaining data (from the file user.json) in the user-HOST_NAME table (where HOST_NAME is the name of the machine you’re working on).**
+**Q6. Insert all the remaining data (from the file user.json) in the user-HOST_NAME table (where HOST_NAME is the name of the machine you’re working on).**
 
 **Q7. Is there any split? Why? What is the size of the HFiles in the HDFS?**
+
++ *[Hint]: Use the HBase shell to answer this question*
 
 
 ### **EXERCISE 2: Working with URLs**
@@ -358,6 +360,8 @@ In the next part, we will translate the SQL queries of the first part of the lab
 
 ### **EXERCISE 4: QUERY 1**
 Write the HBase equivalent of the SQL query reported below (See also section “User action: Click on a shorturl”):
+    
++ *[Hint]: Use the java program QueryOne.java in your local copy of the hbase-lab repository*
 
 
 ```SQL
