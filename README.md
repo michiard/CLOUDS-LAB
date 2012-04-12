@@ -79,3 +79,4 @@ export PATH=$HBASE_HOME/bin:$PATH
 
 [mr-lab]: https://github.com/michiard/CLOUDS-LAB/tree/master/mapreduce-lab "MapReduce Lab"
 [pig-lab]: https://github.com/michiard/CLOUDS-LAB/tree/master/pig-lab "Pig Lab"
+[hbase-lab]: https://github.com/michiard/CLOUDS-LAB/tree/master/hbase-lab "HBase Lab"
