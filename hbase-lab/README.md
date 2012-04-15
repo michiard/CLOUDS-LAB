@@ -14,7 +14,7 @@ In the following, we synthesize a dataset to be used in the exercise. Usernames 
 + Download the course source code from [the download page][download]
 + Open Eclipse and select *File -> New -> Java Project*
 + Give a name to the project, click the *Next* button and select the *Libraries* tab
-+ Click on *Add External JARs...* and select all the jars from the Hadoop and HBase directoriers (from both base dirs and lib dirs). Click on the *Finish* button
++ Click on *Add External JARs...* and select all the jars from the Hadoop and HBase directoriers (from both base dirs and lib dirs) and json-simple-1.1.1.jar from the lib directory in the github repository. Click on the *Finish* button
 + Select the new project then select *File -> Import*
 + Select the laboratory source inside the CLOUDS-LAB directory. Each laboratory has its own source directory, for example the mapreduce laboratory is inside the directory *CLOUDS-LAB/mapreduce-lab*
 + Select the *src* subdirectory and click on the *finish* button
