@@ -288,7 +288,7 @@ Data access patterns:
 **Q3. Insert into the table 100 lines from users.json in the table you created**
 
 + *[HINT] the input file -- users.json -- is located in the HDFS deployed in the laboratory, under the directory /hbase-lab/*
-+ *[HINT]: You need to access the directory hbase-lab in git, and modify appropriately the java program located in the sub-directory: hbase-lab/exercise1-q3/*
++ *[HINT]: You need to access the directory hbase-lab in git, and modify appropriately the java program located in the sub-directory: hbase-lab/*
 
 
 **Q4. Scan the table you filled in Q3 using the HBase Shell.**
