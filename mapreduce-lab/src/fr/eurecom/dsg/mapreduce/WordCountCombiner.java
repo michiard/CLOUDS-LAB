@@ -1,16 +1,19 @@
 package fr.eurecom.dsg.mapreduce;
 
 import java.io.IOException;
+import java.util.StringTokenizer;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.Mapper.Context;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
-
-import fr.eurecom.dsg.mapreduce.utils.LabConfigurator;
 
 /**
  * Word Count example of MapReduce job. Given a plain text in input, this job
@@ -20,14 +23,13 @@ import fr.eurecom.dsg.mapreduce.utils.LabConfigurator;
  */
 public class WordCountCombiner extends Configured implements Tool {
 
-	@Override
+	private int numReducers;
+  private Path inputPath;
+  private Path outputDir;
+
+  @Override
 	public int run(String[] args) throws Exception {
-		
-		Configuration conf = this.getConf();
-        int numberReducers = conf.getInt("wc_numred", 1);
-        Path inputFile = new Path(conf.get("wc_input1"));
-        Path outputPath = new Path(conf.get("wc_output"));
-		
+    
 		Job job = null; // TODO: define new job instead of null using conf e setting a name
 		
 		// TODO: set job input format
@@ -45,41 +47,48 @@ public class WordCountCombiner extends Configured implements Tool {
 		return job.waitForCompletion(true) ? 0 : 1; // this will execute the job
 	}
 	
-	public static void main(String args[]) throws Exception {
-	  Configuration conf = new Configuration();
-    LabConfigurator.parseArgs(args, conf, 1);
-    int res = ToolRunner.run(conf, new WordCountCombiner(), args);
-		System.exit(res);
-	}
+  public WordCountCombiner (String[] args) {
+    if (args.length != 3) {
+      System.out.println("Usage: WordCountCombiner <num_reducers> <input_path> <output_path>");
+      System.exit(0);
+    }
+    this.numReducers = Integer.parseInt(args[0]);
+    this.inputPath = new Path(args[1]);
+    this.outputDir = new Path(args[2]);
+  }
+  
+  public static void main(String args[]) throws Exception {
+    int res = ToolRunner.run(new Configuration(), new WordCount(args), args);
+    System.exit(res);
+  }
 }
 
-class WCCMapper extends Mapper<Object,   // TODO: change Object to input key type
-                               Object,   // TODO: change Object to input value type
-                               Object,   // TODO: change Object to output key type
-                               Object> { // TODO: change Object to output value type
+class WCMapperCombiner extends Mapper<LongWritable, Text, Text, LongWritable> {
 
-	@Override
-	protected void map(Object key, // TODO: change Object to input key type 
-	                   Object value, // TODO: change Object to input value type
-	                   Context context)
-			throws IOException, InterruptedException {
-		
-	  // TODO: implement the map method (use context.write to emit results)
-	}
+  private Text word = new Text();
+  private final static LongWritable ONE = new LongWritable(1);
+
+  @Override
+  protected void map(LongWritable offset, Text text, Context context)
+      throws IOException, InterruptedException {
+    StringTokenizer iter = new StringTokenizer(text.toString());
+    while (iter.hasMoreTokens()) {
+      this.word.set(iter.nextToken());
+      context.write(this.word , ONE);
+    }
+  }
 
 }
 
-class WCCReducer extends Reducer<Object,   // TODO: change Object to input key type
-                                 Object,   // TODO: change Object to input value type
-                                 Object,   // TODO: change Object to output key type
-                                 Object> { // TODO: change Object to output value type
+class WCReducerCombiner extends Reducer<Text, LongWritable, Text, LongWritable> {
 
-	@Override
-	protected void reduce(Object key, // TODO: change Object to input key type
-	                      Iterable<Object> values, // TODO: change Object to input value type
-	                      Context context)
-			throws IOException, InterruptedException {
-		
-	  // TODO: implement the reduce method (use context.write to emit results)
-	}
+  @Override
+  protected void reduce(Text word, Iterable<LongWritable> values, Context context)
+      throws IOException, InterruptedException {
+    long accumulator = 0;
+    for (LongWritable value : values) {
+      accumulator += value.get();
+    }
+    context.write(word, new LongWritable(accumulator));
+  }
 }

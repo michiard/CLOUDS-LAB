@@ -18,7 +18,7 @@ import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
 import fr.eurecom.dsg.mapreduce.utils.LabConfigurator;
-import fr.eurecom.dsg.mapreduce.utils.TextSplitter;
+import fr.eurecom.dsg.mapreduce.utils.StringUtils;
 
 
 public class Pair extends Configured implements Tool {
@@ -29,7 +29,7 @@ public class Pair extends Configured implements Tool {
     @Override
     public void map(LongWritable key, Text value, Context context)
     throws java.io.IOException, InterruptedException {
-      String[] tokens = TextSplitter.split(value.toString());
+      String[] tokens = StringUtils.split(value.toString());
       for (int i = 0; i < tokens.length-1; i++) {
         for (int j = Math.max(0, i - 1); j < Math.min(tokens.length, i + 2); j++) {
           if (i == j)
