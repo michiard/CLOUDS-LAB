@@ -1,6 +1,7 @@
 package fr.eurecom.dsg.mapreduce;
 
 import java.io.IOException;
+import java.util.StringTokenizer;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
@@ -17,79 +18,60 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-import fr.eurecom.dsg.mapreduce.utils.LabConfigurator;
-import fr.eurecom.dsg.mapreduce.utils.StringUtils;
-
 
 public class Pair extends Configured implements Tool {
 
-  public static class PairMapper extends
-  Mapper<LongWritable, Text, TextPair, IntWritable> {
-
-    @Override
-    public void map(LongWritable key, Text value, Context context)
-    throws java.io.IOException, InterruptedException {
-      String[] tokens = StringUtils.split(value.toString());
-      for (int i = 0; i < tokens.length-1; i++) {
-        for (int j = Math.max(0, i - 1); j < Math.min(tokens.length, i + 2); j++) {
-          if (i == j)
-            continue;
-          context.write(new TextPair(tokens[i], tokens[j]), new IntWritable(1));
-        }
-      }
-    }
+  public static class PairMapper 
+   extends Mapper<Object, // TODO: change Object to input key type
+                  Object, // TODO: change Object to input value type
+                  Object, // TODO: change Object to output key type
+                  Object> { // TODO: change Object to output value type
+    // TODO: implement mapper
   }
 
-  public static class PairReducer extends
-  Reducer<TextPair, IntWritable, TextPair, IntWritable> {
-
-    @Override
-    public void reduce(TextPair key, Iterable<IntWritable> values,
-        Context context) throws IOException, InterruptedException {
-      int s = 0;
-      for (IntWritable value : values) {  
-        s += value.get();
-      }
-      context.write(key, new IntWritable(s));
-    }
+  public static class PairReducer
+    extends Reducer<Object, // TODO: change Object to input key type
+                    Object, // TODO: change Object to input value type
+                    Object, // TODO: change Object to output key type
+                    Object> { // TODO: change Object to output value type
+    // TODO: implement reducer
   }
+
+  private int numReducers;
+  private Path inputPath;
+  private Path outputDir;
+
+  public Pair(String[] args) {
+    if (args.length != 3) {
+      System.out.println("Usage: Pair <num_reducers> <input_path> <output_path>");
+      System.exit(0);
+    }
+    this.numReducers = Integer.parseInt(args[0]);
+    this.inputPath = new Path(args[1]);
+    this.outputDir = new Path(args[2]);
+  }
+  
 
   @Override
   public int run(String[] args) throws Exception {
 
     Configuration conf = this.getConf();
-    int numberReducers = conf.getInt("wc_numred", 1);
-    Path inputFile = new Path(conf.get("wc_input1"));
-    Path outputPath = new Path(conf.get("wc_output"));
+    Job job = null;  // TODO: define new job instead of null using conf e setting a name
     
-    Job job = new Job(conf, "Pair");
-
-    job.setMapperClass(PairMapper.class);
-    job.setReducerClass(PairReducer.class);
-
-    job.setMapOutputKeyClass(TextPair.class);
-    job.setMapOutputValueClass(IntWritable.class);
-
-    job.setOutputKeyClass(TextPair.class);
-    job.setOutputValueClass(IntWritable.class);
-
-    TextInputFormat.addInputPath(job, inputFile);
-    job.setInputFormatClass(TextInputFormat.class);
-
-    FileOutputFormat.setOutputPath(job, outputPath);
-    job.setOutputFormatClass(TextOutputFormat.class);
-
-    job.setNumReduceTasks(numberReducers);
-
-    job.setJarByClass(Pair.class);
+    // TODO: set job input format
+    // TODO: set map class and the map output key and value classes
+    // TODO: set reduce class and the reduce output key and value classes
+    // TODO: set job output format
+    // TODO: add the input file as job input (from HDFS) to the variable inputFile
+    // TODO: set the output path for the job results (to HDFS) to the variable outputPath
+    // TODO: set the number of reducers using variable numberReducers
+    // TODO: set the jar class
 
     return job.waitForCompletion(true) ? 0 : 1;
   }
 
   public static void main(String[] args) throws Exception {
-    Configuration conf = new Configuration();
-    LabConfigurator.parseArgs(args, conf, 1);
-    int res = ToolRunner.run(conf, new Pair(), args);
+    int res = ToolRunner.run(new Configuration(), new Pair(args), args);
     System.exit(res);
   }
 }

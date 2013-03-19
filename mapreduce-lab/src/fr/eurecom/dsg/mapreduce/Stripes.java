@@ -11,49 +11,17 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-import fr.eurecom.dsg.mapreduce.utils.LabConfigurator;
-
 
 public class Stripes extends Configured implements Tool {
 
-  public static class StripesMapper
-  extends Mapper<Object,   // TODO: change Object to input key type
-                 Object,   // TODO: change Object to input value type
-                 Object,   // TODO: change Object to output key type
-                 Object> { // TODO: change Object to output value type
-
-    @Override
-    public void map(Object key, // TODO: change Object to input key type
-                    Object value, // TODO: change Object to input value type
-                    Context context)
-    throws java.io.IOException, InterruptedException {
-
-      // TODO: implement map method
-    }
-  }
-
-  public static class StripesReducer
-  extends Reducer<Object,   // TODO: change Object to input key type
-                  Object,   // TODO: change Object to input value type
-                  Object,   // TODO: change Object to output key type
-                  Object> { // TODO: change Object to output value type
-    @Override
-    public void reduce(Object key, // TODO: change Object to input key type
-                       Iterable<Object> values, // TODO: change Object to input value type 
-                       Context context) throws IOException, InterruptedException {
-
-      // TODO: implement the reduce method
-    }
-  }
+  private int numReducers;
+  private Path inputPath;
+  private Path outputDir;
 
   @Override
   public int run(String[] args) throws Exception {
     
     Configuration conf = this.getConf();
-    int numberReducers = conf.getInt("wc_numred", 1);
-    Path inputFile = new Path(conf.get("wc_input1"));
-    Path outputPath = new Path(conf.get("wc_output"));
-
     Job job = null;  // TODO: define new job instead of null using conf e setting a name
     
     // TODO: set job input format
@@ -68,10 +36,48 @@ public class Stripes extends Configured implements Tool {
     return job.waitForCompletion(true) ? 0 : 1;
   }
 
+  public Stripes (String[] args) {
+    if (args.length != 3) {
+      System.out.println("Usage: Stripes <num_reducers> <input_path> <output_path>");
+      System.exit(0);
+    }
+    this.numReducers = Integer.parseInt(args[0]);
+    this.inputPath = new Path(args[1]);
+    this.outputDir = new Path(args[2]);
+  }
+  
   public static void main(String[] args) throws Exception {
-    Configuration conf = new Configuration();
-    LabConfigurator.parseArgs(args, conf, 1);
-    int res = ToolRunner.run(conf, new Stripes(), args);
+    int res = ToolRunner.run(new Configuration(), new Stripes(args), args);
     System.exit(res);
+  }
+}
+
+class StripesMapper
+extends Mapper<Object,   // TODO: change Object to input key type
+               Object,   // TODO: change Object to input value type
+               Object,   // TODO: change Object to output key type
+               Object> { // TODO: change Object to output value type
+
+  @Override
+  public void map(Object key, // TODO: change Object to input key type
+                  Object value, // TODO: change Object to input value type
+                  Context context)
+  throws java.io.IOException, InterruptedException {
+
+    // TODO: implement map method
+  }
+}
+
+class StripesReducer
+extends Reducer<Object,   // TODO: change Object to input key type
+                Object,   // TODO: change Object to input value type
+                Object,   // TODO: change Object to output key type
+                Object> { // TODO: change Object to output value type
+  @Override
+  public void reduce(Object key, // TODO: change Object to input key type
+                     Iterable<Object> values, // TODO: change Object to input value type 
+                     Context context) throws IOException, InterruptedException {
+
+    // TODO: implement the reduce method
   }
 }

@@ -17,8 +17,6 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-import fr.eurecom.dsg.mapreduce.utils.LabConfigurator;
-
 
 public class OrderInversion extends Configured implements Tool {
 
@@ -30,7 +28,7 @@ public class OrderInversion extends Configured implements Tool {
     public int getPartition(TextPair key, IntWritable value,
         int numPartitions) {
       // TODO: implement getPartition such that pairs with the same first element
-      //       will go to the same reducer. You can use toUnished as utility.
+      //       will go to the same reducer. You can use toUnsighed as utility.
       return 0;
     }
     
@@ -63,45 +61,40 @@ public class OrderInversion extends Configured implements Tool {
     // TODO: implement the reduce method
   }
 
+  private int numReducers;
+  private Path inputPath;
+  private Path outputDir;
+
   @Override
   public int run(String[] args) throws Exception {
     Configuration conf = this.getConf();
-    int numberReducers = conf.getInt("wc_numred", 1);
-    Path inputFile = new Path(conf.get("wc_input1"));
-    Path outputPath = new Path(conf.get("wc_output"));
 
-    Job job = new Job(conf, "Pair Relative");
-
-    job.setJarByClass(Pair.class);
-
-    job.setMapperClass(PairMapper.class);
-    job.setReducerClass(PairReducer.class);
-
-    job.setMapOutputKeyClass(TextPair.class);
-    job.setMapOutputValueClass(IntWritable.class);
-
-    job.setOutputKeyClass(TextPair.class);
-    job.setOutputValueClass(DoubleWritable.class);
-
-    TextInputFormat.addInputPath(job, inputFile);
-    job.setInputFormatClass(TextInputFormat.class);
-
-    FileOutputFormat.setOutputPath(job, outputPath);
-    job.setOutputFormatClass(TextOutputFormat.class);
-
-    job.setPartitionerClass(PartitionerTextPair.class);
-
-    job.setSortComparatorClass(TextPair.Comparator.class);
-
-    job.setNumReduceTasks(numberReducers);
-
+    Job job = null;  // TODO: define new job instead of null using conf e setting a name
+    
+    // TODO: set job input format
+    // TODO: set map class and the map output key and value classes
+    // TODO: set reduce class and the reduce output key and value classes
+    // TODO: set job output format
+    // TODO: add the input file as job input (from HDFS) to the variable inputFile
+    // TODO: set the output path for the job results (to HDFS) to the variable outputPath
+    // TODO: set the number of reducers using variable numberReducers
+    // TODO: set the jar class
+    
     return job.waitForCompletion(true) ? 0 : 1;
   }
 
+  OrderInversion(String[] args) {
+    if (args.length != 3) {
+      System.out.println("Usage: OrderInversion <num_reducers> <input_file> <output_dir>");
+      System.exit(0);
+    }
+    this.numReducers = Integer.parseInt(args[0]);
+    this.inputPath = new Path(args[1]);
+    this.outputDir = new Path(args[2]);
+  }
+  
   public static void main(String[] args) throws Exception {
-    Configuration conf = new Configuration();
-    LabConfigurator.parseArgs(args, conf, 1);
-    int res = ToolRunner.run(conf, new OrderInversion(), args);
+    int res = ToolRunner.run(new Configuration(), new OrderInversion(args), args);
     System.exit(res);
   }
 }
