@@ -52,7 +52,7 @@ public class WordCountIMC extends Configured implements Tool {
   }
   
   public static void main(String args[]) throws Exception {
-    int res = ToolRunner.run(new Configuration(), new WordCount(args), args);
+    int res = ToolRunner.run(new Configuration(), new WordCountIMC(args), args);
     System.exit(res);
   }
 }
