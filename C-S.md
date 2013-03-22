@@ -1,7 +1,7 @@
 # HADOOP Cheat Sheet
 
 ## Working with HDFS from the command line
-`$HADOOP_PATH/bin/hadoop dfs <CMD>`
+`hadoop dfs <CMD>`
 
 ### Inspect files	
 + `-ls <path>`: list all files in `<path>`
