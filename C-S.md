@@ -23,12 +23,12 @@
 + `-help [cmd]`: hopefully this is self-describing
 
 #### Examples:
-`$HADOOP_PATH/bin/hadoop dfs -ls /`
+`hadoop dfs -ls /`
 
-`$HADOOP_PATH/bin/hadoop dfs -copyFromLocal myfile remotefile`
+`hadoop dfs -copyFromLocal myfile remotefile`
 
 ## Launching Hadoop Jobs - Command line
-+ Copy the jar file of your job to a cluster machine (let's call it `machine_name`)
++ Copy the jar file of your job to the client machine (let's call it `machine_name`)
 
 `scp localJarFile studentXX@machine_name:~/`
 
@@ -38,15 +38,15 @@
 
 + Launch the job:
 
-`$HADOOP_PATH/hadoop jar jarFile.jar ClassNameWithPackage [job args]`
+`hadoop jar jarFile.jar ClassNameWithPackage [job args]`
 
 Note that if the output directory exists (and you don't want it) you need to remove it:
 
-`$HADOOP_PATH/hadoop dfs -rmr output`
+`hadoop dfs -rmr output`
 
 
 #### Example:
-`$HADOOP_PATH/bin/hadoop jar fr.eurecom.dsg.WordCount /user/hadoop/wikismall.xml output 2`
+`hadoop jar fr.eurecom.dsg.WordCount /user/hadoop/wikismall.xml output 2`
 
 
 ## Reading (Textual) Input Data in the Mapper
