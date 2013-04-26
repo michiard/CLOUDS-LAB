@@ -26,7 +26,7 @@ In the following, we synthesize a dataset to be used in the exercise. Usernames 
 Before working on HBase, let us look at a traditional database design, with normalized relationships.
 The Entity Relationship Diagram for our service is reported in the following figure. The corresponding SQL schema is shown immediately below it.
 
-![ER-Diagram](/michiard/CLOUDS-LAB/raw/master/hbase-lab/figure/er.png)
+![ER-Diagram](https://raw.github.com/michiard/CLOUDS-LAB/master/hbase-lab/figure/er.png)
 
 ```SQL
 
@@ -287,7 +287,7 @@ Data access patterns:
 
 **Q3. Insert into the table 100 lines from users.json in the table you created**
 
-+ *[HINT] the input file -- users.json -- is located in the HDFS deployed in the laboratory, under the directory /hbase-lab/*
++ *[HINT] the input file -- users.json -- is located in the HDFS deployed in the laboratory, under the directory /data/hbase/
 + *[HINT]: You need to access the directory hbase-lab in git, and modify appropriately the java program located in the sub-directory: hbase-lab/*
 
 
