@@ -366,8 +366,7 @@ For this laboratory, we created and filled all the tables needed for our example
 
 Our schema is reported below, please look at it carefully and try to understand the design logic and the architectural choices we did. In order to be able to continue with the exercises, you need to be familiar with it.
 
-
-![HBase-Schema](/michiard/CLOUDS-LAB/raw/master/hbase-lab/figure/hbase-schema.png)
+![HBase-Schema](/michiard/CLOUDS-LAB/master/hbase-lab/figure/hbase-schema.png)
 
 
 In the next part, we will translate the SQL queries of the first part of the lab into HBase queries.
