@@ -10,16 +10,19 @@ The objective of this laboratory is to design a simple schema for such a service
 ### A note on the dataset
 In the following, we synthesize a dataset to be used in the exercise. Usernames and long URLs are _real_: we extracted them from an openly available dataset from http://delicio.us. Short URLs and Cliks are synthetic, with non-uniform distributions: Short URLs are base-64 encoded, clicks are log-normally distributed, click inter-arrival time is exponentially distributed starting from the time a short URL is created.
 
-### How to create an Eclipse project containing the laboratory source code:
-+ Download the course source code from [the download page][download]
-+ Open Eclipse and select *File -> New -> Java Project*
-+ Give a name to the project, click the *Next* button and select the *Libraries* tab
-+ Click on *Add External JARs...* and select all the jars from the Hadoop and HBase directoriers (from both base dirs and lib dirs) and json-simple-1.1.1.jar from the lib directory in the github repository. Click on the *Finish* button
-+ Select the new project then select *File -> Import*
-+ Select the laboratory source inside the CLOUDS-LAB directory. Each laboratory has its own source directory, for example the mapreduce laboratory is inside the directory *CLOUDS-LAB/mapreduce-lab*
-+ Select the *src* subdirectory and click on the *finish* button
+## Setup the laboratory sources in Eclipse:
 
-[download]: https://github.com/michiard/CLOUDS-LAB/downloads "CLOUDS-LAB download"
+The first step is to import the laboratory source code into Eclipse.
+
++ Download the project file [hbase-lab.jar][hbase-lab.jar]
++ Open Eclipse and select File -> Import... -> Existing Projects into Workspace
++ From the Import Projects dialog window, choose Select archive file and then Browse... to import hbase-lab.jar that you downloaded at step 1
++ Select the project hbase-lab and the press the Finish button
+
+At this point you should have a java project named hbase-lab already configured that compiles. The next step is starting with the first exercise.
+
+[hbase-lab.jar]: https://github.com/michiard/CLOUDS-LAB/raw/master/hbase-lab/mapred-lab.jar "hbase-lab.jar"
+
 
 ## Background: A SQL implementation
 

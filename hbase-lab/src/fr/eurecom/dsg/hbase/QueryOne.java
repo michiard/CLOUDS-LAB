@@ -26,8 +26,8 @@ public class QueryOne {
 		//We need to create a new HBaseConfiguration.
 		Configuration conf = HBaseConfiguration.create();
 		//If you add the hbase configuration directory to the classpath, you do not need to specify the following properties
-		conf.set("hbase.zookeeper.quorum", "montblanc,amiata,dome");
-		conf.set("hbase.zookeeper.property.clientPort", "2222");
+		conf.set("hbase.zookeeper.quorum", "10-10-12-7.openstacklocal");
+//		conf.set("hbase.zookeeper.property.clientPort", "8164");
 		
 		//We need to instantiate a new HTable object, in order to communicate with HBase table 'shorturl-test'.
 		HTable shorturlTable = new HTable(conf, shorturltable);		
