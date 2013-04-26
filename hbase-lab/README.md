@@ -21,7 +21,7 @@ The first step is to import the laboratory source code into Eclipse.
 
 At this point you should have a java project named hbase-lab already configured that compiles. The next step is starting with the first exercise.
 
-[hbase-lab.jar]: https://github.com/michiard/CLOUDS-LAB/raw/master/hbase-lab/mapred-lab.jar "hbase-lab.jar"
+[hbase-lab.jar]: https://github.com/michiard/CLOUDS-LAB/raw/master/hbase-lab/hbase-lab.jar "hbase-lab.jar"
 
 
 ## Background: A SQL implementation
