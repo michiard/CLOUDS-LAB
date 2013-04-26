@@ -19,7 +19,7 @@ The first step is to import the laboratory source code into Eclipse.
 + From the Import Projects dialog window, choose Select archive file and then Browse... to import hbase-lab.jar that you downloaded at step 1
 + Select the project hbase-lab and the press the Finish button
 
-At this point you should have a java project named hbase-lab already configured that compiles. The next step is starting with the first exercise.
+At this point you should have a java project named hbase-lab already configured that compiles.
 
 [hbase-lab.jar]: https://github.com/michiard/CLOUDS-LAB/raw/master/hbase-lab/hbase-lab.jar "hbase-lab.jar"
 
