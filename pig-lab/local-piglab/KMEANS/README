@@ -1,0 +1,3 @@
+1. Load local-input/1.log into HDFS
+2. Seal FindCentroid class into a jar named pigudf.jar
+3. Good luck!
