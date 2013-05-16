@@ -4,13 +4,11 @@ RAW_LOGS = LOAD './local-input/TCP_DUMP/sample.txt' AS (line:chararray);
 -- Apply a schema to raw data
 LOGS_BASE = FOREACH RAW_LOGS GENERATE FLATTEN( (tuple(CHARARRAY,CHARARRAY,CHARARRAY,LONG))REGEX_EXTRACT_ALL(line, '(\\d+-\\d+-\\d+).+\\s(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,5}).+\\s(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,5}).+length\\s+(\\d+)')) AS (date:chararray, IPS:chararray, IPD:chararray, S:long);
 
---DUMP LOGS_BASE;
+-- Group traffic information by source IP addresses
+FLOW = GROUP LOGS_BASE BY IPS;
 
--- TODO: Group traffic information by source IP addresses
---FLOW = GROUP ...
+-- Count the number of bytes uploaded by each IP address
+TRAFFIC = FOREACH FLOW GENERATE group, SUM(LOGS_BASE.S);
 
--- TODO: Count the number of bytes uploaded by each IP address
---TRAFFIC = ...
-
--- TODO: Store output data in ./local-output/TCP_DUMP/
-
+-- Store output data in ./local-output/TCP_DUMP/
+STORE TRAFFIC INTO './local-output/TCP_DUMP';
