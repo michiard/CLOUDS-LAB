@@ -46,6 +46,13 @@ public class DistributedCacheJoin extends Configured implements Tool {
 		this.inputTinyFile = new Path(args[1]);
 		this.inputFile = new Path(args[2]);
 		this.outputDir = new Path(args[3]);
+		
+		// inputTinyFile is expected to be on the local filesystem
+		File inputTinyFileDescriptor = new File(args[1]);
+        if(!inputTinyFileDescriptor.exists()) {
+            System.out.println("Error: file " + args[1] + "does not exist");
+            System.exit(-1);
+        }
 	}
 
 	@Override
@@ -116,7 +123,7 @@ class MSMap extends Mapper<LongWritable, Text, Text, LongWritable> {
 	InterruptedException {
 		// TODO: load the vector from the small file cached
 		Path [] cachePaths = DistributedCache.getLocalCacheFiles(context.getConfiguration());
-		if (cachePaths.length>0) {
+		if (cachePaths != null && cachePaths.length > 0) {
 			exclude.clear();
 			String line;
 			BufferedReader in = new BufferedReader( new FileReader(cachePaths[0].toString()));
