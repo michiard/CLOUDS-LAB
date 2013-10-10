@@ -149,7 +149,7 @@ Questions:
 
 
 ## Exercise 3:: Working with Network Data
-**NOTE**: we consider this exercise '' "obsolete" '', in the sense that there is a new variant which is specialized on network data analysis. Please, go to [TSTAT Trace Analysis with Pig][tstat] for this exercise.
+**NOTE**: we consider this exercise ''obsolete'', in the sense that there is a new variant which is specialized on network data analysis. Please, go to [TSTAT Trace Analysis with Pig][tstat] for this exercise.
 
 [tstat]: tstat-analysis/README.md "TSTAT"
 

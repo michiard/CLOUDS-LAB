@@ -145,7 +145,7 @@ How-to inspect your results and check your job in the cluster
 5. How many reducers were launched? Why? Can you modify this number?
 6. How many mappers were launched? Why? Can you modify this number?
 
-## Exercise 1/B
+### Exercise 1/B
 **Problem statement:** count the number of TCP connection per each IP.
 
 **Hint:** each TCP connection has a client IP and a server IP. For this exercise you need to count the number of connection per each IP, irrespective if client or server IP.
@@ -156,7 +156,7 @@ How-to inspect your results and check your job in the cluster
 2. How would you write it in java?
 3. Elaborate on the differences between Ex.1 and Ex.1/b
 
-## Exercise 1/C
+### Exercise 1/C
 **Problem statement:** Assuming you have a very long trace, or -- better -- a large number of traces collected each day, count the number of TCP connection per each client IP, at each of the following time granularities: hour, day, week, month, year...
 
 **Hint:** note that recent versions of Pig expose ```CUBE``` and ```ROLLUP``` operators. You may want to try writing your own script, and then try using such operators.
