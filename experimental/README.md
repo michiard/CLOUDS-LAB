@@ -1,8 +1,8 @@
 # This is an Experimental Seciton
 
 The experimental folder contains a series of sub-folders with exercises on a variety of tools:
-* Scalding [Instructions](labs/mapreduce-lab/README.md)
-* Spark (baseline and advanced) [Instructions](labs/pig-lab/README.md)
+* Scalding [Instructions](experimental/scalding-lab/README.md)
+* Spark  [Instructions](experimental/spark-lab/README.md)
 
 ## You can contribute!
 While we're in ''experimental'' mode, you can contribute with new exercises, use-cases, or whatever else you think relevant. 
