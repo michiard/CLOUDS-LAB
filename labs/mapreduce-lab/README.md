@@ -72,7 +72,6 @@ Depending on your cluster configuration, you will need to type a url in your bro
 - NameNode Web Interface (generally on port 50070)
 
 # Exercises
-Note, exercises are organized in ascending order of difficulty.
 
 ## EXERCISE 1:: Word Count
 
