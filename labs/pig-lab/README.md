@@ -244,12 +244,11 @@ The following is a list of optional exercises:
 
 
 ## Exercise 5: Working with an Airline dataset
+> We're currently working on a refactored version of this exercise, which will be promoted to it's own ''sub-repo''. Stay tuned!
+> Currently, you can find a directory with some preliminary versions of the queries below (Q1 - Q5). Feel free to comment, improve and test them as they are: this series of queries will be complemented with appropriate questions to understand the impact of design choices on the underlying MapReduce execution engine.
 
 + This exercise is inspired by http://www.datadr.org/doc/airline.html
 + Full information on datasets (optional datasets), and general documentation available here: http://stat-computing.org/dataexpo/2009/
-
-> We're currently working on a refactored version of this exercise, which will be promoted to it's own ''sub-repo''. Stay tuned!
-> Currently, you can find a directory with some preliminary versions of the queries below (Q1 - Q5). Feel free to comment, improve and test them as they are: this series of queries will be complemented with appropriate questions to understand the impact of design choices on the underlying MapReduce execution engine.
 
 Before we start, here's a description of the dataset "schema". We will work on data that can be downloaded from here: http://stat-computing.org/dataexpo/2009/the-data.html
 
