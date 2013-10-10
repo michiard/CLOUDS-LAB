@@ -1,7 +1,8 @@
-# Laboratory material for the Clouds course: [Link][course]
+# Laboratory material for the Clouds course
 
-Please, refer to the [WIKI][wiki-link] for the instructions, and documentation.
+The labs folder contains a series of sub-folders with exercises on a variety of tools:
+* MapReduce exercises and design patterns
+* Pig exercises (baseline and advanced)
+* HBase exercises (key design and queries)
 
-
-[course]: http://www.eurecom.fr/~michiard/clouds.html "Course Web Page"
-[wiki-link]: https://github.com/michiard/CLOUDS-LAB/wiki "WIKI"
+### note: refactoring the whole repo, may be unstable
