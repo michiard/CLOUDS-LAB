@@ -101,7 +101,7 @@ hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.WordCountCombiner 3 <input_fi
 
 To test your code use the file `./inputs/text/quote.txt`. **NOTE**: if you are at EURECOM, this file is available in the HDFS of the lab. Otherwise, you will have to ''load'' it yourself in your own HDFS installation.
 
-To run the final version of your job, you can use a bigger file, `./input/text/gutenberg-partial.txt`, which contains an extract of the English books from Project Gutenberg http://www.gutenberg.org/, which provides a collection of full texts of public domain books.
+To run the final version of your job, you can use a bigger file, `./input/gutenberg-partial.txt`, which contains an extract of the English books from Project Gutenberg http://www.gutenberg.org/, which provides a collection of full texts of public domain books.
 
 ### Questions ###
 
@@ -114,37 +114,36 @@ Answer the following questions:
 
 + Can you explain how does the distribution of words affect your Job?
 
-## EXERCISE 2:: Term co-occurrences
+## EXERCISE 2:: Word Co-occurrence
 In the following exercise, we need to build the term co-occurrence matrix for a text collection.
-A co-occurrence matrix is a n x n matrix, where n is the number of unique words in the text. For each couple of words, we count the number of times they co-occurred in the text in the same line.
+A co-occurrence matrix is a ''n'' x ''n'' matrix, where ''n'' is the number of unique words in the text. For each pair of words, we count the number of times they co-occurred in the text in the **same line**. Note: you can define your own ''neighborhood'' function, and extend the context to more or less than a single line.
 
-### Pairs Design Pattern
+### The ''Pairs'' Design Pattern
 
-The basic (and maybe most intuitive) implementation of this exercise is the *Pair*.
+The basic (and maybe most intuitive) implementation of this exercise is the *Pair* design pattern.
 The basic idea is to emit, for each couple of words in the same line, the couple itself (or *pair*) and the value 1.
-For example, in the line `w1 w2 w3 w1`, we emit `(w1,w2):1, (w1, w3):1, (w2:w1):1, (w2,w3):1, (w2:w1):1, (w3,w1):1, (w3:w2):1, (w3,w1):1`.
+For example, in the line `w1 w2 w3 w1`, we emit `(w1,w2):1, (w1, w3):1, (w2:w1):1, (w2,w3):1, (w2:w1):1, (w3,w1):1, (w3:w2):1, (w3,w1):1`. Essentially, the reducers need to collect enough information from mapper to ''cover'' each individual ''cell'' of the co-occurrence matrix.
 
-In this exercise, we need to use a composite key to emit an occurrence of a pair of words. The student will understand how to create a custom Hadoop data type to be used as key type.
+In this exercise, we need to use a composite key to emit an occurrence of a pair of words. You will learn how to create a custom Hadoop data type to be used as key type.
 
 A Pair is a tuple composed by two elements that can be used to ship two objects within a parent object. For this exercise the student has to implement a TextPair, that is a Pair that contains two words.
 
 #### Instructions
 There are two files for this exercise:
 
-+ *TextPair.java*: data structure to be implemented by the student. Besides the implementation of the data structure itself, the student has to implement the serialization Hadoop API (write and read Fields).
++ *TextPair.java*: data structure to be implemented by the student. Besides the implementation of the data structure itself, you have to implement the serialization Hadoop API (write and read Fields).
 + *Pair.java*: the implementation of a pair example using *TextPair.java* as datatype.
 
 #### Example of usage
-The final version should get in input three arguments: the number of reducers, the input file and the output path. Example of execution are:
+The final version should get in input three arguments: the number of reducers, the input file and the output path. An example of execution is:
 ```
 hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.Pair 1 <input_file> <output_path>
 ```
 
-To test your code use the file `/user/student/INPUT/text/quote.txt`, saved in the local HDFS fs.
+To test your code use the file `./input/quote.txt`, or the one provided in the HDFS cluster at eurecom.
 
-To run the final version of your job, you can use a bigger file, `/user/student/INPUT/text/gutenberg-partial.txt`.
+To run the final version of your job, you can use a larger file, `./input/gutenberg-partial.txt`.
 
-Note: in order to launch the job, refer to [How to launch a job](#how-to-launch-a-job)
 
 #### Questions
 Answer the following questions (in a simple text file):
@@ -154,8 +153,8 @@ Answer the following questions (in a simple text file):
 + Can you use the implemented reducers as *Combiner*?
 
 
-### Stripes Design Pattern
-This approach is similar to the previous one: for each line, co-occurring pairs are generated. However, now, instead of emitting every pair as soon as it is generated, intermediate results are stored in an associative array. We use an associative array, and, for each word, we emit the word itself as key and a *Stripe*, that is the map of co-occurring words with the number of associated occurrence.
+### The ''Stripes'' Design Pattern
+This approach is similar to the previous one: for each line, co-occurring pairs are generated. However, now, instead of emitting every pair as soon as it is generated, intermediate results are stored in an associative array. We use an associative array, and, for each word, we emit the word itself as key and a *Stripe*, that is the map of co-occurring words with the number of associated occurrence. Essentially, mappers generate ''partial'' rows of the co-occurrence matrix. Then, reducers, will assembly partial rows to generate the aggregate and final row of the matrix.
 
 For example, in the line `w1 w2 w3 w1`, we emit:
 ```
@@ -179,11 +178,9 @@ There are two files for this exercise:
 ```
 hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.Stripes 2 <input_file> <output_path>
 ```
-To test your code use the file `/user/student/INPUT/text/quote.txt`, saved in the local HDFS fs.
+To test your code use the file `./input/quote.txt`, or the one provided in the HDFS cluster at eurecom.
 
-To run the final version of your job, you can use a bigger file, `/user/student/INPUT/text/gutenberg-partial.txt`.
-
-Note: in order to launch the job, refer to [How to launch a job](#how-to-launch-a-job)
+To run the final version of your job, you can use a larger file, `./input/gutenberg-partial.txt`.
 
 #### Questions
 Answer the following questions (in a simple text file):
@@ -191,15 +188,14 @@ Answer the following questions (in a simple text file):
 + Can you use the implemented reducers as *Combiner*?
 + Do you think Stripes could be used with the in-memory combiner pattern?
 + How does the number of reducer influence the behavior of the Stripes approach?
-+ Using the [Jobtracker Web Interface](#web-interfaces-monitor-job-progress), compare the shuffle phase of *Pair* and *Stripes*.
++ Using the Jobtracker Web Interface, compare the shuffle phase of *Pair* and *Stripes* design patterns.
 + Why `StringToIntMapWritable` is not Comparable (differently from `TextPair`)?
 
-Note: in order to launch the job, refer to [How to launch a job](#how-to-launch-a-job)
 
-## EXERCISE 3:: Relative term co-occurrence and Order Inversion Design Pattern
-In this example we need to compute the co-occurrence matrix, like the one in the previous exercise, but using the relative frequencies of each pair, instead of the absolute value. Pratically, we need to count the number of times each pair *(w<sub>i</sub>, w<sub>j</sub>)* occurs divided by the number of total pairs with *w<sub>i</sub>* (marginal).
+## EXERCISE 3:: Relative term co-occurrence and the ''Order Inversion'' Design Pattern
+In this example we need to compute the co-occurrence matrix, like the one in the previous exercise, but using the relative frequencies of each pair, instead of the absolute value. Pratically, we need to count the number of times each pair *(w<sub>i</sub>, w<sub>j</sub>)* occurs divided by the number of total pairs with *w<sub>i</sub>* (the marginal).
 
-The student has to implement the `Map` and `Reduce` methods and the special partitioner (see `OrderInversion#PartitionerTextPair` class), which apply the partitioner only according to the first element in the Pair, sending all data regarding the same word to the same reducer. Note that inside the `OrderInversion` class there is a field called `ASTERISK` which should be used to output the total number of occourrences of a word. Refer to the laboratory slides for more information.
+The student has to implement the `Map` and `Reduce` methods and the special partitioner (see `OrderInversion#PartitionerTextPair` class), which applies the partitioner only according to the first element in the Pair, sending all data regarding the same word to the same reducer. Note that inside the `OrderInversion` class there is a field called `ASTERISK` which should be used to output the total number of occourrences of a word. Refer to the laboratory slides for more information.
 
 ### Instructions
 There is one file for this exercise called `OrderInversion.java`. The `run` method of the job is already implemented, the student should complete the mapper, the reducer and the partitioner, as explained in the ```TODO```.
@@ -209,11 +205,9 @@ There is one file for this exercise called `OrderInversion.java`. The `run` meth
 hadoop jar <compiled_jar> fr.eurecom.fr.mapreduce.OrderInversion 4 <input_file> <output_path>
 ```
 
-To test your code use the file `/user/student/INPUT/text/quote.txt`, saved in the local HDFS fs.
+To test your code use the file `./input/quote.txt`, or the one provided in the HDFS cluster at eurecom.
 
-To run the final version of your job, you can use a bigger file, `/user/student/INPUT/text/gutenberg-partial.txt`.
-
-Note: in order to launch the job, refer to [How to launch a job](#how-to-launch-a-job)
+To run the final version of your job, you can use a larger file, `./input/gutenberg-partial.txt`.
 
 ### Questions ###
 Answer the following questions. In answering the questions below, consider the role of the combiner.
@@ -224,15 +218,24 @@ Answer the following questions. In answering the questions below, consider the r
 + For each key, the reducer receives its marginal before the co-occurence with the other words. Why?
 
 ## EXERCISE 4:: Joins
-In MapReduce the term join refers to merging two different dataset stored as unstructured files in HDFS. As for databases, in MapReduce there are many different kind of joins, each with its use-cases and constraints. In this laboratory the student will implement two different kinds of MapReduce join techniques:
+In MapReduce, the term ''join'' refers to merging two different dataset stored as unstructured files in HDFS. As for databases, in MapReduce there are many different kind of joins, each with its use-cases and constraints. In this laboratory the student will implement two different kinds of MapReduce join techniques:
 
 + **Distributed Cache Join**: this join technique is used when one of the two files to join is small enough to fit (eventually in memory) on each computer of the cluster. This file is copied locally to each computer using the Hadoop distributed cache and then loaded by the map phase.
 + **Reduce-Side Join**: in this case the map phase tags each record such that records of different inputs that have to be joined will have the same tag. Each reducer will receive a tag with a list of records and perform the join.
 
 ### Jobs
 
-+ **Distributed Cache Join**: implement word count using the distributed cache to exclude some words. The file in the HDFS `/user/student/INPUT/text/english.stop` contains the list of the words to exclude.
-+ **Reduce Side Join**: You need to find the two-hops friends, i.e. the friends of friends of each user, in the twitter dataset. In particular, you need to implement a self-join, that is a join between two instances of the same dataset, on the twitter graph. To test your code use the file `/user/student/INPUT/twitter/twitter-small.txt`, saved in the local HDFS fs. To run the final version of your job, you can use a bigger file, `/user/student/INPUT/twitter/twitter-big-sample.txt`. Both files contain lines in the form `userid friendid`.
++ **Distributed Cache Join**: implement a variant of the Word Count exercise using the distributed cache to exclude some words. The file `./input/english.stop` contains the list of the words to exclude.
++ **Reduce Side Join**: You need to find the two-hops friends, i.e. the friends of friends of each user, in a small Twitter dataset. In particular, you need to implement a self-join, that is a join between two instances of the same dataset. To test your code, use the file `./input/twitter-small.txt`. The file fortmat is:
+
+```
+userID followerID
+1 		 2
+1 		 6
+2      3
+2      7
+...
+```
 
 ### Instructions
 
