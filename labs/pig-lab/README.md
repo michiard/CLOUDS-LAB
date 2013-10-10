@@ -1,18 +1,22 @@
 # Hadoop Pig Laboratory
 
-This laboratory is dedicated to Hadoop Pig and consists of a series of exercises: some of them somewhat mimic those in the MapReduce laboratory, others are inspired by "real-world" problems. There are two main goals for this laboratory:
-* The first is to gain familiarity with the Pig Latin language to analyze data in many different ways. In other words, to focus on "what to do" with your big data: to perform some statistics, to mine out useful information, or to implement some simple algorithms, etc... This is a typical work for a "data scientist".
-* The second is to understand the details of Hadoop Pig internals by inspecting the process of turning a Pig Latin script into a runnable, optimized underlying implementation in MapReduce. This means that students should examine what the Pig compiler generates from a Pig Latin script (using explain command), and reason about Hadoop Job performance by analyzing Hadoop logs and statistics.
+This lab is dedicated to Hadoop Pig and consists of a series of exercises: some of them somewhat mimic those in the MapReduce lab, others are inspired by "real-world" problems. There are two main goals for this laboratory:
+* The first is to gain familiarity with the Pig Latin language to analyze data in many different ways. In other words, to focus on "what to do" with your data: to perform some simple statistics, to mine useful information, or to implement some simple algorithms.
+* The second is to understand the details of Hadoop Pig internals by inspecting the process of turning a Pig Latin script into a runnable, optimized, underlying implementation in MapReduce. This means that you should examine what the Pig compiler generates from a Pig Latin script, and reason about Hadoop Job performance by analyzing Hadoop logs and statistics.
 
+### Useful tools for "debugging":
+* **DESCRIBE** relation: this is very useful to understand the schema applied to each relation. Note that understanding schema propagation in Pig requires some time. 
+* **DUMP** relation: this command is similar to the STORE command, except that it outputs on stdout the selected relation.
+* **ILLUSTRATE** relation: this command is useful to get a sample of the data in a relation.
+* **EXPLAIN** generates (.dot) files that illustrate the DAG (directed acyclic graph) of the MapReduce jobs produced by Pig, and can be visualized by some graph-chart tools, such as GraphViz. This is very useful to grab an idea of what is going on under the hood. For those who are geek enough and want to play with some cool project, it is suggested to have a look at Twitter Ambrose (https://github.com/twitter/ambrose).
 
-The EXPLAIN command can generate .dot files that illustrate the DAG (directed acyclic graph) of the MapReduce jobs produced by Pig, and can be visualized by some graph-chart tools, such as GraphViz. This is very useful to grab an idea of what is going on under the hood. For those who are geek enough and want to play with some cool project, it is suggested to have a look at Twitter Ambrose (https://github.com/twitter/ambrose).
 ### Additional documentation for the laboratory
 The underlying assumption is that students taking part to this laboratory are familiar with MapReduce and Pig/Pig Latin. Additional documentation that is useful for the exercises is available here: http://pig.apache.org/docs/r0.11.0/. Note that we will use Hadoop Pig 0.11.0, included in the Cloudera distribution of Hadoop, CDH 4.4.0.
+
 ## Exercises and Rules
 The general rule when using a real cluster is the following:
 * First work locally: pig -x local: you can use both the interactive shell or directly work on pig scripts, to operate on data residing in the local filesystem
-* Then submit job to the cluster: pig -x mapreduce NOTE : remember that a script that works locally may require some minor modifications when submitted to the Hadoop cluster. For example, you may want to explicitly set the degree of parallelism for the "reduce" phase, using the PARALLEL clause.
-* If you're using the virtual machine prepared for the class, note that, each VM has its own pseudo-local installation of Hadoop, so you do not strictly need to use the “local” pig environment.
+* Then, submit job to the cluster: pig -x mapreduce. **NOTE**: remember that a script that works locally may require some minor modifications when submitted to the Hadoop cluster. For example, you may want to explicitly set the degree of parallelism for the "reduce" phase, using the PARALLEL clause.
 
 
 ## Exercise 1:: Word Count
@@ -21,12 +25,12 @@ Problem statement: Count the occurrences of each word in a text file.
 
 The problem is exactly the same as the one in the MapReduce laboratory. In this exercise we will write a Pig Latin script to handle the problem, and let Pig do its work.
 
-### Writing your first Pig Latin script: **LOCAL EXECUTION**
+### Writing your first Pig Latin script
 It is important to run this Pig Latin script in local execution mode: ```pig -x local```. The following lines of code can also be submitted to the interactive pig shell (grunt) with some minor modification. Use your favorite editor/IDE and open the file ```pig-lab/local-piglab/WORD_COUNT/word_count.pig```. For convenience, the code for this exercise is reported below:
 
 ```
 -- Load input data from local input directory
-A = LOAD './local-input/WORD_COUNT/sample.txt';
+A = LOAD './sample-input/WORD_COUNT/sample.txt';
 
 -- Parse and clean input data
 B = FOREACH A GENERATE FLATTEN(TOKENIZE((chararray)$0)) AS word;
@@ -42,33 +46,7 @@ E = FOREACH D GENERATE group, COUNT(C);
 STORE E INTO './local-output/WORD_COUNT/';
 ```
 
-As you can notice, this exercise is solved (to be precise, this is one possible solution). You have the freedom to develop your own solutions. In this exercise, what we are going to do is have you get familiar with Pig and Pig Latin through inpsecting the above script. Using all the information we have provided so far, you will have to play with Pig and answer several questions at the end of this exercise (remember: Google may be a helpful friend, and so are we)
-
-Some of the useful debugging commands are:
-
-+ ```DESCRIBE relation```: this is very useful to understand the schema applied to each relation. Note that understanding schema propagation in Pig requires some time.
-+ ```DUMP relation```: this command is similar to the ```STORE``` command, except that it outputs on stdout the selected relation.
-+ ```ILLUSTRATE relation```: this command is useful to get a sample of the data in a relation.
-
-For example, the student may want to understand why a parsing/cleanup phase is necessary just after data loading, and how this is achieved. Besides looking up for the relevant documentation to the ```FLATTEN``` and the ```TOKENIZE``` operators, it is informative to ```DESCRIBE B``` and ```DUMP B``` as well as ```DESCRIBE C``` and ```DUMP C```. The student should focus here on what is produced when first loading data with the default operator. Students are invited to experiment with the command ```LOAD '...' USING PigStorage()```: see [Link][pig-load]
-
-[pig-load]: http://pig.apache.org/docs/r0.9.2/basic.html#load "Pig Load"
-
-
-### Executing the word_count Pig Latin script: **CLUSTER EXECUTION**
-
-Now that you are ready to submit you first pig script to the cluster, you need to specify the execution mode: ```pig -x mapreduce```. When you interact with HDFS (e.g., when you create an output file) you will see a directory corresponding to your unix credentials (login) under the ```/user/``` directory.
-
-
-Note that the pig script you wrote for local execution requires some modifications to be run on the cluster:
-
-+ Change input path: ```/data/mumak.log``` :: this is the same file used for the MapReduce lab, exercise 1
-+ Change output path: ```/user/ - your unix login - /output/PIG_WORD_COUNT```
-+ Set parallelism where appropriate: this is intentionally left for the student
-
-You can also use another troubleshooting instrument to understand the logical, physical and execution plans produced by Pig:
-
-+ ```EXPLAIN relation```: note that you can generate output files in the "dot" format for better rendering
+As you can notice, this exercise is solved (to be precise, this is one possible solution). You have the freedom to develop your own solutions. In this exercise, what we are going to do is have you get familiar with Pig and Pig Latin through inpsecting the above script. Using all the information we have provided so far, you will have to play with Pig and answer several questions at the end of this exercise.
 
 ### How-to inspect your results and check your job in the cluster
 
@@ -85,10 +63,11 @@ You can also use another troubleshooting instrument to understand the logical, p
 + Q2: What does a ```GROUP BY``` command do? At which phase of MapReduce is ```GROUP BY``` performed in this exercise and in general?
 + Q3: What does a ```FOREACH``` command do? At which phase of MapReduce is ```FOREACH``` performed in this exercise and in general?
 + Q4: Explain very briefly how Pig works (i.e. the process of Pig turning a Pig Latin script into runnable MapReduce job(s))
-+ Q5: Explain how you come to a conclusion that your results are correct
+
+
 
 ## Exercise 2:: Working with Online Social Networks data
-In this exercise we will work on a Twitter dataset that was obtained from this project: [Link][tw-data]. For convenience, an example of the twitter dataset is available in the ```local-input directory```. A larger dataset is available in the private HDFS deployment in the laboratory, under the directory ```/data/TWITTER/twitter_graph.txt```
+In this exercise we will work on a Twitter dataset that was obtained from this project: [Link][tw-data]. For convenience, an example of the twitter dataset is available in the ```sample-input directory```. A larger dataset is available in the private HDFS deployment in the laboratory.
 
 The format of the dataset (both local and cluster) is the following:
 
@@ -119,7 +98,7 @@ Example:
 
 Problem statement: for each user, calculate the total number of followers of that user
 
-Open the pig script ```./pig-lab/local-piglab/OSN/tw-count.pig``` in your favorite editor. Your goal is to fill-in the TODOs and produce the desire output: in the example above, we would like to have that user 12 has 3 followers and user 16 has 1 follower.
+Open the pig script ```./pig-lab/sample-solutions/OSN/tw-count.pig``` in your favorite editor. Your goal is to fill-in the TODOs and produce the desire output: in the example above, we would like to have that user 12 has 3 followers and user 16 has 1 follower.
 The output format should be like:
 
 ```
@@ -133,22 +112,21 @@ Example:
 16  1
 ```
 
-First, work **locally**; when your script is working as you expect, you can move to the cluster execution, by specifying the appropriate input and output directories.
-
 [tw-data]: http://an.kaist.ac.kr/traces/WWW2010.html "Twitter datasets" 
 
-### Sub-exercises:
+**IMPORTANT NOTE**: This applies for EURECOM students. Despite the twitter graph stored in the laboratory HDFS deployment is not huge, it is strongly adviced to be 'gentle' and try to avoid running your Pig Latin program using that large file. The main problem is disk space: we cannot guarantee that all the output generated by your script will fit the space we granted to HDFS.
+
+
+#### Sub-exercises:
 
 + E2.1: For each user ID, count the number of users whom he followed
-+ E2.2: "Data mining stuff": find outlier users (users that has the number of followers below an arbitrary threshold (which you have to manually set))
++ E2.2: "Data mining stuff": find outlier users (users that has the number of followers below an arbitrary threshold -- which you have to manually set)
 
-### Questions:
+#### Questions:
 + Q1: Are the output sorted? Why?
 + Q2: Are we able to pick the order: ascending or descending? How?
 + Q3: Related to job performance, what kinds of optimization does Pig provide in this exercise? Are they useful? Can we disable them? Should we?
 + Q4: What should we do when the input has some noises? for example: some lines in the dataset only contain USER_ID but the FOLLOWER_ID is unavailable or null
-
-**IMPORTANT NOTE**: despite the twitter graph stored in the laboratory HDFS deployment is not huge, it is strongly adviced to be 'gentle' and try to avoid running your Pig Latin program using that large file. The main problem is disk space: we cannot guarantee that all the output generated by your script will fit the space we granted to HDFS.
 
 
 ### Find the number of two-hop paths in the Twitter network
@@ -159,9 +137,7 @@ The output format should be like:
 USER_1_ID \t USER_2_ID
 ```
 
-**Warning**: Remember to set your parallel to at least 20, or you will have to wait for a very long time... If you forgot to do this, or in any case you have been waiting for more than half an hour, please kill your job (by pressing Ctrl + C) and go back to your script to check it through.
-
-First, work **locally**; when your script is working as you expect, you can move to the cluster execution, by specifying the appropriate input and output directories. This time the input is ```/data/TWITTER/twitter_graph2.txt```
+**Warning**: Remember to set your parallel to at least 20, or you will have to wait for a very long time... If you forgot to do this, or in any case you have been waiting for more than half an hour, please kill your job and go back to your script to check it through.
 
 Questions:
 + What is the size of the input data? In your opinion, is it considered Big Data? Why? How long does the job run? What is your comment here?
@@ -170,21 +146,28 @@ Questions:
 + Have you verified your results? Does your result contain duplicate tuple? Or any tuple that points from one user to him again? What operations do you use to solve these two problems?
 + How many MapReduce jobs does your Pig script generate? Explain why
 
+
+
 ## Exercise 3:: Working with Network Data
+**NOTE**: we consider this exercise ''"obsolete"'', in the sense that there is a new variant which is specialized on network data analysis. Please, go to [TSTAT Trace Analysis with Pig][tstat] for this exercise.
+
+[tstat]: tstat-analysis/README.md "TSTAT"
+
+
 The goal of this exercise is two-fold:
 
-+ In the first part, we will pretend to have data generated by ```tcpdump``` (use ```./local-input/TCP_DUMP/sample.txt```) and our goal will be simply to count the traffic generated by Internet hosts traced in the dataset. Precisely, the goal of this exercise is to work with the ```REGEX_EXTRACT_ALL``` [Link][pig-regex] built-in string function of Hadoop Pig. This is very useful when you are not in charge (or you can't control) the format of your input data. **NOTE**: this exercise can be done using local execution alone.
++ In the first part, we will pretend to have data generated by ```tcpdump``` (use ```./sample-input/TCP_DUMP/sample.txt```) and our goal will be simply to count the traffic generated by Internet hosts traced in the dataset. Precisely, the goal of this exercise is to work with the ```REGEX_EXTRACT_ALL``` [Link][pig-regex] built-in string function of Hadoop Pig. This is very useful when you are not in charge (or you can't control) the format of your input data. **NOTE**: this exercise can be done using local execution alone.
 
-+ The second part is more involved: you are given two datasets (two to work on your local machine, available in ```./local-input/NETWORK_TRAFFIC/sample.txt``` and ```./local-input/NETWORK_TRAFFIC/100-linee.txt```, one stored in HDFS available in ```/data/NETWORK_DATA/wide-20M.txt```) which contain pre-processed tcpdump data in a TSV format (tab separated values). The data format (or schema) is available in your local input directory (```./local-input/NETWORK_TRAFFIC/record_format.txt```). With this data at hand, you will focus on computing traffic statistics and to find outliers among the users that have been traced in the dataset.
++ The second part is more involved: you are given two datasets (two to work on your local machine, available in ```./sample-input/NETWORK_TRAFFIC/sample.txt``` and ```./sample-input/NETWORK_TRAFFIC/100-linee.txt```, one stored in HDFS available in ```/data/NETWORK_DATA/wide-20M.txt```) which contain pre-processed tcpdump data in a TSV format (tab separated values). The data format (or schema) is available in your local input directory (```./sample-input/NETWORK_TRAFFIC/record_format.txt```). With this data at hand, you will focus on computing traffic statistics and to find outliers among the users that have been traced in the dataset.
 
-[pig-regex]: http://pig.apache.org/docs/r0.9.2/func.html#regex-extract-all "Regular expressions"
+[pig-regex]: http://pig.apache.org/docs/r0.11.1/func.html#regex-extract "Regular expressions"
 
 ### Working on tcpdump data
 Use the pig script located in ```./local-piglab/TCP_DUMP/tcp_count.pig```, and complete the TODOs that you will find in the code. It is recommended to work in an interactive mode (in any case, this is a **local** exercise): for simplicity, you can find next the source code available in the script. Your goal is to play with regular expressions (the one provided below is not necessarily the best one to use) and to understand where operations related to data preparation take place in the underlying MapReduce implementation.
 
 ```
 -- Load raw data generated by tcpdump
-RAW_LOGS = LOAD './local-input/TCP_DUMP/sample.txt' AS (line:chararray);
+RAW_LOGS = LOAD './sample-input/TCP_DUMP/sample.txt' AS (line:chararray);
 
 -- Apply a schema to raw data
 LOGS_BASE = FOREACH RAW_LOGS GENERATE 
@@ -208,7 +191,7 @@ This exercise is inspired by the work described here: [Link][ladis11]. First, yo
 
 ```
 -- This is the raw input data
-RAW_DATA = LOAD './local-input/NETWORK_TRAFFIC/sample.txt'
+RAW_DATA = LOAD './sample-input/NETWORK_TRAFFIC/sample.txt'
         AS (ts:long, sport, dport, sip, dip,
                 l3proto, l4proto, flags,
                 phypkt, netpkt, overhead,
@@ -233,15 +216,7 @@ The original source for this exercise, plus a related post on how to implement *
 + PageRank: http://techblug.wordpress.com/2011/07/29/pagerank-implementation-in-pig/
 + *k*-means: http://hortonworks.com/blog/new-apache-pig-features-part-2-embedding/
 
-The goal of this exercise is to study the PageRank algorithm, and compare implementation and execution details of two approaches: a native MapReduce implementation and the Pig implementation. A brief (and simplified) introduction to PageRank is available in the last section of the laboratory notes for the MapReduce laboratory [Link][mr-lab]. 
-
-[mr-lab]: http://www.eurecom.fr/~michiard/teaching/clouds/mr-lab.pdf "Algorithm Design"
-
-### MapReduce implementation
-Following the procedure detailed in [Link][mr-lab-git], create an Eclipse project and import the MapReduce implementation of PageRank. Source code is available here: [Link][mr-pr]. Note that this is a "naive" implementation of PageRank. Students are invited to inspect the code, including the "driver" program to handle iterations. Note also the input format expected by this implementation of PageRank. Input datasets for this exercise are available upon request.
-
-[mr-lab-git]: https://github.com/michiard/CLOUDS-LAB/tree/master/mapreduce-lab "MapReduce Lab"
-[mr-pr]: https://github.com/michiard/CLOUDS-LAB/tree/master/mapreduce-lab/solved/src/fr/eurecom/dsg/mapreduce/pagerank "PageRank"
+The goal of this exercise is to study the PageRank algorithm, and compare implementation and execution details of two approaches: a native MapReduce implementation and the Pig implementation. 
 
 
 ### Pig implementation
@@ -249,7 +224,7 @@ Official documentation explaining all the details behind embedding is available 
 
 With reference to the official documentation, this implementation first ```compile()``` the pig script, then pass parameters using ```bind(params)``` and ```runSingle()``` for each iteration of the PageRank algorithm. The output of each iteration becomes the input of the previous one. Students are invited to first work **locally**, then submit the job to the cluster:
 
-+ Local execution: use the ```./local-input/PAGE_RANK/pg_simple.txt``` input file.
++ Local execution: use the ```./sample-input/PAGE_RANK/pg_simple.txt``` input file.
 
 + Cluster execution: use the ```/pig-lab/input/PAGE_RANK/web_graph.txt``` input file located in HDFS. Please note that this file is about 6.6 GB.
 
@@ -262,7 +237,7 @@ The following is a list of optional exercises:
 
 + Proceed with an alternative implementation of PageRank in MapReduce, following Chapter 5 of the book **Mining of Massive Datasets**, by *Anand Rajaraman and Jeff Ullman*, Cambridge University Press.
 
-+ Implement the *k*-means algorithm whether in MapReduce or in Python/Pig (use http://hortonworks.com/blog/new-apache-pig-features-part-2-embedding/)
++ Implement the *k*-means algorithm whether in MapReduce or in Python/Pig (use http://hortonworks.com/blog/new-apache-pig-features-part-2-embedding/). **NOTE**: Thanks to Jun Chen (https://github.com/titaniumrain) for contributing this exercise, which is included in the ```sample-solutions``` folder.
 
 
 [pig-embedding]: http://pig.apache.org/docs/r0.9.2/cont.html#embed-python "Pig Embedding"
@@ -346,3 +321,4 @@ Which are busy the routes? A simple first approach is to create a frequency tabl
 + How well does weather predict plane delays?
 + Can you detect cascading failures as delays in one airport create delays in others? Are there critical links in the system?
 
+> We're currently working on a refactored version of this exercise, which will be promoted to it's own ''sub-repo''. Stay tuned!
