@@ -232,9 +232,11 @@ In MapReduce, the term ''join'' refers to merging two different dataset stored a
 userID followerID
 1 		 2
 1 		 6
-2      3
-2      7
+2 		 3
+2 		 7
+
 ...
+
 ```
 
 ### Instructions
