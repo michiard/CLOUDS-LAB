@@ -1,8 +1,11 @@
 # Hadoop Laboratory Material
+> **Note**: refactoring the whole repo, may be unstable
+
 
 The labs folder contains a series of sub-folders with exercises on a variety of tools:
-* MapReduce exercises and design patterns [Instructions](labs/mapreduce-lab/README.md)
-* Pig exercises (baseline and advanced) [Instructions](labs/pig-lab/README.md)
-* HBase exercises (key design and queries) [Instructions](labs/hbase-lab/README.md)
+* MapReduce [exercises](labs/mapreduce-lab/README.md) and design patterns 
+* Pig [exercises](labs/pig-lab/README.md): baseline and [Network-trace Analysis](labs/pig-lab/tstat-analysis/README.md) 
+* HBase [exercises](labs/hbase-lab/README.md): key design and queries 
 
-### Note: refactoring the whole repo, may be unstable
+## Experimental
+Not much [here](experimental/README.md) yet, still operating in stealth mode.
