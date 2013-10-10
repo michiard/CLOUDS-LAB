@@ -84,9 +84,9 @@ Count the occurrences of each word in a text file. This is the simplest example 
 
 ### Instructions
 
-For the **basic** version, you have to modify the file *WordCount.java* in the package *fr.eurecom.dsg.mapreduce*. You have to work  on each ```TODO```, filling the gaps with code, following the description associated to each TODO. The package *java.util* contains a class *StringTokenizer* that can be used to tokenize the text.
+For the **basic** version, you have to modify the file *WordCount.java* in the package *fr.eurecom.dsg.mapreduce*. You have to work  on each ```TODO```, filling the gaps with code, following the description associated to each ```TODO```. The package *java.util* contains a class *StringTokenizer* that can be used to tokenize the text.
 
-For the **In-Memory** Combiner and the **Combiner**, you have to modify *WordCountIMC.java* and *WordCountCombiner.java* in the same package referenced above. You have to complete each TODO using the same code of the basic word count example, except for the TODOs marked with a star *. Those must be completed using the appropriate design pattern.
+For the **In-Memory** Combiner and the **Combiner**, you have to modify *WordCountIMC.java* and *WordCountCombiner.java* in the same package referenced above. You have to complete each ```TODO``` using the same code of the basic word count example, except for the ```TODO``` marked with a star *. Those must be completed using the appropriate design pattern.
 
 When an execise is completed you can export it into a Job jar file, that you can execute on the cluster.
 
@@ -202,7 +202,7 @@ In this example we need to compute the co-occurrence matrix, like the one in the
 The student has to implement the `Map` and `Reduce` methods and the special partitioner (see `OrderInversion#PartitionerTextPair` class), which apply the partitioner only according to the first element in the Pair, sending all data regarding the same word to the same reducer. Note that inside the `OrderInversion` class there is a field called `ASTERISK` which should be used to output the total number of occourrences of a word. Refer to the laboratory slides for more information.
 
 ### Instructions
-There is one file for this exercise called `OrderInversion.java`. The `run` method of the job is already implemented, the student should complete the mapper, the reducer and the partitioner, as explained in the TODOs.
+There is one file for this exercise called `OrderInversion.java`. The `run` method of the job is already implemented, the student should complete the mapper, the reducer and the partitioner, as explained in the ```TODO```.
 
 ### Example of usage
 ```
