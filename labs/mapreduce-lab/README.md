@@ -78,7 +78,7 @@ hadoop jar <jarname.jar> <fully.qualified.class.Name> <Parameters>
 
 For example, for running the *WordCount* exercise, type:
 ```
-hadoop jar mrlab.jar fr.eurecom.dsg.mapreduce.WordCount 2 INPUT/text/quote.txt OUTPUT/wordcount/
+hadoop jar mrlab.jar fr.eurecom.dsg.mapreduce.WordCount 2 /laboratory/input/quote.txt OUTPUT/wordcount/
 ```
 
 Note that you need to specify a *non existing* output directory, or to delete it before running the job.
@@ -119,9 +119,9 @@ hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.WordCountIMC 3 <input_file> <
 hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.WordCountCombiner 3 <input_file> <output_path>
 ```
 
-To test your code use the file `./inputs/text/quote.txt`. **NOTE**: if you are at EURECOM, this file is available in the HDFS of the lab. Otherwise, you will have to ''load'' it yourself in your own HDFS installation.
+To test your code use the file `/laboratory/input/quote.txt`. **NOTE**: if you are at EURECOM, this file is available in the HDFS of the lab. Otherwise, you will have to ''load'' it yourself in your own HDFS installation.
 
-To run the final version of your job, you can use a bigger file, `./input/gutenberg-partial.txt`, which contains an extract of the English books from Project Gutenberg http://www.gutenberg.org/, which provides a collection of full texts of public domain books.
+To run the final version of your job, you can use a bigger file, `/laboratory/input/gutenberg-partial.txt`, which contains an extract of the English books from Project Gutenberg http://www.gutenberg.org/, which provides a collection of full texts of public domain books.
 
 ### Questions ###
 
@@ -160,9 +160,9 @@ The final version should get in input three arguments: the number of reducers, t
 hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.Pair 1 <input_file> <output_path>
 ```
 
-To test your code use the file `./input/quote.txt`, or the one provided in the HDFS cluster at eurecom.
+To test your code use the file `/laboratory/input/quote.txt`, or the one provided in the HDFS cluster at eurecom.
 
-To run the final version of your job, you can use a larger file, `./input/gutenberg-partial.txt`.
+To run the final version of your job, you can use a larger file, `/laboratory/input/gutenberg-partial.txt`.
 
 
 #### Questions
@@ -198,9 +198,9 @@ There are two files for this exercise:
 ```
 hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.Stripes 2 <input_file> <output_path>
 ```
-To test your code use the file `./input/quote.txt`, or the one provided in the HDFS cluster at eurecom.
+To test your code use the file `/laboratory/input/quote.txt`, or the one provided in the HDFS cluster at eurecom.
 
-To run the final version of your job, you can use a larger file, `./input/gutenberg-partial.txt`.
+To run the final version of your job, you can use a larger file, `/laboratory/input/gutenberg-partial.txt`.
 
 #### Questions
 Answer the following questions (in a simple text file):
@@ -225,9 +225,9 @@ There is one file for this exercise called `OrderInversion.java`. The `run` meth
 hadoop jar <compiled_jar> fr.eurecom.fr.mapreduce.OrderInversion 4 <input_file> <output_path>
 ```
 
-To test your code use the file `./input/quote.txt`, or the one provided in the HDFS cluster at eurecom.
+To test your code use the file `/laboratory/input/quote.txt`, or the one provided in the HDFS cluster at eurecom.
 
-To run the final version of your job, you can use a larger file, `./input/gutenberg-partial.txt`.
+To run the final version of your job, you can use a larger file, `/laboratory/input/gutenberg-partial.txt`.
 
 ### Questions ###
 Answer the following questions. In answering the questions below, consider the role of the combiner.
@@ -245,8 +245,8 @@ In MapReduce, the term ''join'' refers to merging two different dataset stored a
 
 ### Jobs
 
-+ **Distributed Cache Join**: implement a variant of the Word Count exercise using the distributed cache to exclude some words. The file `./input/english.stop` contains the list of the words to exclude.
-+ **Reduce Side Join**: You need to find the two-hops friends, i.e. the friends of friends of each user, in a small Twitter dataset. In particular, you need to implement a self-join, that is a join between two instances of the same dataset. To test your code, use the file `./input/twitter-small.txt`. The file fortmat is:
++ **Distributed Cache Join**: implement a variant of the Word Count exercise using the distributed cache to exclude some words. The file `/laboratory/input/english.stop` contains the list of the words to exclude.
++ **Reduce Side Join**: You need to find the two-hops friends, i.e. the friends of friends of each user, in a small Twitter dataset. In particular, you need to implement a self-join, that is a join between two instances of the same dataset. To test your code, use the file `/laboratory/input/twitter-small.txt`. The file fortmat is:
 
 ```
 userID followerID
