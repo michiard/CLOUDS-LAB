@@ -51,7 +51,7 @@ The first step is to create a new Java Project in Eclipse:
 
 Now you have a new project.
 
-**Note**: the above jars are located in the libs folder of this repository. They are intended to be used with the version of Hadoop we have internally at EURECOM for this laboratory. Pay attention to Hadoop versions in case you setup an Hadoop cluster for yourself.
+**Note**: the above jars are located in the ```/labs/libs``` directory of this repository. They are intended to be used with the version of Hadoop we have internally at EURECOM for this laboratory. Pay attention to Hadoop versions in case you setup an Hadoop cluster for yourself.
 
 The next step is to import the source files to complete in the Project.
 - In Eclipse, select the **src** directory in your project.
