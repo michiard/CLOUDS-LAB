@@ -44,14 +44,14 @@ The first step is to create a new Java Project in Eclipse:
 - Ensure to use *JavaSE-1.6* as JRE, then click on **Next**
 - Go on **Libraries** tab, and click on **Add External Jars**
 - Add the following jars:
- - ```hadoop/hadoop-common.jar```
- - ```hadoop-0.20-mapreduce/hadoop-core.jar```
- - ```hadoop-hdfs/hadoop-hdfs.jar```
+ - ```hadoop-common.jar```
+ - ```hadoop-core.jar```
+ - ```hadoop-hdfs.jar```
 - Click on **Finish**
 
 Now you have a new project.
 
-**Note**: the above jars are provided locally, if you are at EURECOM. Otherwise, you'll have to look for them in your Hadoop installation, or download them yourself.
+**Note**: the above jars are located in the libs folder of this repository. They are intended to be used with the version of Hadoop we have internally at EURECOM for this laboratory. Pay attention to Hadoop versions in case you setup an Hadoop cluster for yourself.
 
 The next step is to import the source files to complete in the Project.
 - In Eclipse, select the **src** directory in your project.
