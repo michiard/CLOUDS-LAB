@@ -14,6 +14,26 @@ Note that the two design patterns outlined above have been originally discussed 
 [hadoop]: http://hadoop.apache.org "hadoop"
 [jimmilin]: http://lintool.github.io/MapReduceAlgorithms/index.html
 
+## Setting up "connectivity" to the cluster:
+
+This step is only necessary if you're a student at EURECOM: the goal is to gain access to the EURECOM private cloud, which hosts a virtual Hadoop cluster that we use for the laboratory.
+
+Follow these steps:
+
+- Obtain from the Teaching Assistants a group identifier: e.g. group07
+- Log to a Linux machine in one of the Laboratory rooms with your EURECOM unix credentials
+- Generate a RSA private / public key pair:
+ - ```ssh-keygen ~/.ssh/group07```
+ - send your public key to the Laboratory administrator
+ - wait for an acknowledgment from the Laboratory administrator
+- Log to the client Virtual Machine (VM): this VM is used to submit your jobs to the Hadoop cluster
+ - ```ssh -i ~/.ssh/group07 group07@192.168.45.13```
+
+If you want to copy a file (e.g. the jar of your job, as you will see later) to this client VM, just do:
+
+ - ```scp -i ~/.ssh/group07 <your-local-file> group07@192.168.45.13:~/<your-remote-file>```
+
+
 ## Setting up the laboratory sources in Eclipse:
 
 The first step is to create a new Java Project in Eclipse:
