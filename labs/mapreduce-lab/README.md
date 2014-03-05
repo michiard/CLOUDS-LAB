@@ -101,8 +101,13 @@ Note that you need to specify a *non existing* output directory, or to delete it
 Hadoop publishes some web interfaces that display JobTracker and HDFS statuses.
 Depending on your cluster configuration, you will need to type a url in your browser tat point to:
 
-- Jobtracker Web Interface (generally on port 50030)
+- JobTracker Web Interface (generally on port 50030)
 - NameNode Web Interface (generally on port 50070)
+
+If you are a student at EURECOM, use the following URLs:
+
+- JobTracker: ```http://192.168.45.14:50030/```
+- NameNode: ```http://192.168.45.14:50070/```
 
 # Exercises
 
