@@ -14,6 +14,14 @@ Note that the two design patterns outlined above have been originally discussed 
 [hadoop]: http://hadoop.apache.org "hadoop"
 [jimmilin]: http://lintool.github.io/MapReduceAlgorithms/index.html
 
+## Obtain a local copy of this repository:
+First of all, you should duplicate locally (e.g. on your personal computer or on the machine you're using in the laboratory) this repository. There are two ways for doing this:
+
+- Clone the repository: ```git clone https://github.com/michiard/CLOUDS-LAB.git```
+- Download an archive of the repository: click on this [Download][downloadrepo]
+
+[downloadrepo]: https://github.com/michiard/CLOUDS-LAB/archive/master.zip "Download"
+
 ## Setting up "connectivity" to the cluster:
 
 This step is only necessary if you're a student at EURECOM: the goal is to gain access to the EURECOM private cloud, which hosts a virtual Hadoop cluster that we use for the laboratory.
@@ -57,7 +65,7 @@ The next step is to import the source files to complete in the Project.
 - In Eclipse, select the **src** directory in your project.
 - Right-click on the src directory and select **Import**
 - Select **File System** then click **Next**
-- In **From Directory**,  select *./mr/src/fr*, which is inside the directory where you cloned the git repository
+- In **From Directory**,  select *./mr/src/*, which is inside the directory where you cloned or downloaded the laboratory repository
 - In the tree on the left, select *fr*, then click **Finish**.
 
 At this point you should have a java project named ''mr-lab'', properly configured.
