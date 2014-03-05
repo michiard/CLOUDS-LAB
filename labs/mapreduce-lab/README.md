@@ -59,16 +59,16 @@ The first step is to create a new Java Project in Eclipse:
 
 Now you have a new project.
 
-**Note**: the above jars are located in the ```/labs/libs``` directory of this repository. They are intended to be used with the version of Hadoop we have internally at EURECOM for this laboratory. Pay attention to Hadoop versions in case you setup an Hadoop cluster for yourself.
+**Note**: the above jars are located in the ```/labs/mapreduce-lab/src/``` directory of this repository. They are intended to be used with the version of Hadoop we have internally at EURECOM for this laboratory. Pay attention to Hadoop versions in case you setup an Hadoop cluster for yourself.
 
 The next step is to import the source files to complete in the Project.
 - In Eclipse, select the **src** directory in your project.
 - Right-click on the src directory and select **Import**
 - Select **File System** then click **Next**
-- In **From Directory**,  select *./mr/src/*, which is inside the directory where you cloned or downloaded the laboratory repository
-- In the tree on the left, select *fr*, then click **Finish**.
+- In **From Directory**,  select *./labs/mapreduce-lab/src/*, which is inside the directory where you cloned or downloaded the laboratory repository, then click ok
+- Back in the Import dialog, in the tree on the left, select *fr*, then click **Finish**
 
-At this point you should have a java project named ''mr-lab'', properly configured.
+At this point you should have a java project named ''mr-lab'', properly configured. Make sure the whole package shows up in the ```src``` folder: ```fr.eurecom.dsg.mapreduce```
 **Note**: there can be errors in the source code you imported. This is normal: exercises have a series of ```TODO``` that you need to complete before the project can compile.
 
 ## How to ''build'' a job
