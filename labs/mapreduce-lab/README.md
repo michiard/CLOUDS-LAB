@@ -79,7 +79,12 @@ You need first to export a **JAR** file. Therefore, from Eclipse:
 - Type **Finish**
 
 Once you have exported your jar file, you can submit your job to the Hadoop cluster. At EURECOM, we have a cluster ready for you. Otherwise, you should use your own cluster, pseudo-cluster, or local execution mode.
-Open a *terminal*, and type:
+
+### Running the job in the cluster
+
+First, you need to copy the job jar file to the client VM, from which you will submit the job to the cluster. To do so refer to the section above "Setting up connectivity to the cluster", and look at how to use ```scp```. Once you uploaded your job jar file to the client VM, log into the VM as described in the same section above.
+
+Once you are logged into the client VM, from your *terminal*, type:
 ```
 hadoop jar <jarname.jar> <fully.qualified.class.Name> <Parameters>
 ```
