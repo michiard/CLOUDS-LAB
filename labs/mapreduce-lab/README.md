@@ -160,7 +160,7 @@ A co-occurrence matrix is a ''n'' x ''n'' matrix, where ''n'' is the number of u
 
 The basic (and maybe most intuitive) implementation of this exercise is the *Pair* design pattern.
 The basic idea is to emit, for each couple of words in the same line, the couple itself (or *pair*) and the value 1.
-For example, in the line `w1 w2 w3 w1`, we emit `(w1,w2):1, (w1, w3):1, (w2:w1):1, (w2,w3):1, (w2:w1):1, (w3,w1):1, (w3:w2):1, (w3,w1):1`. Essentially, the reducers need to collect enough information from mapper to ''cover'' each individual ''cell'' of the co-occurrence matrix.
+For example, in the line `w1 w2 w3 w1`, we emit `(w1,w2):1, (w1, w3):1, (w2:w1):1, (w2,w3):1, (w2:w1):1, (w3,w1):1, (w3:w2):1, (w3,w1):1, (w1, w2):1, (w1, w3):1`. Essentially, the reducers need to collect enough information from mapper to ''cover'' each individual ''cell'' of the co-occurrence matrix.
 
 In this exercise, we need to use a composite key to emit an occurrence of a pair of words. You will learn how to create a custom Hadoop data type to be used as key type.
 
