@@ -139,7 +139,7 @@ hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.WordCountCombiner 3 <input_fi
 
 To test your code use the file `/laboratory/input/quote.txt`. **NOTE**: if you are at EURECOM, this file is available in the HDFS of the lab. Otherwise, you will have to ''load'' it yourself in your own HDFS installation.
 
-To run the final version of your job, you can use a bigger file, `/laboratory/input/gutenberg-partial.txt`, which contains an extract of the English books from Project Gutenberg http://www.gutenberg.org/, which provides a collection of full texts of public domain books.
+To run the final version of your job, you can use a bigger file, `/laboratory/input/gutenberg_partial.txt`, which contains an extract of the English books from Project Gutenberg http://www.gutenberg.org/, which provides a collection of full texts of public domain books.
 
 ### Questions ###
 
