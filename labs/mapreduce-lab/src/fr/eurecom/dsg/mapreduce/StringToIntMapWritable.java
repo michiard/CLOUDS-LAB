@@ -15,12 +15,12 @@ public class StringToIntMapWritable implements Writable {
   @Override
   public void readFields(DataInput in) throws IOException {
     
-    // TODO: implement serialization
+    // TODO: implement deserialization
   }
 
   @Override
   public void write(DataOutput out) throws IOException {
 
-    // TODO: implement deserialization
+    // TODO: implement serialization
   }
 }
