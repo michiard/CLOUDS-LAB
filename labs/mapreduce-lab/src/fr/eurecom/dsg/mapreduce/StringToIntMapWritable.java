@@ -16,6 +16,11 @@ public class StringToIntMapWritable implements Writable {
   public void readFields(DataInput in) throws IOException {
     
     // TODO: implement deserialization
+    
+    // Warning: for efficiency reasons, Hadoop attempts to re-use old instances of
+    // StringToIntMapWritable when reading new records. Remember to initialize your variables 
+    // inside this function, in order to get rid of old data.
+
   }
 
   @Override
