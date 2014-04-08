@@ -72,9 +72,10 @@ Is there a difference in carrier delays? Compute the proportion of delayed fligh
 
 Which are busy the routes? A simple first approach is to create a frequency table for the unordered pair (i,j) where i and j are distinct airport codes.
 
-### Advanced analyses
+## Optional data analysis tasks
+Note that the following "queries" are somehow more involved than the preceding ones. They require a more elaborated approach and in some cases they require additional data to be downloaded (see sources above) and copied into HDFS.
 
-+ When is the best time of day/day of week/time of year to fly to minimise delays?
++ When is the best time of day/day of week/time of year to fly to minimize delays?
 + Do older planes suffer more delays?
 + How does the number of people flying between different locations change over time?
 + How well does weather predict plane delays?
