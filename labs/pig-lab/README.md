@@ -148,7 +148,7 @@ Questions:
 
 
 
-## Real-world data analysis:: Working with Network Traffic Data
+## Use-case:: Working with Network Traffic Data
 Please, follow this link [TSTAT Trace Analysis with Pig][tstat] for this exercise.
 
 **IMPORTANT**: For EURECOM students, although you can work on all exercises, for evaluation purposes you only need to complete exercises 1-5.
@@ -156,7 +156,7 @@ Please, follow this link [TSTAT Trace Analysis with Pig][tstat] for this exercis
 [tstat]: tstat-analysis/README.md "TSTAT"
 
 
-## Real-world data analysis: Working with an Airline dataset
+## Use-case: Working with an Airline dataset
 Please, go to [AIRLINE Traffic Analysis with Pig][airlines] for this exercise.
 
 [airlines]: airtraffic-analysis/README.md "AIRLINES"
