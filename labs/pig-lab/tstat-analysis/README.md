@@ -1,12 +1,6 @@
 # TSTAT Trace Analysis with Pig
 
-This lab is a variation of the original Pig Laboratory, with focus on an application use-case. **NOTE**: for obvious reasons, this repository contains a small instance of a TSTAT trace. You can download and use the TSTAT tool yourself, and capture a large network traffic trace to ''play'' at scale.
-
-Recall, some of the useful debugging commands for Pig Latin script are:
-* **DESCRIBE** relation: this is very useful to understand the schema applied to each relation. Note that understanding schema propagation in Pig requires some time.
-* **DUMP** relation: this command is similar to the STORE command, except that it outputs on stdout the selected relation.
-* **ILLUSTRATE** relation: this command is useful to get a sample of the data in a relation.
-
+This series of exercises is inspired by "real-world" problems related to the analysis of TCP flows captured on an operational network. In particular, we focus on TSTAT as the tool to capture network traffic, which is described below.
 
 ## TSTAT DATA
 Exercises are based on traces in Tstat format (see http://tstat.tlc.polito.it/index.shtml).
@@ -17,12 +11,13 @@ Tstat produces two files, "log_tcp_complete" and "log_tcp_nocomplete" files whic
 
 Tstat discards all the connections for which the three way handshake is not properly seen. Then, in case a connection is correctly closed, it is stored in log_tcp_complete, otherwise in log_tcp_nocomplete.
 
-In the following exercises we will use a file called "*tstat-big.txt*”, which contains only correctly closed connections.
-The file consists of a line per each TCP connection; each line consists of fields, separated by spaces. Columns are grouped according to C2S - Client-to-Server and S2C - Server-to-Client traffic directions.
-The exact TSTAT file format is reported in the table immediately below.
-The ''tstat-analysis'' folder contains a pig file with the LOAD command used to load the TSTAT file with the appropriate schema, "*load.pig*".
+In the following exercises we will use two files called **tstat-big.txt** and **tstat-sample.txt**, which contain only correctly closed connections. For EURECOM students, such files are located in HDFS under the usual ```/laboratory/input/``` directory.
 
-Below, a description of the ''"schema"'' of a TSTAT file:
+Each file consists of a line per each TCP connection; each line consists of fields, separated by spaces. Columns are grouped according to C2S - Client-to-Server and S2C - Server-to-Client traffic directions. The exact TSTAT file format is reported in the table immediately below.
+
+Note that the ''tstat-analysis'' folder contains a pig file with the LOAD command used to load the TSTAT file with the appropriate schema, "*load.pig*".
+
+Below, a description of the "schema" of a TSTAT file:
 
 ________________
 
@@ -102,10 +97,11 @@ ________________
 |113||FQDN|-|Full Qualified Domain Name contacted|
 
 ## Exercise 1: A “Network” Word Count
-**Problem statement:** count the number of TCP connection per each client IP.
+**Problem statement:** count the number of TCP connections per each **client** IP.
 
-The problem is very similar to the Word Count problem of the MapReduce lab: it has been conceived to familiarize with PIG Latin.
-### Writing your first Pig Latin script
+The problem is very similar to the Word Count problem of the MapReduce lab and Pig lab: it has been conceived to get you familiar with the TSTAT data.
+
+### Sample code
 
 The following lines of code can be used in the interactive pig shell (grunt) with some minor modification:
 
@@ -136,15 +132,7 @@ Note that the pig script you wrote for local execution requires some modificatio
 You can also use another troubleshooting instrument to understand the logical, physical and execution plans produced by Pig:
 * **EXPLAIN** relation: note that you can generate output files in the "dot" format for better rendering
 How-to inspect your results and check your job in the cluster
-* You can use hdfs dfs from the command line
 * Inspect your job status on the cluster: you can identify your job by name and check its status using the Web UI of the JobTracker so far.
-
-**Questions:**
-
-1. What does a GROUP BY command do? At which phase of MapReduce is GROUP BY performed in this exercise and in general?
-2. What does a FOREACH command do? At which phase of MapReduce is FOREACH performed in this exercise and in general?
-3. How many reducers were launched? Why? Can you modify this number?
-4. How many mappers were launched? Why? Can you modify this number?
 
 ### Exercise 1/B
 **Problem statement:** count the number of TCP connection per each IP.
@@ -155,7 +143,7 @@ How-to inspect your results and check your job in the cluster
 **Questions:**
 
 1. How is this exercise different from Ex. 1?
-2. How would you write it in java?
+2. How would you write it in Java?
 3. Elaborate on the differences between Ex.1 and Ex.1/b
 
 ### Exercise 1/C
