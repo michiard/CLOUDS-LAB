@@ -1,6 +1,4 @@
-## Exercise 5: Working with an Airline dataset
-> We're currently working on a refactored version of this exercise, which will be promoted to it's own ''sub-repo''. Stay tuned!
-> Currently, you can find a directory with some preliminary versions of the queries below (Q1 - Q5). Feel free to comment, improve and test them as they are: this series of queries will be complemented with appropriate questions to understand the impact of design choices on the underlying MapReduce execution engine.
+# Airline Data Analysis with Pig
 
 + This exercise is inspired by http://www.datadr.org/doc/airline.html
 + Full information on datasets (optional datasets), and general documentation available here: http://stat-computing.org/dataexpo/2009/
@@ -47,6 +45,12 @@ Other sources of data come from here: http://stat-computing.org/dataexpo/2009/su
 + Carrier codes to Full name mapping: http://stat-computing.org/dataexpo/2009/carriers.csv
 + Information about individual planes: http://stat-computing.org/dataexpo/2009/plane-data.csv
 + Weather information: http://www.wunderground.com/weather/api/. You can subscribe for free to the developers API and obtain (at a limited rate) hystorical weather information in many different formats. Also, to get an idea of the kind of information is available, you can use this link: http://www.wunderground.com/history/
+
+## The Data:
+For Eurecom students, we have put some csv (comma separate values) files in HDFS for you. They are located in the HDFS directory: ```/laboratory/input/airlines/``` and they account for four years of data, 2005 to 2008. You can work on individual years, or feed the entire directory to your jobs such that you can process all years.
+
+## Exercises:
+In the following, we propose a series of exercises in the form of Queries.
 
 ### *Query 1:* Top 20 cities by total volume of flights 
 
