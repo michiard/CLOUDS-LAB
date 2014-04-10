@@ -34,7 +34,7 @@ A = LOAD './sample-input/WORD_COUNT/sample.txt';
 
 -- Parse and clean input data
 B = FOREACH A GENERATE FLATTEN(TOKENIZE((chararray)$0)) AS word;
-C = FILTER B BY word MATCHES '\\\\w+';
+C = FILTER B BY word MATCHES '\\w+';
 
 -- Explicit the GROUP-BY
 D = GROUP C BY word;
