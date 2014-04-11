@@ -3,6 +3,14 @@
 This lab is dedicated to Hadoop Pig and consists of a series of exercises: some of them mimic those in the MapReduce lab, others are inspired by "real-world" problems. There are two main goals for this laboratory:
 * The first is to gain familiarity with the Pig Latin language to analyze data in many different ways. In other words, to focus on "what to do" with your data: to perform some simple statistics, to mine useful information, or to implement some simple algorithms.
 * The second is to understand the details of Hadoop Pig internals by inspecting the process of turning a Pig Latin script into a runnable, optimized, underlying implementation in MapReduce. This means that you should examine what the Pig compiler generates from a Pig Latin script, and reason about Hadoop Job performance by analyzing Hadoop logs and statistics.
+ 
+## Additional useful resources for Pig
+
+* [Pig Eye for the SQL Guy][mortar-1]
+* [Pig vs. MapReduce: When, Why, and How][mortar-2]
+ 
+[mortar-1]: http://blog.mortardata.com/post/79987678239/pig-eye-for-the-sql-guy-redux 
+[mortar-2]: http://blog.mortardata.com/post/60274287605/pig-vs-mapreduce
 
 ### Useful tools for "debugging":
 * **DESCRIBE** relation: this is very useful to understand the schema applied to each relation. Note that understanding schema propagation in Pig requires some time. 
