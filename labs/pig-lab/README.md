@@ -209,3 +209,45 @@ The following is a list of optional exercises:
 [pig-embedding]: http://pig.apache.org/docs/r0.9.2/cont.html#embed-python "Pig Embedding"
 
 
+### Pig tricks
+
+#### Parameters
+
+Put variable stuff into parameters, to allow for easy substitution! Typically this might be input and output files (or grouping parameters!), with sensible defaults, so that you can default to a small local file for rapid testing, and then override this with the big files on the cluster:
+
+```pig
+-- Set sensible defaults for local execution
+%default input 'airline-sample.txt'
+
+-- Load the data
+dataset = LOAD '$input' using PigStorage(',') AS (...);
+```
+
+You can specify parameters when executing the script by using the `-p` flag, and `-f` to point to your script: 
+
+    pig -f airline_q1.pig -p input=/laboratory/input/airline/2008.csv
+    
+For local testing with the default values, you'd just run it without any `-p` or `-f` flags:
+
+    pig -x local airline_q1.pig
+    
+#### Multiple input files
+
+To execute your script on several input files, use Hadoop path expansion to shorten stuff down:
+
+```
+dataset = LOAD '/laboratory/input/airlines/{2005,2006,2007,2008}.csv' using PigStorage(',') AS (...);
+```
+
+Wildcards also work:
+
+```
+dataset = LOAD '/laboratory/input/airlines/*.csv' using PigStorage(',') AS (...);
+```
+
+You can also specify this as a parameter, but remember to put it in quotes to prevent your shell from doing the expansion:
+
+    pig -f airline_q1.pig -p 'input=/laboratory/input/airlines/{2005,2006,2007,2008}.csv'
+    
+**NOTE**: Shell-expansion style `{2005..2008}` does sadly not work on Pig.
+
