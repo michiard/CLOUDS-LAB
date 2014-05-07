@@ -52,9 +52,9 @@ For Eurecom students, we have put some csv (comma separate values) files in HDFS
 ## Exercises:
 In the following, we propose a series of exercises in the form of Queries.
 
-### *Query 1:* Top 20 cities by total volume of flights 
+### *Query 1:* Top 20 airports by total volume of flights 
 
-What are the busiest cities by total flight traffic. JFK will feature, but what are the others? For each airport code compute the number of inbound, outbound and all flights. Variation on the theme: compute the above by day, week, month, and over the years.
+What are the busiest airports by total flight traffic. JFK will feature, but what are the others? For each airport code compute the number of inbound, outbound and all flights. Variation on the theme: compute the above by day, week, month, and over the years.
 
 ### *Query 2:* Carrier Popularity 
 
