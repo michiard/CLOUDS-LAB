@@ -70,7 +70,7 @@ Is there a difference in carrier delays? Compute the proportion of delayed fligh
 
 ### *Query 5:* Busy Routes
 
-Which are busy the routes? A simple first approach is to create a frequency table for the unordered pair (i,j) where i and j are distinct airport codes.
+Which routes are the busiest? A simple first approach is to create a frequency table for the unordered pair (i,j) where i and j are distinct airport codes.
 
 ## Optional data analysis tasks
 Note that the following "queries" are somehow more involved than the preceding ones. They require a more elaborated approach and in some cases they require additional data to be downloaded (see sources above) and copied into HDFS.
