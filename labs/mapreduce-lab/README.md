@@ -14,102 +14,12 @@ Note that the two design patterns outlined above have been originally discussed 
 [hadoop]: http://hadoop.apache.org "hadoop"
 [jimmilin]: http://lintool.github.io/MapReduceAlgorithms/index.html
 
-## Obtain a local copy of this repository:
-First of all, you should duplicate locally (e.g. on your personal computer or on the machine you're using in the laboratory) this repository. There are two ways for doing this:
+## Before you continue to the exercises
+Read carefully the instructions to [setup your environment][setup].
 
-- Clone the repository: ```git clone https://github.com/michiard/CLOUDS-LAB.git```
-- Download an archive of the repository: click on this [Download][downloadrepo]
+[setup]: ./setup.md
 
-[downloadrepo]: https://github.com/michiard/CLOUDS-LAB/archive/master.zip "Download"
-
-## Setting up "connectivity" to the cluster:
-
-This step is only necessary if you're a student at EURECOM: the goal is to gain access to the EURECOM private cloud, which hosts a virtual Hadoop cluster that we use for the laboratory.
-
-Follow these steps:
-
-- Obtain from the Teaching Assistants a group identifier: e.g. group07
-- Log to a Linux machine in one of the Laboratory rooms with your EURECOM unix credentials
-- Generate a RSA private / public key pair:
- - ```ssh-keygen ~/.ssh/group07```
- - send your public key to the Laboratory administrator
- - wait for an acknowledgment from the Laboratory administrator
-- Log to the client Virtual Machine (VM): this VM is used to submit your jobs to the Hadoop cluster
- - ```ssh -i ~/.ssh/group07 group07@192.168.45.13```
-
-If you want to copy a file (e.g. the jar of your job, as you will see later) to this client VM, just do:
-
- - ```scp -i ~/.ssh/group07 <your-local-file> group07@192.168.45.13:~/<your-remote-file>```
-
-
-## Setting up the laboratory sources in Eclipse:
-
-The first step is to create a new Java Project in Eclipse:
-
-- In Eclipse, select the menu item **File > New > Project ...** to open the **New Project** wizard
-- Select **Java Project** then click **Next** to start the **New Java Project**
-- Type a name for your new project, such as ''mr-lab''
-- Ensure to use *JavaSE-1.6* as JRE, then click on **Next**
-- Go on **Libraries** tab, and click on **Add External Jars**
-- Add the following jars:
- - ```hadoop-common.jar```
- - ```hadoop-core.jar```
- - ```hadoop-hdfs.jar```
-- Click on **Finish**
-
-Now you have a new project.
-
-**Note**: the above jars are located in the ```/labs/mapreduce-lab/src/``` directory of this repository. They are intended to be used with the version of Hadoop we have internally at EURECOM for this laboratory. Pay attention to Hadoop versions in case you setup an Hadoop cluster for yourself.
-
-The next step is to import the source files to complete in the Project.
-- In Eclipse, select the **src** directory in your project.
-- Right-click on the src directory and select **Import**
-- Select **File System** then click **Next**
-- In **From Directory**,  select *./labs/mapreduce-lab/src/*, which is inside the directory where you cloned or downloaded the laboratory repository, then click ok
-- Back in the Import dialog, in the tree on the left, select *fr*, then click **Finish**
-
-At this point you should have a java project named ''mr-lab'', properly configured. Make sure the whole package shows up in the ```src``` folder: ```fr.eurecom.dsg.mapreduce```
-**Note**: there can be errors in the source code you imported. This is normal: exercises have a series of ```TODO``` that you need to complete before the project can compile.
-
-## How to ''build'' a job
-You need first to export a **JAR** file. Therefore, from Eclipse:
-- Select the menu item **File > Export**
-- Type **JAR**, select **JAR file** and click on **Next**
-- In the textbox **Select the export destination**, type the name of the new **JAR** you want to export, i.e. *'/home/student/mrlab.jar'*
-- Type **Finish**
-
-Once you have exported your jar file, you can submit your job to the Hadoop cluster. At EURECOM, we have a cluster ready for you. Otherwise, you should use your own cluster, pseudo-cluster, or local execution mode.
-
-### Running the job in the cluster
-
-First, you need to copy the job jar file to the client VM, from which you will submit the job to the cluster. To do so refer to the section above "Setting up connectivity to the cluster", and look at how to use ```scp```. Once you uploaded your job jar file to the client VM, log into the VM as described in the same section above.
-
-Once you are logged into the client VM, from your *terminal*, type:
-```
-hadoop jar <jarname.jar> <fully.qualified.class.Name> <Parameters>
-```
-
-For example, for running the *WordCount* exercise, type:
-```
-hadoop jar mrlab.jar fr.eurecom.dsg.mapreduce.WordCount 2 /laboratory/input/quote.txt OUTPUT/wordcount/
-```
-
-Note that you need to specify a *non existing* output directory, or to delete it before running the job.
-
-## Web interfaces: monitor job progress
-
-Hadoop publishes some web interfaces that display JobTracker and HDFS statuses.
-Depending on your cluster configuration, you will need to type a url in your browser tat point to:
-
-- JobTracker Web Interface (generally on port 50030)
-- NameNode Web Interface (generally on port 50070)
-
-If you are a student at EURECOM, use the following URLs:
-
-- JobTracker: ```http://192.168.45.14:50030/```
-- NameNode: ```http://192.168.45.14:50070/```
-
-# Exercises
+# EERCISES
 
 ## EXERCISE 1:: Word Count
 
