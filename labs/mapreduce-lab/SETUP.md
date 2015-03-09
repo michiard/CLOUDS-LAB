@@ -46,7 +46,7 @@ Proceed with the following steps:
 #### Make sure maven is properly configured
 Proceed with the following steps:
 
-- Create a new ```settings.xml''' file in the ```~/.m2''' directory, and edit it such that it looks like the following:
+- Create a new `settings.xml`file in the `~/.m2` directory, and edit it such that it looks like the following:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -84,7 +84,7 @@ Proceed with the following steps:
         </profile>
     </profiles>
 </settings>
-'''
+```
 
 #### Use IntelliJ to create a new project
 
