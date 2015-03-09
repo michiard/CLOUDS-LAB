@@ -21,7 +21,7 @@ Laboratory machines are equipped with:
 
 - IntelliJ: this is a popular IDE, that we will use as a lightweight replacement for Eclipse
 
-### Obtain a local copy of this repository:
+>Obtain a local copy of this repository:
 First of all, you should clone locally this repository. There are two ways for doing this:
 
 - Clone the repository: ```git clone https://github.com/michiard/CLOUDS-LAB.git```
@@ -31,9 +31,9 @@ First of all, you should clone locally this repository. There are two ways for d
 
 >Create a new repository in GitLab
 
-### Make sure maven is properly configured
+>Make sure maven is properly configured
 
-### Use IntelliJ to create a new project
+>Use IntelliJ to create a new project
 
 
 ## The Gateway Machine:
