@@ -29,7 +29,7 @@ First of all, you should clone locally this repository. There are two ways for d
 
 [downloadrepo]: https://github.com/michiard/CLOUDS-LAB/archive/master.zip "Download"
 
-**Create a new repository in GitLab**
+>Create a new repository in GitLab
 
 ### Make sure maven is properly configured
 
