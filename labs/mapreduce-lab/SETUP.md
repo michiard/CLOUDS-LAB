@@ -100,7 +100,7 @@ This step is only necessary if you're a student at EURECOM. Follow these steps:
 At this point you have gained access to the Eurecom cloud computing platform, and you will be able to submit your MapReduce jobs. To do so, follow these steps:
 
 - Clone your own GitLab repository in a directory of your choice in the gateway machine
-- Generate ```jar''' archives of your MapReduce job
+- Generate **JAR** archives of your MapReduce job
 - Submit your job: ```hadoop jar <jarname.jar> <fully.qualified.class.Name> <Parameters>```
 
 Note that you need to specify a **non existing** output directory, or to delete it before running the job.
