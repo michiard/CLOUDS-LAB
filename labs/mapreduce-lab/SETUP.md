@@ -100,10 +100,10 @@ This step is only necessary if you're a student at EURECOM. Follow these steps:
 At this point you have gained access to the Eurecom cloud computing platform, and you will be able to submit your MapReduce jobs. To do so, follow these steps:
 
 - Clone your own GitLab repository in a directory of your choice in the gateway machine
-- Generate **JAR** archives of your MapReduce job
-- Submit your job: ```hadoop jar <jarname.jar> <fully.qualified.class.Name> <Parameters>```
+- Generate **JAR** archives of your MapReduce job. This can be done once you are in the sub-directory of your repository containing the MapReduce job you want to submit: simply type ```mvn package```, and maven will download all required dependencies (it may take some time, the first time you "compile"), compile your job, and generate the **JAR** in the sub-directory ```target```.
+- Submit your job: ```hadoop jar <path/jarname.jar> <fully.qualified.class.Name> <Parameters>```
 
-Note that you need to specify a **non existing** output directory, or to delete it before running the job.
+Note that you need to specify a **non existing** output directory for your MapReduce jobs, or to delete it before running the job.
 
 
 
@@ -112,13 +112,20 @@ Note that you need to specify a **non existing** output directory, or to delete 
 
 ## The YARN Cluster
 
-Hadoop publishes some web interfaces that display JobTracker and HDFS statuses.
-Depending on your cluster configuration, you will need to type a url in your browser tat point to:
+YARN publishes some web interfaces that display Resource Manager, Application Master and HDFS statuses. For Eurecom students, point your browser to:
 
-- JobTracker Web Interface (generally on port 50030)
-- NameNode Web Interface (generally on port 50070)
 
-If you are a student at EURECOM, use the following URLs:
+- The Resource Manager interface: ```192.168.45.167:8088/cluster```
+- The MapReduce Job History interface: ```192.168.45.167:19888/jobhistory```
+- NameNode interface: ```192.168.45.157:50070/dfshealth.html#tab-overview```
 
-- JobTracker: ```http://192.168.45.14:50030/```
-- NameNode: ```http://192.168.45.14:50070/```
+#### IMPORTANT NOTE
+The DNS service we use in our Cloud computing platform is currently not connected to the DNS service at Eurecom. This means that the IP addresses above are not matched to fully qualified names as they should.
+
+This is in general not a problem. In case you want to try an experimental setup, do the following:
+
+- From your **local machine** log to the **gateway machine**, but allow X forwarding: ```ssh -X -i ~/.ssh/group07 group07@192.168.45.181```
+- Launch Firefox in the **gateway machine**: ```firefox&```
+
+Now, you will be able to access the above web interfaces **and** have the correct DNS host resolution. The downside is that this approach can overload the gateway machine, and consume quite some network traffic.
+
