@@ -23,7 +23,6 @@ Laboratory machines are equipped with:
 
 #### Obtain a local copy of this repository:
 
-
 First of all, you should clone locally this repository. There are two ways for doing this:
 
 - Clone the repository: ```git clone https://github.com/michiard/CLOUDS-LAB.git```
@@ -31,11 +30,61 @@ First of all, you should clone locally this repository. There are two ways for d
 
 [downloadrepo]: https://github.com/michiard/CLOUDS-LAB/archive/master.zip "Download"
 
-#### Create a new repository in GitLab
+You will use this repository as a series of templates for your MapReduce jobs, that you will use/copy/edit in your own **GitLab** repository.
 
+#### Create a new repository in GitLab
+Proceed with the following steps:
+
+- Login to your GitLab web interface (http://gitlab.eurecom.fr) and use LDAP credentials to login (these are your UNIX account credentials from Eurecom).
+
+- Click the button to create a new project. Define your project name (e.g., mr-lab), and use the name space corresponding to your user name. Add some description to the repository (e.g., This repo is for the CLOUDS course laboratory). Define the visibility level of your repository.
+
+- Once you click the button to create the project, you will be directed to an instruction page that you will need to follow to actually create the project on your **local machine**.
+
+- Through the GitLab web interface, you can also define members of the project, so add anybody who is in your group as members, such that they will be able to work independently on the repository.
 
 #### Make sure maven is properly configured
+Proceed with the following steps:
 
+- Create a new ```settings.xml''' file in the ```~/.m2''' directory, and edit it such that it looks like the following:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+    <profiles>
+        <profile>
+            <id>standard-extra-repos</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <!-- Central Repository -->
+                    <id>central</id>
+                    <url>http://repo1.maven.org/maven2/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <!-- Cloudera Repository -->
+                    <id>cloudera</id>
+                    <url>https://repository.cloudera.com/artifactory/cloudera-repos</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                   </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+</settings>
+'''
 
 #### Use IntelliJ to create a new project
 
