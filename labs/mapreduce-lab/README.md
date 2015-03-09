@@ -17,7 +17,7 @@ Note that the two design patterns outlined above have been originally discussed 
 ## Before you continue to the exercises
 Read carefully the instructions to [setup your environment][setup].
 
-[setup]: ./setup.md
+[setup]: ./SETUP.md
 
 # EERCISES
 
