@@ -87,6 +87,122 @@ Proceed with the following steps:
 ```
 
 #### Use IntelliJ to create a new project
+We assume maven to be properly configured, as described above. We also assume a student to have successfully created a git repository in GitLab: for example, the repository name (and directory) could be ```mr-lab```. In what follows, we provide a simple guide to create a new IntelliJ project that takes the form of a new directory in the repository.
+
+Proceed with the following steps:
+
+- Create a new project in IntelliJ
+  - Select maven from the list of project types
+  - Check the box **create from archetype**
+  - Select ```org.apache.maven.archetypes:maven-archetype-quickstart```
+  - Click Next
+- Define project identifiers. For each of the following fields, type:
+  - GroupId: ```fr.eurecom.dsg.mapreduce```
+  - ArtifactId: ```Your-project-name```, e.g., ```WordCount```
+  - Version: ```1.0-SNAPSHOT``` works fine, but you can customize if you want
+  - Click Next
+- Verify the proper configuration of maven settings and of your project and click Next
+- Chose a project name: e.g., WordCount
+- Verify the project location is correctly placed in your GitLab repository
+- Click Finish
+
+NOTE 1: at this point, IntelliJ may ask you to manage your git repository. You have the choice to ignore the suggestion, or allow IntelliJ to assist you. We assume that you ignore the suggestion in what follows.
+
+NOTE 1: IntelliJ may also ask you to enable the automatic import of definitions and dependencies. Agree to enable automatic import.
+
+By now you should have a new window open with your new project, displaying the ```pom.xml``` file that we will need to configure.
+
+Configuration of the ```pom.xml``` file. Proceed with the following steps:
+
+- Remove everything included in the ```<dependencies> </dependencies>``` block
+- Copy the following lines as a replacement of the block you just removed
+
+```
+<dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>jdk.tools</groupId>
+                <artifactId>jdk.tools</artifactId>
+                <version>1.7</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-hdfs</artifactId>
+                <version>2.5.0-cdh5.3.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-auth</artifactId>
+                <version>2.5.0-cdh5.3.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-common</artifactId>
+                <version>2.5.0-cdh5.3.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-core</artifactId>
+                <version>2.5.0-mr1-cdh5.3.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-mapreduce-client-core</artifactId>
+                <version>2.5.0-cdh5.3.2</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit-dep</artifactId>
+                <version>4.8.2</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-hdfs</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-auth</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+```
+Now you can save your new ```pom.xml``` file.
+
+Next, you can start working on your project source files.
+
+
+
+
 
 
 ## The Gateway Machine:
