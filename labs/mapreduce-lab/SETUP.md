@@ -219,6 +219,12 @@ This step is only necessary if you're a student at EURECOM. Follow these steps:
 - Obtain from the Teaching Assistants a secret RSA key associated to your group identifier
 - Log to the gateway machine: ```ssh -i ~/.ssh/group07 group07@192.168.45.181```
 
+#### Make sure JAVA_HOME environment variable is appropriately set
+When you are logged in the **Gateway Machine** you must check that you're using a consistent version of Java. Make sure to set:
+
+- ```export JAVA_HOME=/usr/lib/jvm/java-7-oracle-cloudera```
+
+#### Package and submit your MapReduce jobs
 At this point you have gained access to the Eurecom cloud computing platform, and you will be able to submit your MapReduce jobs. To do so, follow these steps:
 
 - Clone your own GitLab repository in a directory of your choice in the gateway machine
