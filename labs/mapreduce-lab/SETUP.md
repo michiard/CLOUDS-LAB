@@ -106,9 +106,9 @@ Proceed with the following steps:
 - Verify the project location is correctly placed in your GitLab repository
 - Click Finish
 
-NOTE 1: at this point, IntelliJ may ask you to manage your git repository. You have the choice to ignore the suggestion, or allow IntelliJ to assist you. We assume that you ignore the suggestion in what follows.
+**NOTE 1**: at this point, IntelliJ may ask you to manage your git repository. You have the choice to ignore the suggestion, or allow IntelliJ to assist you. We assume that you ignore the suggestion in what follows.
 
-NOTE 1: IntelliJ may also ask you to enable the automatic import of definitions and dependencies. Agree to enable automatic import.
+**NOTE 2**: IntelliJ may also ask you to enable the automatic import of definitions and dependencies. Agree to enable automatic import.
 
 By now you should have a new window open with your new project, displaying the ```pom.xml``` file that we will need to configure.
 
@@ -198,7 +198,13 @@ Configuration of the ```pom.xml``` file. Proceed with the following steps:
 ```
 Now you can save your new ```pom.xml``` file.
 
-Next, you can start working on your project source files.
+Next, you can start working on your project source files:
+
+- Navigate (using the menu on the left of your project window) the sources to reach the basic template of your new java application: it should be called App.
+- Right-click on the APP class and **refactor** it such that it has a coherent name, e.g. ```WordCount```. You will find the refactor command, and the rename sub-command in the menu that appears at the right-click.
+- Follow the suggestions to refactor also the **test** path of your project
+
+You now are ready to proceed with the exercises. For example, you can open the java file of an exercise you cloned from the **CLOUDS-LAB repository** (e.g., WordCount) and simply replace the whole code in your new IntelliJ project with that of the exercise. At this point, you will be able to start editing the source and fill-in the ```TODO``` sections of the code.
 
 
 
