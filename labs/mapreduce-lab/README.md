@@ -18,7 +18,7 @@ Note that the two design patterns outlined above have been originally discussed 
 
 You are not familiar with Git? Use this [quick-start guide][gitlink].
 
-Read carefully the instructions to [setup your environmentt][setup].
+Read carefully the instructions to [setup your environment][setup].
 
 [setup]: ./SETUP.md
 [gitlink]: http://pcottle.github.io/learnGitBranching/
@@ -34,12 +34,14 @@ Each group has a private directory located in the **HDFS** directory ```/user/``
 
 Input files, required for the following exercises, are located in a directory that is available only for reading. This directory is ```/laboratory```.
 
-Questions:
+### Questions:
 
 1. Let's focus on the file ```/laboratory/gutenberg_big.txt```
   - How many HDFS blocks compose this file?
   - **[Hint]** Try to find information about the file-system check command for hdfs, namely ```hdfs fsck```
-2. This 
+2. How many times each block is replicated?
+3. Do you think that the storage load is balanced? Namely, are there ```DataNodes``` holding considerably more blocks than others?
+  - **[Hint]** You may want to use the ```NameNode``` web interface to answer this question: ```192.168.45.157:50070/dfshealth.html#tab-overview```
 
 
 
