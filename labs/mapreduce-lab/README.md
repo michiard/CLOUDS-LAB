@@ -157,11 +157,11 @@ To test your code use the file `/laboratoryquote.txt`, or the one provided in th
 #### Questions
 Answer the following questions (in a simple text file):
 
-5. Can you use the implemented reducers as *Combiner*?
-6. Do you think Stripes could be used with the in-memory combiner pattern?
-7. How does the number of reducer influence the behavior of the Stripes approach?
-8. Why `StringToIntMapWritable` is not Comparable (differently from `TextPair`)?
-9. Using the JobHistory Web Interface, compare the shuffle phase of *Pair* and *Stripes* design patterns. How many output bytes are spilled by the mappers to produce intermediate files?
+1. Can you use the implemented reducers as *Combiner*?
+2. Do you think Stripes could be used with the in-memory combiner pattern?
+3. How does the number of reducer influence the behavior of the Stripes approach?
+4. Why `StringToIntMapWritable` is not Comparable (differently from `TextPair`)?
+5. Using the JobHistory Web Interface, compare the shuffle phase of *Pair* and *Stripes* design patterns. How many output bytes are spilled by the mappers to produce intermediate files?
 
 
 ## EXERCISE 4:: Relative term co-occurrence and the ''Order Inversion'' Design Pattern
