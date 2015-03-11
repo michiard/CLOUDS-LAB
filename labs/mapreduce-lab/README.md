@@ -16,7 +16,7 @@ Note that the two design patterns outlined above have been originally discussed 
 
 ## Before you continue to the exercises
 
-You are not familiar with Git? Use this [quick-start guide][gitlink]
+You are not familiar with Git? Use this [quick-start guide][gitlink].
 
 Read carefully the instructions to [setup your environmentt][setup].
 
