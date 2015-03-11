@@ -123,7 +123,9 @@ Proceed with the following steps:
 
 **NOTE 1**: at this point, IntelliJ may ask you to manage your git repository. You have the choice to ignore the suggestion, or allow IntelliJ to assist you. We assume that you ignore the suggestion in what follows.
 
-**NOTE 2**: IntelliJ may also ask you to enable the automatic import of definitions and dependencies. Agree to enable automatic import.
+**NOTE 2**: IntelliJ may also ask you to enable the automatic import of definitions and dependencies. Agree to enable automatic import. In case you missed the IntelliJ tip, you have to manually configure automatic imports. Do the following:
+
+- 
 
 By now you should have a new window open with your new project, displaying the ```pom.xml``` file that we will need to configure.
 
@@ -240,6 +242,12 @@ This step is only necessary if you're a student at EURECOM. Follow these steps:
 When you are logged in the **Gateway Machine** you must check that you're using a consistent version of Java. Make sure to set:
 
 - ```export JAVA_HOME=/usr/lib/jvm/java-7-oracle-cloudera```
+
+#### Make sure the secret key of the GitLab repo is available in the Gateway Machine
+Since you will be working on the very same GitLab repository you created in your **local machine**, you need to copy the private key of the repo from your **local machine** to the **gateway machine**. Do the following:
+
+- On your **local machine**:
+  - ```scp -i ~/.ssh/groupXY.key your_GitLab_secret_key groupXY@192.168.45.181:~/.ssh```
 
 #### Package and submit your MapReduce jobs
 At this point you have gained access to the Eurecom cloud computing platform, and you will be able to submit your MapReduce jobs. To do so, follow these steps:
