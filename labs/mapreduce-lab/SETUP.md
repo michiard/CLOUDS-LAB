@@ -103,7 +103,7 @@ We assume maven to be properly configured, as described above. We also assume a 
 Proceed with the following steps:
 
 - Launch IntelliJ
-  - Type in the command line the following: ```/packages/idea-IC-139.1117.1/bin/idea.sh&```
+  - Type in the command line the following: ```/packages/idea/bin/idea.sh&```
   - Note: you can add the directory to your ```PATH``` environment variable and avoid to use the full path every time you start IntelliJ
 - Create a new project in IntelliJ
   - If it is the first time you launch IntelliJ, you will have to configure your SDK. Select the following directory for your JDK installation: ```/usr/java```
