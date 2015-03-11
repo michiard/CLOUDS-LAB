@@ -123,9 +123,9 @@ To run the final version of your job, you can use a larger files, `/laboratory/g
 #### Questions
 Answer the following questions (in a simple text file):
 
-+ How does the number of reducer influence the behavior of the Pairs approach?
-+ Why does `TextPair` need to be Comparable?
-+ Can you use the implemented reducers as *Combiner*?
+1. How does the number of reducer influence the behavior of the Pairs approach?
+2. Why does `TextPair` need to be Comparable?
+3. Can you use the implemented reducers as *Combiners*?
 
 
 ### The ''Stripes'' Design Pattern
