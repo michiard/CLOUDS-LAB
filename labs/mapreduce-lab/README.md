@@ -71,20 +71,23 @@ hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.WordCountIMC 3 <input_file> <
 hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.WordCountCombiner 3 <input_file> <output_path>
 ```
 
-To test your code use the file `/laboratory/input/quote.txt`. **NOTE**: if you are at EURECOM, this file is available in the HDFS of the lab. Otherwise, you will have to ''load'' it yourself in your own HDFS installation.
+To test your code use the file `/laboratory/quote.txt`. **NOTE**: if you are at EURECOM, this file is available in the HDFS of the lab. Otherwise, you will have to ''load'' it yourself in your own HDFS installation.
 
-To run the final version of your job, you can use a bigger file, `/laboratory/input/gutenberg_partial.txt`, which contains an extract of the English books from Project Gutenberg http://www.gutenberg.org/, which provides a collection of full texts of public domain books.
+To run the final version of your job, you can use a bigger file, `/laboratory/gutenberg_small.txt`, which contains an extract of the English books from Project Gutenberg http://www.gutenberg.org/, which provides a collection of full texts of public domain books. An even bigger file can be found here `/laboratory/gutenberg_big.txt`.
 
 ### Questions ###
 
 Answer the following questions:
 
-+ How does the number of reducers affect performance? How many reducers can be executed in parallel?
-+ Use the JobTracker web interface to examine Job counters: can you explain the differences among the three variants of this exercise? For example, look at the amount of bytes shuffled by Hadoop
+1. When executing any variant of your WordCount job using the input file ```laboratory/gutenberg_big.txt```, how many **map tasks** are launched?
+2. How does the number of reducers affect performance? 
+3. How many reducers can be executed in parallel?
+4. Use the JobHistory web interface to examine job counters for all three variants of your WordCount job: can you explain the differences among the them? 
+  - **[Hint]** For example, look at the amount of bytes shuffled, but also try to spot other differences
+5. Can you explain how does the distribution of words affect your Job?
 
 > Zipf's law states that given some corpus of natural language utterances, the frequency of any word is inversely proportional to its rank in the frequency table. Thus the most frequent word will occur approximately twice as often as the second most frequent word, three times as often as the third most frequent word, etc. For example, in the *Brown Corpus of American English* text, the word "*the*" is the most frequently occurring word, and by itself accounts for nearly 7% of all word occurrences. The second-place word "*of*" accounts for slightly over 3.5% of words, followed by "*and*". Only 135 vocabulary items are needed to account for half the Brown Corpus. (wikipedia.org)
 
-+ Can you explain how does the distribution of words affect your Job?
 
 ## EXERCISE 3:: Word Co-occurrence
 In the following exercise, we need to build the term co-occurrence matrix for a text collection.
