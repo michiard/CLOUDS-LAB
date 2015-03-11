@@ -53,6 +53,14 @@ Count the occurrences of each word in a text file. This is the simplest example 
 + **In-Memory Combiner**: instead of emitting 1 for each encountered word, the map method (partially) aggregates the ones and emits the result for each word
 + **Combiner**: the same as In-Memory Combiner but using the MapReduce Combiner class
 
+### Remember the methodology!
+As a reminder of what discussed in [setting up your work environment][setup], recall the work methodology we adopt throughout the laboratories:
+
+- Code on your **local machine** 
+- Push changes to your repository on **GitLab**
+- Package your job on the **gateway machine**, using your groupXY account
+- Submit your job from the **gateway machine**
+- Use your browser to inspect logs about your jobs and the system
 
 ### Instructions
 
