@@ -184,7 +184,7 @@ To run the final version of your job, you can use a larger file, `/laboratory/in
 ### Questions ###
 Answer the following questions. In answering the questions below, consider the role of the combiner.
 
-1. Do you think the Order Inversion approach is 'faster' than a naive approach with multiple jobs? Implement a compound job in which you compute the numerator and the denominator separately, and then perform the computation of the relative frequency
+1. Do you think the Order Inversion approach is 'faster' than a naive approach with multiple jobs? Think about a compound job in which you compute the numerator and the denominator separately, and then perform the computation of the relative frequency
 2. What is the impact of the use of a 'special' compound key on the amounts of shuffled bytes?
 3. How does the default partitioner works with `TextPair`? Can you imagine a different implementation that does not change the Partitioner?
 4. For each key, the reducer receives its marginal before the co-occurrence with the other words. Why?
