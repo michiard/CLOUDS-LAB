@@ -56,6 +56,7 @@ Now, to complete the procedure of creating your repository, you need to upload a
 #### Make sure maven is properly configured
 Proceed with the following steps:
 
+- Create a new (hidden) directory in your home: ```mkdir .m2```. **NOTE: this step is not necessary if you have already used maven in the past**.
 - Create a new `settings.xml`file in the `~/.m2` directory, and edit it such that it looks like the following:
 
 ```
