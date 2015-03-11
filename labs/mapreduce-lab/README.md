@@ -15,9 +15,13 @@ Note that the two design patterns outlined above have been originally discussed 
 [jimmilin]: http://lintool.github.io/MapReduceAlgorithms/index.html
 
 ## Before you continue to the exercises
+
+You are not familiar with Git? Use this [quick-start guide][gitlink]
+
 Read carefully the instructions to [setup your environmentt][setup].
 
 [setup]: ./SETUP.md
+[gitlink]: http://pcottle.github.io/learnGitBranching/
 
 # EXERCISES
 
