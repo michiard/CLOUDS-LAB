@@ -184,10 +184,10 @@ To run the final version of your job, you can use a larger file, `/laboratory/in
 ### Questions ###
 Answer the following questions. In answering the questions below, consider the role of the combiner.
 
-+ Do you think the Order Inversion approach is 'faster' than a naive approach with multiple jobs? For example, consider implementing a compound job in which you compute the numerator and the denominator separately, and then perform the computation of the relative frequency
-+ What is the impact of the use of a 'special' compound key on the amounts of shuffled bytes?
-+ How does the default partitioner works with `TextPair`? Can you imagine a different implementation that does not change the Partitioner?
-+ For each key, the reducer receives its marginal before the co-occurrence with the other words. Why?
+1. Do you think the Order Inversion approach is 'faster' than a naive approach with multiple jobs? Implement a compound job in which you compute the numerator and the denominator separately, and then perform the computation of the relative frequency
+2. What is the impact of the use of a 'special' compound key on the amounts of shuffled bytes?
+3. How does the default partitioner works with `TextPair`? Can you imagine a different implementation that does not change the Partitioner?
+4. For each key, the reducer receives its marginal before the co-occurrence with the other words. Why?
 
 ## EXERCISE 5:: Joins
 In MapReduce, the term ''join'' refers to merging two different dataset stored as unstructured files in HDFS. As for databases, in MapReduce there are many different kind of joins, each with its use-cases and constraints. In this laboratory the student will implement two different kinds of MapReduce join techniques:
