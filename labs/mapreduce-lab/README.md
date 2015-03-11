@@ -82,7 +82,7 @@ Answer the following questions:
 1. When executing any variant of your WordCount job using the input file ```laboratory/gutenberg_big.txt```, how many **map tasks** are launched?
 2. How does the number of reducers affect performance? 
 3. How many reducers can be executed in parallel?
-4. Use the JobHistory web interface to examine job counters for all three variants of your WordCount job: can you explain the differences among the them? 
+4. Use the JobHistory web interface to examine job counters for all three variants of your WordCount job: can you explain the differences among them? 
   - **[Hint]** For example, look at the amount of bytes shuffled, but also try to spot other differences
 5. Can you explain how does the distribution of words affect your Job?
 
@@ -115,9 +115,9 @@ The final version should get in input three arguments: the number of reducers, t
 hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.Pair 1 <input_file> <output_path>
 ```
 
-To test your code use the file `/laboratory/input/quote.txt`, or the one provided in the HDFS cluster at eurecom.
+To test your code use the file `/laboratory/quote.txt`, or the one provided in the HDFS cluster at eurecom.
 
-To run the final version of your job, you can use a larger file, `/laboratory/input/gutenberg-partial.txt`.
+To run the final version of your job, you can use a larger files, `/laboratory/gutenberg_small.txt`, and `/laboratory/gutenberg_big.txt`.
 
 
 #### Questions
