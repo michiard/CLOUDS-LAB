@@ -21,7 +21,10 @@ Read carefully the instructions to [setup your environmentt][setup].
 
 # EXERCISES
 
-## EXERCISE 1:: Word Count
+## EXERCISE 1:: Getting familiar with HDFS
+
+
+## EXERCISE 2:: Word Count
 
 Count the occurrences of each word in a text file. This is the simplest example of MapReduce job: in the following we illustrate three possible implementations.
 
@@ -62,7 +65,7 @@ Answer the following questions:
 
 + Can you explain how does the distribution of words affect your Job?
 
-## EXERCISE 2:: Word Co-occurrence
+## EXERCISE 3:: Word Co-occurrence
 In the following exercise, we need to build the term co-occurrence matrix for a text collection.
 A co-occurrence matrix is a ''n'' x ''n'' matrix, where ''n'' is the number of unique words in the text. For each pair of words, we count the number of times they co-occurred in the text in the **same line**. Note: you can define your own ''neighborhood'' function, and extend the context to more or less than a single line.
 
@@ -140,7 +143,7 @@ Answer the following questions (in a simple text file):
 + Why `StringToIntMapWritable` is not Comparable (differently from `TextPair`)?
 
 
-## EXERCISE 3:: Relative term co-occurrence and the ''Order Inversion'' Design Pattern
+## EXERCISE 4:: Relative term co-occurrence and the ''Order Inversion'' Design Pattern
 In this example we need to compute the co-occurrence matrix, like the one in the previous exercise, but using the relative frequencies of each pair, instead of the absolute value. Pratically, we need to count the number of times each pair *(w<sub>i</sub>, w<sub>j</sub>)* occurs divided by the number of total pairs with *w<sub>i</sub>* (the marginal).
 
 The student has to implement the `Map` and `Reduce` methods and the special partitioner (see `OrderInversion#PartitionerTextPair` class), which applies the partitioner only according to the first element in the Pair, sending all data regarding the same word to the same reducer. Note that inside the `OrderInversion` class there is a field called `ASTERISK` which should be used to output the total number of occurrences of a word. Refer to the laboratory slides for more information.
@@ -165,7 +168,7 @@ Answer the following questions. In answering the questions below, consider the r
 + How does the default partitioner works with `TextPair`? Can you imagine a different implementation that does not change the Partitioner?
 + For each key, the reducer receives its marginal before the co-occurrence with the other words. Why?
 
-## EXERCISE 4:: Joins
+## EXERCISE 5:: Joins
 In MapReduce, the term ''join'' refers to merging two different dataset stored as unstructured files in HDFS. As for databases, in MapReduce there are many different kind of joins, each with its use-cases and constraints. In this laboratory the student will implement two different kinds of MapReduce join techniques:
 
 + **Distributed Cache Join**: this join technique is used when one of the two files to join is small enough to fit (eventually in memory) on each computer of the cluster. This file is copied locally to each computer using the Hadoop distributed cache and then loaded by the map phase.

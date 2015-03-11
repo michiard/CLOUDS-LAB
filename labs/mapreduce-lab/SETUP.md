@@ -217,6 +217,8 @@ This step is only necessary if you're a student at EURECOM. Follow these steps:
 
 - Obtain from the Teaching Assistants a group identifier: e.g. group07
 - Obtain from the Teaching Assistants a secret RSA key associated to your group identifier
+- Move your secret key to the directory ```.ssh/``` of your **local machine**
+- Change permissions of the key: ```chmod 600 groupXY.key```
 - Log to the gateway machine: ```ssh -i ~/.ssh/group07 group07@192.168.45.181```
 
 #### Make sure JAVA_HOME environment variable is appropriately set
