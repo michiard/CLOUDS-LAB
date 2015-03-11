@@ -30,7 +30,7 @@ This preliminary set of exercises is intended to both get you familiar with HDFS
 
 On the **gateway machine**, each student group is identified by a UNIX user, in the form of groupXY.
 
-Each group has a private directory located in the **HDFS** directory ```/students/```. Each group can only write in their private directory.
+Each group has a private directory located in the **HDFS** directory ```/user/```. Each group can only write in their private directory. For example, group47 will be able to read and write into the directory ```/user/group47```.
 
 Input files, required for the following exercises, are located in a directory that is available only for reading. This directory is ```\laboratory```.
 
