@@ -125,7 +125,12 @@ Proceed with the following steps:
 
 **NOTE 2**: IntelliJ may also ask you to enable the automatic import of definitions and dependencies. Agree to enable automatic import. In case you missed the IntelliJ tip, you have to manually configure automatic imports. Do the following:
 
-- 
+- Go to the ```File``` menu and select ```Settings```
+- Select the **Build, Execution, Deployment** tab on the left
+- Select **Build Tools**
+- Click Maven, and expand it (on the left tab)
+- Check the **Import Maven projects automatically**
+
 
 By now you should have a new window open with your new project, displaying the ```pom.xml``` file that we will need to configure.
 
