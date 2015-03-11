@@ -34,7 +34,12 @@ Each group has a private directory located in the **HDFS** directory ```/user/``
 
 Input files, required for the following exercises, are located in a directory that is available only for reading. This directory is ```/laboratory```.
 
-Next,
+Questions:
+
+1. Let's focus on the file ```/laboratory/gutenberg_big.txt```
+  - How many HDFS blocks compose this file?
+  - **[Hint]** Try to find information about the file-system check command for hdfs, namely ```hdfs fsck```
+2. This 
 
 
 
