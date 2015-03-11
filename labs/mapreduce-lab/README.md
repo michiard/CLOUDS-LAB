@@ -115,9 +115,7 @@ The final version should get in input three arguments: the number of reducers, t
 hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.Pair 1 <input_file> <output_path>
 ```
 
-To test your code use the file `/laboratory/quote.txt`, or the one provided in the HDFS cluster at eurecom.
-
-To run the final version of your job, you can use a larger files, `/laboratory/gutenberg_small.txt`, and `/laboratory/gutenberg_big.txt`.
+To test your code use the file `/laboratory/quote.txt`, or the one provided in the HDFS cluster at eurecom. To run the final version of your job, you can use a larger files, `/laboratory/gutenberg_small.txt`, and `/laboratory/gutenberg_big.txt`.
 
 
 #### Questions
@@ -126,6 +124,7 @@ Answer the following questions (in a simple text file):
 1. How does the number of reducer influence the behavior of the Pairs approach?
 2. Why does `TextPair` need to be Comparable?
 3. Can you use the implemented reducers as *Combiners*?
+4. How many output bytes are spilled by the mappers to produce intermediate files? Keep this value in mind and compare to the "stripes" approach, next.
 
 
 ### The ''Stripes'' Design Pattern
@@ -153,18 +152,16 @@ There are two files for this exercise:
 ```
 hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.Stripes 2 <input_file> <output_path>
 ```
-To test your code use the file `/laboratory/input/quote.txt`, or the one provided in the HDFS cluster at eurecom.
-
-To run the final version of your job, you can use a larger file, `/laboratory/input/gutenberg-partial.txt`.
+To test your code use the file `/laboratoryquote.txt`, or the one provided in the HDFS cluster at eurecom. To run the final version of your job, you can use a larger files, `/laboratory/gutenberg_small.txt`, and `/laboratory/gutenberg_big.txt`.
 
 #### Questions
 Answer the following questions (in a simple text file):
 
-+ Can you use the implemented reducers as *Combiner*?
-+ Do you think Stripes could be used with the in-memory combiner pattern?
-+ How does the number of reducer influence the behavior of the Stripes approach?
-+ Using the Jobtracker Web Interface, compare the shuffle phase of *Pair* and *Stripes* design patterns.
-+ Why `StringToIntMapWritable` is not Comparable (differently from `TextPair`)?
+1. Can you use the implemented reducers as *Combiner*?
+2. Do you think Stripes could be used with the in-memory combiner pattern?
+3. How does the number of reducer influence the behavior of the Stripes approach?
+4. Why `StringToIntMapWritable` is not Comparable (differently from `TextPair`)?
+5. Using the JobHistory Web Interface, compare the shuffle phase of *Pair* and *Stripes* design patterns. How many output bytes are spilled by the mappers to produce intermediate files?
 
 
 ## EXERCISE 4:: Relative term co-occurrence and the ''Order Inversion'' Design Pattern
