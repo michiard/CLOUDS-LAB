@@ -15,11 +15,11 @@ Note that the two design patterns outlined above have been originally discussed 
 [jimmilin]: http://lintool.github.io/MapReduceAlgorithms/index.html
 
 ## Before you continue to the exercises
-Read carefully the instructions to [setup your environment][setup].
+Read carefully the instructions to [setup your environmentt][setup].
 
 [setup]: ./SETUP.md
 
-# EERCISES
+# EXERCISES
 
 ## EXERCISE 1:: Word Count
 
@@ -36,7 +36,7 @@ For the **basic** version, you have to modify the file *WordCount.java* in the p
 
 For the **In-Memory** Combiner and the **Combiner**, you have to modify *WordCountIMC.java* and *WordCountCombiner.java* in the same package referenced above. You have to complete each ```TODO``` using the same code of the basic word count example, except for the ```TODO``` marked with a star *. Those must be completed using the appropriate design pattern.
 
-When an execise is completed you can export it into a Job jar file, that you can execute on the cluster.
+When an exercise is completed you can export it into a Job jar file, that you can execute on the cluster.
 
 ### Example of usage
 You Job should accept three arguments: the number of reducers, the input file and the output path. Example of executions are:
@@ -143,7 +143,7 @@ Answer the following questions (in a simple text file):
 ## EXERCISE 3:: Relative term co-occurrence and the ''Order Inversion'' Design Pattern
 In this example we need to compute the co-occurrence matrix, like the one in the previous exercise, but using the relative frequencies of each pair, instead of the absolute value. Pratically, we need to count the number of times each pair *(w<sub>i</sub>, w<sub>j</sub>)* occurs divided by the number of total pairs with *w<sub>i</sub>* (the marginal).
 
-The student has to implement the `Map` and `Reduce` methods and the special partitioner (see `OrderInversion#PartitionerTextPair` class), which applies the partitioner only according to the first element in the Pair, sending all data regarding the same word to the same reducer. Note that inside the `OrderInversion` class there is a field called `ASTERISK` which should be used to output the total number of occourrences of a word. Refer to the laboratory slides for more information.
+The student has to implement the `Map` and `Reduce` methods and the special partitioner (see `OrderInversion#PartitionerTextPair` class), which applies the partitioner only according to the first element in the Pair, sending all data regarding the same word to the same reducer. Note that inside the `OrderInversion` class there is a field called `ASTERISK` which should be used to output the total number of occurrences of a word. Refer to the laboratory slides for more information.
 
 ### Instructions
 There is one file for this exercise called `OrderInversion.java`. The `run` method of the job is already implemented, the student should complete the mapper, the reducer and the partitioner, as explained in the ```TODO```.
@@ -163,7 +163,7 @@ Answer the following questions. In answering the questions below, consider the r
 + Do you think the Order Inversion approach is 'faster' than a naive approach with multiple jobs? For example, consider implementing a compound job in which you compute the numerator and the denominator separately, and then perform the computation of the relative frequency
 + What is the impact of the use of a 'special' compound key on the amounts of shuffled bytes?
 + How does the default partitioner works with `TextPair`? Can you imagine a different implementation that does not change the Partitioner?
-+ For each key, the reducer receives its marginal before the co-occurence with the other words. Why?
++ For each key, the reducer receives its marginal before the co-occurrence with the other words. Why?
 
 ## EXERCISE 4:: Joins
 In MapReduce, the term ''join'' refers to merging two different dataset stored as unstructured files in HDFS. As for databases, in MapReduce there are many different kind of joins, each with its use-cases and constraints. In this laboratory the student will implement two different kinds of MapReduce join techniques:
