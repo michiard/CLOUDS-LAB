@@ -124,7 +124,7 @@ By now you should have a new window open with your new project, displaying the `
 
 Configuration of the ```pom.xml``` file. Proceed with the following steps:
 
-- Remove everything included in the ```<dependencies> </dependencies>``` block
+- Remove the entire block ```<dependencies> ... </dependencies>```
 - Copy the following lines as a replacement of the block you just removed
 
 ```
