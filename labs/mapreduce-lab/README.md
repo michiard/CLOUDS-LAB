@@ -60,15 +60,22 @@ For the **basic** version, you have to modify the file *WordCount.java* in the p
 
 For the **In-Memory** Combiner and the **Combiner**, you have to modify *WordCountIMC.java* and *WordCountCombiner.java* in the same package referenced above. You have to complete each ```TODO``` using the same code of the basic word count example, except for the ```TODO``` marked with a star *. Those must be completed using the appropriate design pattern.
 
-When an exercise is completed you can export it into a Job jar file, that you can execute on the cluster.
+When you think your code is ready to be packaged, do the following:
+
+- commit your changes (actually, commit as often as you think it is necessary, and use comments with care)
+- push your changes to the your GitLab repository
+- connect to the **gateway machine**
+- pull the latest changes in your GitLab repository of your group account in the **gateway machine**
+- change directory to your current project and use ```mvn package``` to build your job and package it into a jar file
+- the jar file is located in the ```target``` folder of your project
 
 ### Example of usage
 You Job should accept three arguments: the number of reducers, the input file and the output path. Example of executions are:
 
 ```
-hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.WordCount 3 <input_file> <output_path>
-hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.WordCountIMC 3 <input_file> <output_path>
-hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.WordCountCombiner 3 <input_file> <output_path>
+hadoop jar <./target/compiled_jar> fr.eurecom.dsg.mapreduce.WordCount 3 <input_file> <output_path>
+hadoop jar <./target/compiled_jar> fr.eurecom.dsg.mapreduce.WordCountIMC 3 <input_file> <output_path>
+hadoop jar <./target/compiled_jar> fr.eurecom.dsg.mapreduce.WordCountCombiner 3 <input_file> <output_path>
 ```
 
 To test your code use the file `/laboratory/quote.txt`. **NOTE**: if you are at EURECOM, this file is available in the HDFS of the lab. Otherwise, you will have to ''load'' it yourself in your own HDFS installation.
