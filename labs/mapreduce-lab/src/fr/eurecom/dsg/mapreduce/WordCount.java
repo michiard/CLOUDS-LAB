@@ -34,7 +34,7 @@ public class WordCount extends Configured implements Tool {
     // TODO: set reduce class and the reduce output key and value classes
     // TODO: set job output format
     // TODO: add the input file as job input (from HDFS) to the variable
-    //       inputFile
+    //       inputPath
     // TODO: set the output path for the job results (to HDFS) to the variable
     //       outputPath
     // TODO: set the number of reducers using variable numberReducers
