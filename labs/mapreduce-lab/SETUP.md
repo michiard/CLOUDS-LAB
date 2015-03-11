@@ -43,6 +43,16 @@ Proceed with the following steps:
 
 - Through the GitLab web interface, you can also define members of the project, so add anybody who is in your group as members, such that they will be able to work independently on the repository.
 
+Now, to complete the procedure of creating your repository, you need to upload an RSA public key through the web interface. This will allow you to "push" your changes without being asked a password for every operation. Proceed with the following steps:
+
+- Generate a private/public RSA key pair for your GitLab repository
+  - In the local machine, home directory, type: ```ssh-keygen -t RSA```
+  - Give the key-pair a name, such as: ```GitLab```
+- Upload your secret key to GitLab
+  - Go to the settings menu of your GitLab web-application
+  - Select the private key and upload it
+
+
 #### Make sure maven is properly configured
 Proceed with the following steps:
 
