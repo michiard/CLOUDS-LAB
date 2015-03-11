@@ -30,9 +30,9 @@ public class WordCount extends Configured implements Tool {
                 throws IOException, InterruptedException {
             String line = value.toString();
             String[] words = line.split("\\s+");
-            for(String word : words)
+            for(String word : words) {
                 textValue.set(word);
-                context.write(textValue, ONE);
+                context.write(textValue, ONE);}
         }
     }
 

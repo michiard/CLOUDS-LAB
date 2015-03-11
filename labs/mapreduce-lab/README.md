@@ -34,6 +34,7 @@ Each group has a private directory located in the **HDFS** directory ```/user/``
 
 Input files, required for the following exercises, are located in a directory that is available only for reading. This directory is ```/laboratory```.
 
+Next,
 
 
 
