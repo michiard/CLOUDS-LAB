@@ -26,6 +26,15 @@ Read carefully the instructions to [setup your environmentt][setup].
 # EXERCISES
 
 ## EXERCISE 1:: Getting familiar with HDFS
+This preliminary set of exercises is intended to both get you familiar with HDFS commands, and to serve as a basis for the next exercises.
+
+On the **gateway machine**, each student group is identified by a UNIX user, in the form of groupXY.
+
+Each group has a private directory located in the **HDFS** directory ```/students/```. Each group can only write in their private directory.
+
+Input files, required for the following exercises, are located in a directory that is available only for reading. This directory is ```\laboratory```.
+
+
 
 
 ## EXERCISE 2:: Word Count
