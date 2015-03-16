@@ -50,7 +50,7 @@ Now, to complete the procedure of creating your repository, you need to upload a
   - Give the key-pair a name, such as: ```GitLab```
 - Upload your public key to GitLab
   - Go to the settings menu of your GitLab web-application
-  - Select the private key and upload it
+  - Select the public key and upload it
 
 
 #### Make sure maven is properly configured
