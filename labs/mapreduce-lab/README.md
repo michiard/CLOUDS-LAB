@@ -68,6 +68,8 @@ For the **basic** version, you have to modify the file *WordCount.java* in the p
 
 For the **In-Memory** Combiner and the **Combiner**, you have to modify *WordCountIMC.java* and *WordCountCombiner.java* in the same package referenced above. You have to complete each ```TODO``` using the same code of the basic word count example, except for the ```TODO``` marked with a star *. Those must be completed using the appropriate design pattern.
 
+**ATTENTION**: for the In-Memory Combiner Job, you must use the ```setup``` and ```cleanup``` methods to instantiate the HashMap and to emit key/value pairs.
+
 When you think your code is ready to be packaged, do the following:
 
 - commit your changes (actually, commit as often as you think it is necessary, and use comments with care)
