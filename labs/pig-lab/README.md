@@ -164,7 +164,7 @@ Please, follow this link [TSTAT Trace Analysis with Pig][tstat] for this exercis
 ## Use-case: Working with an Airline dataset
 Please, go to [AIRLINE Traffic Analysis with Pig][airlines] for this exercise.
 
-**IMPORTANT**: For EURECOM students, although you can work on all exercises, for evaluation purposes you only need to complete exercises queries 1-5.
+**IMPORTANT**: For EURECOM students, although you can work on all exercises, for evaluation purposes you only need to complete exercises queries 1-5. As you may notice, there are no explicit exercise questions here. You will need to **briefly** discuss the design of your Pig Latin script with the teaching assistant, and discuss the results you obtain.
 
 
 [airlines]: airtraffic-analysis/README.md "AIRLINES"
