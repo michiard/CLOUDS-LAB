@@ -23,9 +23,11 @@ The underlying assumption is that students taking part to this laboratory are fa
 
 ## Exercises and Rules
 The general rule when using a real cluster is the following:
-* First work locally: pig -x local: you can use both the interactive shell or directly work on pig scripts, to operate on data residing in the local file-system. **For EURECOM students**: note that you need to log to the "gateway" machine to run pig, even in what we call the "local execution mode". This means that you need to copy sample datasets in your group/home directory on the gateway machine to run your scripts "locally". Also, note that for an interactive use of the pig shell, you need to connect to the gateway machine.
+* First work locally: pig -x local: you can use both the interactive shell or directly work on pig scripts, to operate on data residing in the local file-system. **For EURECOM students**: note that you need to log to the "gateway" machine to run pig, even in what we call the "local execution mode". This means that you need to copy sample datasets in your group/home directory on the gateway machine to run your scripts "locally". This means you have to copy the sample input files that are available [here][input-sample] in a local directory of your group account in the gateway machine.
+Also, note that for an interactive use of the pig shell, you need to connect to the gateway machine.
 * Then, submit job to the cluster: pig -x mapreduce. **NOTE**: remember that a script that works locally may require some minor modifications when submitted to the Hadoop cluster. For example, you may want to explicitly set the degree of parallelism for the "reduce" phase, using the PARALLEL clause.
 
+[input-sample]: https://github.com/michiard/CLOUDS-LAB/tree/master/labs/pig-lab/sample-input
 
 ## Exercise 1:: Word Count
 
