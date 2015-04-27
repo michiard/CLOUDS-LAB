@@ -169,10 +169,11 @@ How-to inspect your results and check your job in the cluster
 
 
 **Questions:**
+
 1. Is this job map-only? Why? Why not?
 2. Where did you apply the TOP function?
 3. Can you explain how does the TOP function work?
-4. The **TOP** function was introduced in PIG v.0.8. How, in your opinion, and based on your understanding of PIG, was the query answered before the TOP command was available? Do you think that it was less efficient than the current implementation?
+4. The **TOP** function was introduced since PIG v.0.8. How, in your opinion, and based on your understanding of PIG, was the query answered before the TOP command was available? Do you think that it was less efficient than the current implementation?
 
 
 ## Exercise 5
