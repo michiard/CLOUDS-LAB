@@ -47,7 +47,7 @@ Other sources of data come from here: http://stat-computing.org/dataexpo/2009/su
 + Weather information: http://www.wunderground.com/weather/api/. You can subscribe for free to the developers API and obtain (at a limited rate) hystorical weather information in many different formats. Also, to get an idea of the kind of information is available, you can use this link: http://www.wunderground.com/history/
 
 ## The Data:
-For Eurecom students, we have put some csv (comma separate values) files in HDFS for you. They are located in the HDFS directory: ```/laboratory/input/airlines/``` and they account for four years of data, 2005 to 2008. You can work on individual years, or feed the entire directory to your jobs such that you can process all years.
+For Eurecom students, we have put some csv (comma separate values) files in HDFS for you. They are located in the HDFS directory: ```/laboratory/airlines/``` and they account for four years of data, 2005 to 2008. You can work on individual years, or feed the entire directory to your jobs such that you can process all years.
 
 ## Exercises:
 In the following, we propose a series of exercises in the form of Queries.
@@ -58,7 +58,7 @@ What are the busiest airports by total flight traffic. JFK will feature, but wha
 
 ### *Query 2:* Carrier Popularity 
 
-Some carriers come and go, others demonstrate regular growth. Compute the (log base 10) volume -- total flights -- over each year, by carrier. The carriers are ranked by their median volume (over the 10 year span).
+Some carriers come and go, others demonstrate regular growth. Compute the (log base 10) volume -- total flights -- over each year, by carrier. The carriers are ranked by their median volume (over the 4 year span).
 
 ### *Query 3:* Proportion of Flights Delayed 
 
