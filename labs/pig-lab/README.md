@@ -64,20 +64,18 @@ As you can notice, this exercise is solved (to be precise, this is one possible 
 
 + Cluster execution: you can use ```hdfs dfs``` from the command line
 
-+ Inspecting your job status on the cluster: you can identify your job by name (try to use a original/unique name for the pig script you submit, and also check for your unix login) and check its status using the Web UI of the JobTracker so far. Make sure to obtain useful information, for example, what optimization Pig brings in to help reducing the I/O throughput.
++ Inspecting your job status on the cluster: you can identify your job by name (try to use a original/unique name for the pig script you submit, and also check for your unix login) and check its status using the Web UI of the Resource Manager. Make sure to obtain useful information, for example, what optimization Pig brings in, to help reducing I/O costs and ultimately achieve better performance.
 
 
 ### Questions:
 
-+ Q1: Compare between Pig and Hadoop, including their pros and cons
++ Q1: Compare execution times between your Pig and Hadoop MapReduce jobs: which is faster? What are the overheads in Pig?
 + Q2: What does a ```GROUP BY``` command do? In which phase of MapReduce is ```GROUP BY``` performed in this exercise and in general?
 + Q3: What does a ```FOREACH``` command do? In which phase of MapReduce is ```FOREACH``` performed in this exercise and in general?
-+ Q4: Explain very briefly how Pig works (i.e. the process of Pig turning a Pig Latin script into runnable MapReduce job(s))
-
 
 
 ## Exercise 2:: Working with Online Social Networks data
-In this exercise we will work on a Twitter dataset that was obtained from this project: [Link][tw-data]. For convenience, an example of the twitter dataset is available in the ```sample-input directory```. A larger dataset is available in the private HDFS deployment in the laboratory: look up in the directory ```\laboratory\input\twitter_big.txt```.
+In this exercise we use a small dataset from Twitter that was obtained from this project: [Link][tw-data]. For convenience, an example of the twitter dataset is available in the ```sample-input directory```. Larger datasets are available in the private HDFS deployment of the laboratory: look up the following two files ```/laboratory/twitter-small.txt``` and ```/laboratory/twitter-big.txt```
 
 The format of the dataset (both local and cluster) is the following:
 
@@ -85,10 +83,7 @@ The format of the dataset (both local and cluster) is the following:
 USER_ID \t FOLLOWER_ID \n 
 ```
 
-
-+ USER_ID and FOLLOWER_ID are represented by numeric ID (integer). 
-+ These numeric IDs are the same as numeric IDs Twitter managed.
-+ Therefore, you can access a profile of user 12 via http://api.twitter.com/1/users/show.xml?user_id=12.
+where USER_ID and FOLLOWER_ID are represented by numeric ID (integer)
 
 Example:
 
@@ -104,9 +99,9 @@ Example:
 + Users 13, 14 and 15 are followers of user 12.
 + User 17 is a follower of user 16.
 
-### Counting the number of "friends" per Twitter user
+### Counting the number of "followers" per Twitter user
 
-Problem statement: for each user, calculate the total number of followers of that user
+Problem statement: for each user, calculate the total number of followers of that user.
 
 Open the pig script ```./pig-lab/sample-solutions/OSN/tw-count.pig``` in your favorite editor. Your goal is to fill-in the TODOs and produce the desired output: in the example above, we would like to have that user 12 has 3 followers and user 16 has 1 follower.
 The output format should be like:
