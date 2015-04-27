@@ -245,7 +245,7 @@ dataset = LOAD '/laboratory/airlines/*.csv' using PigStorage(',') AS (...);
 You can also specify this as a parameter, but remember to put it in quotes to prevent your shell from doing the expansion:
 
 ```
-    pig -f airline_q1.pig -p 'input=/laboratory/airlines/{2005,2006,2007,2008}.csv'
+pig -f airline_q1.pig -p 'input=/laboratory/airlines/{2005,2006,2007,2008}.csv
 ```
 
 **NOTE**: Shell-expansion style `{2005..2008}` does sadly not work on Pig.
