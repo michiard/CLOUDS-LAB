@@ -184,6 +184,7 @@ How-to inspect your results and check your job in the cluster
 
 
 ** Questions:**
+
 1. How many jobs were generated?
 2. Describe how the join is executed.
 
