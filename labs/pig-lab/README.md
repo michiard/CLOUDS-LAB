@@ -170,7 +170,7 @@ Please, go to [AIRLINE Traffic Analysis with Pig][airlines] for this exercise.
 [airlines]: airtraffic-analysis/README.md "AIRLINES"
 
 
-## Optional Exercises:: Iterative Algorithms with Pig
+<!-- ## Optional Exercises:: Iterative Algorithms with Pig
 
 The goal of this exercise is to understand how to embed Pig Latin in Python. This exercise was conceived as a coding example by Julien Le Dem (Data Systems Engineer, Twitter) to illustrate Pig embedding. In short, Pig natively lacks support of control flow statements: if/else, while loop, for loop, etc. Starting with Pig 0.9 it is now possible to write a python (other languages are available as well) program and embed Pig scripts, leveraging all language features provided by Python, including control flow. This is especially important as it simplifies the implementation of **iterative algorithms**.
 
@@ -204,7 +204,7 @@ The following is a list of optional exercises:
 
 
 [pig-embedding]: http://pig.apache.org/docs/r0.9.2/cont.html#embed-python "Pig Embedding"
-
+ -->
 
 ### Pig tricks
 
