@@ -156,7 +156,7 @@ Questions:
 ## Use-case:: Working with Network Traffic Data
 Please, follow this link [TSTAT Trace Analysis with Pig][tstat] for this exercise.
 
-**IMPORTANT**: For EURECOM students, although you can work on all exercises, for evaluation purposes you only need to complete exercises 1-5.
+**IMPORTANT**: For EURECOM students, although you can work on all exercises, for evaluation purposes you only need to complete exercises 1-4.
 
 [tstat]: tstat-analysis/README.md "TSTAT"
 
