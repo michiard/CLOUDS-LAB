@@ -135,7 +135,7 @@ Example:
 + Q4: What should we do when the input has some noise? For example: some lines in the dataset only contain USER_ID but the FOLLOWER_ID is unavailable or null.
 
 
-### Find the number of two-hop paths in the Twitter network
+## Exercise 3:: Find the number of two-hop paths in the Twitter network
 This exercise is related to the JOIN example discussed during the class on relational algebra and Hadoop Pig. You goal is to find all two-hop social relations in the Twitter dataset: for example, if user 12 is followed by user 13 and user 13 is followed by user 19, then there is a two-hop relation between user 12 and user 19. Open the pig script ```./pig-lab/sample-solutions/OSN/tw-join.pig``` and fill-in the TODOs to produce the desired output.
 
 The output format should be like:
