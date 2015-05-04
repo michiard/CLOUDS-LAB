@@ -19,7 +19,7 @@ This lab is dedicated to Hadoop Pig and consists of a series of exercises: some 
 * **EXPLAIN** generates (text and .dot) files that illustrate the DAG (directed acyclic graph) of the MapReduce jobs produced by Pig, and can be visualized by some graph-chart tools, such as GraphViz. This is very useful to grab an idea of what is going on under the hood.
 
 ### Additional documentation for the laboratory
-The underlying assumption is that students taking part to this laboratory are familiar with MapReduce and Pig/Pig Latin. Additional documentation that is useful for the exercises is available here: http://pig.apache.org/docs/r0.11.0/. Note that we will use Hadoop Pig 0.12.0, included in the Cloudera distribution of Hadoop, CDH 5.3.2.
+The underlying assumption is that students taking part to this laboratory are familiar with MapReduce and Pig/Pig Latin. Additional documentation that is useful for the exercises is available here: https://pig.apache.org/docs/r0.12.0/. Note that we will use Hadoop Pig 0.12.0, included in the Cloudera distribution of Hadoop, CDH 5.3.2.
 
 ## Exercises and Rules
 The general rule when using a real cluster is the following:
