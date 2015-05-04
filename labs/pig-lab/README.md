@@ -146,10 +146,10 @@ USER_1_ID \t USER_2_ID
 **Warning**: Remember to set ```PARALLEL``` appropriately, or you will have to wait for a very long time... If you forgot to do this, or in any case you have been waiting for more than half an hour, please kill your job and go back to your script to check it through, and remember that ```CTRL+c``` is not going to work.
 
 Questions:
-+ What is the size of the input data? How long does it take for the job to complete in your case? What are the cause of a poor performance of a job?
-+ Try to set the parallelism with different number of reducers. What can you say about the load balancing between reducers? 
-+ Have you verified your results? Does your result contain duplicate tuples? Do you have loops (tuples that points from one user to the same user)? What operations do you use to remove duplicates?
-+ How many MapReduce jobs does your Pig script generate? Explain why
++ Q1: What is the size of the input data? How long does it take for the job to complete in your case? What are the cause of a poor performance of a job?
++ Q2: Try to set the parallelism with different number of reducers. What can you say about the load balancing between reducers? 
++ Q3: Have you verified your results? Does your result contain duplicate tuples? Do you have loops (tuples that points from one user to the same user)? What operations do you use to remove duplicates?
++ Q4: How many MapReduce jobs does your Pig script generate? Explain why
 
 
 
