@@ -8,6 +8,8 @@ You will be working as follows:
 
 - On the **YARN Cluster**: this is a virtualized YARN cluster, consisting of 22 powerful virtual machines executing all the tools necessary for Hadoop MapReduce to work. You don't have direct access to the cluster, but can interact with some of the web-interfaces that allow checking the progress and the logs of your jobs.
 
+![The working ennvironment](https://farm6.staticflickr.com/5800/22131139586_5c38b65b49_b.jpg)
+
 Next, we will see how to configure and/or use each of the above components.
 
 ## The Local Machine
@@ -21,16 +23,21 @@ Laboratory machines are equipped with:
 
 - IntelliJ: this is a popular IDE, that we will use as a lightweight replacement for Eclipse
 
+During laboratories, you will work with 2 repositories:
+
+- **The clone of this repository**: You will use this repository as a series of templates for your MapReduce jobs, that you will use/copy/edit in your own **GitLab** repository
+- **Your GitLab repository**: It is the repository which contains the source code of  *your group*.
+
 #### Obtain a local copy of this repository:
 
 First of all, you should clone locally this repository. There are two ways for doing this:
 
-- Clone the repository: ```git clone https://github.com/michiard/CLOUDS-LAB.git```
+- Clone the repository: ```git clone https://github.com/michiard/CLOUDS-LAB.git```. On Windows, if you have problem about SSL certificate, please use command: ```env GIT_SSL_NO_VERIFY=true git clone https://github.com/michiard/CLOUDS-LAB.git```
 - Download an archive of the repository: click on this [Download][downloadrepo]
 
 [downloadrepo]: https://github.com/michiard/CLOUDS-LAB/archive/master.zip "Download"
 
-You will use this repository as a series of templates for your MapReduce jobs, that you will use/copy/edit in your own **GitLab** repository.
+
 
 #### Create a new repository in GitLab
 Proceed with the following steps:
@@ -39,19 +46,26 @@ Proceed with the following steps:
 
 - Click the button to create a new project. Define your project name (e.g., mr-lab). In case you already belong to GitLab groups, or you have other identifiers, you should use the name space corresponding to your user name (**NOTE: this option is not available if you never used GitLab, just ignore it**). Add some description to the repository (e.g., This repo is for the CLOUDS course laboratory). Define the visibility level of your repository.
 
-- Once you click the button to create the project, you will be directed to an instruction page that you will need to follow to actually create the project on your **local machine**.
+- Once you click the button to create the project, you will be directed to an instruction page that you will need to follow to actually create the project on your **local machine**. When executing command "push", you will see an error about permission. Don't worry. After submitting the private key of your machine in the next steps, you will be able to push your repository without any problem.
 
 - Through the GitLab web interface, you can also define members of the project, so add anybody who is in your group as members, such that they will be able to work independently on the repository.
 
-Now, to complete the procedure of creating your repository, you need to upload an RSA public key through the web interface. This will allow you to "push" your changes without being asked a password for every operation. Proceed with the following steps:
+Now, to complete the procedure of creating your repository, you need to upload an RSA public key through the web interface (Profile -> SSH Keys). This will allow you to "push" your changes without being asked a password for every operation. Proceed with the following steps:
 
 - Generate a private/public RSA key pair for your GitLab repository
-  - In the local machine, home directory, type: ```ssh-keygen -t RSA```
+  - On Linux, in the local machine, home directory, type: ```ssh-keygen -t RSA```. On Windows, type: ```ssh-keygen```
   - Give the key-pair a name, such as: ```GitLab```
 - Upload your public key to GitLab
   - Go to the settings menu of your GitLab web-application
   - Select the public key and upload it
 
+**Note**: By default, Git only use the private key *id_rsa* in authenticating. To tell git use other key, for example ```id_rsa_github```, in ```~/.ssh/config```, add: 
+```
+host gitlab.eurecom.fr
+ HostName gitlab.eurecom.fr
+ IdentityFile ~/.ssh/id_rsa_github
+ User git
+```
 
 #### Make sure maven is properly configured
 Proceed with the following steps:
