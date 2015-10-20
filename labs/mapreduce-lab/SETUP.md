@@ -59,13 +59,15 @@ Now, to complete the procedure of creating your repository, you need to upload a
   - Go to the settings menu of your GitLab web-application
   - Select the public key and upload it
 
-**Note**: By default, Git only use the private key *id_rsa* in authenticating. To tell git use other key, for example ```id_rsa_github```, in ```~/.ssh/config```, add: 
+**Note**: By default, Git only use the private key *id_rsa* in authenticating. To tell git use other key, in file ```~/.ssh/config``` (create it if it doesn't exist), add the following content: 
 ```
 host gitlab.eurecom.fr
  HostName gitlab.eurecom.fr
- IdentityFile ~/.ssh/id_rsa_github
+ IdentityFile ~/.ssh/<your_private_key_gitlab>
  User git
 ```
+
+Remember to replace ```<your_private_key_gitlab>``` with your private key which you use to connect to gitlab.
 
 #### Make sure maven is properly configured
 Proceed with the following steps:
@@ -154,6 +156,20 @@ Configuration of the ```pom.xml``` file. Proceed with the following steps:
 - Copy the following lines as a replacement of the block you just removed
 
 ```
+<repositories>
+  <repository>
+  <!-- Cloudera Repository -->
+    <id>cloudera</id>
+    <url>https://repository.cloudera.com/artifactory/cloudera-repos</url>
+    <releases>
+        <enabled>true</enabled>
+        </releases>
+        <snapshots>
+          <enabled>true</enabled>
+        </snapshots>
+  </repository>
+</repositories>
+
 <dependencyManagement>
         <dependencies>
             <dependency>
@@ -256,7 +272,7 @@ This step is only necessary if you're a student at EURECOM. Follow these steps:
 - Log to the gateway machine: ```ssh groupXY@192.168.45.181``` and type your given password.
 
 #### Make sure JAVA_HOME environment variable is appropriately set
-When you are logged in the **Gateway Machine** you must check that you're using a consistent version of Java. Make sure to set:
+When you are logged in the **Gateway Machine** you must check that you're using a consistent version of Java. Make sure to set the below command everytime you login into the **Gateway machine**:
 
 - ```export JAVA_HOME=/usr/lib/jvm/java-7-oracle-cloudera```
 
@@ -264,7 +280,8 @@ When you are logged in the **Gateway Machine** you must check that you're using 
 Since you will be working on the very same GitLab repository you created in your **local machine**, you need to copy the private key of the repo from your **local machine** to the **gateway machine**. Do the following:
 
 - On your **local machine**:
-  - ```scp your_GitLab_secret_key groupXY@192.168.45.181:~/.ssh```
+  - ```scp your_GitLab_secret_key <groupID>@192.168.45.181:~/.ssh```
+  - ```[ -f ~/.ssh/config ] && scp ~/.ssh/config <groupID>@192.168.45.181:~/.ssh```
 
 #### Package and submit your MapReduce jobs
 At this point you have gained access to the Eurecom cloud computing platform, and you will be able to submit your MapReduce jobs. To do so, follow these steps:
@@ -294,7 +311,7 @@ The DNS service we use in our Cloud computing platform is currently not connecte
 
 This is in general not a problem. In case you want to try an experimental setup, do the following:
 
-- From your **local machine** log to the **gateway machine**, but allow X forwarding: ```ssh -X -i ~/.ssh/group07 group07@192.168.45.181```
+- From your **local machine** log to the **gateway machine**, but allow X forwarding: ```ssh -X  <groupID>@192.168.45.181```
 - Launch Firefox in the **gateway machine**: ```firefox&```
 
 Now, you will be able to access the above web interfaces **and** have the correct DNS host resolution. The downside is that this approach can overload the gateway machine, and consume quite some network traffic.
