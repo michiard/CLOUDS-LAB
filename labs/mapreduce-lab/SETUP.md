@@ -252,10 +252,8 @@ You now are ready to proceed with the exercises. For example, you can open the j
 This step is only necessary if you're a student at EURECOM. Follow these steps:
 
 - Obtain from the Teaching Assistants a group identifier: e.g. groupXY
-- Obtain from the Teaching Assistants a secret RSA key associated to your group identifier
-- Move your secret key to the directory ```.ssh/``` of your **local machine**
-- Change permissions of the key: ```chmod 600 groupXY.key```
-- Log to the gateway machine: ```ssh -i ~/.ssh/groupXY.key groupXY@192.168.45.181```
+- Obtain the username (group ID) and password from the Teaching Assistants
+- Log to the gateway machine: ```ssh groupXY@192.168.45.181``` and type your given password.
 
 #### Make sure JAVA_HOME environment variable is appropriately set
 When you are logged in the **Gateway Machine** you must check that you're using a consistent version of Java. Make sure to set:
