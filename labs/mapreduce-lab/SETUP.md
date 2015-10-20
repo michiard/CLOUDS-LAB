@@ -280,8 +280,8 @@ When you are logged in the **Gateway Machine** you must check that you're using 
 Since you will be working on the very same GitLab repository you created in your **local machine**, you need to copy the private key of the repo from your **local machine** to the **gateway machine**. Do the following:
 
 - On your **local machine**:
-  - ```scp your_GitLab_secret_key <groupID>@192.168.45.181:~/.ssh```
-  - ```[ -f ~/.ssh/config ] && scp ~/.ssh/config <groupID>@192.168.45.181:~/.ssh```
+  - ```scp your_GitLab_secret_key <groupID>@192.168.45.181:~/.ssh/```
+  - ```[ -f ~/.ssh/config ] && scp ~/.ssh/config <groupID>@192.168.45.181:~/.ssh/```
 
 #### Package and submit your MapReduce jobs
 At this point you have gained access to the Eurecom cloud computing platform, and you will be able to submit your MapReduce jobs. To do so, follow these steps:
