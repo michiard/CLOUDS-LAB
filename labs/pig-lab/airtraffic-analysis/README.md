@@ -1,6 +1,5 @@
 # Airline Data Analysis with Pig
 
-+ This exercise is inspired by http://www.datadr.org/doc/airline.html
 + Full information on datasets (optional datasets), and general documentation available here: http://stat-computing.org/dataexpo/2009/
 
 Before we start, here's a description of the dataset "schema". We will work on data that can be downloaded from here: http://stat-computing.org/dataexpo/2009/the-data.html
