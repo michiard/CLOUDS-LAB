@@ -44,31 +44,31 @@ Proceed with the following steps:
 
 - Login to your GitLab web interface (http://gitlab.eurecom.fr) and use LDAP credentials to login (these are your UNIX account credentials from Eurecom).
 
-- Click the button to create a new project. Define your project name (e.g., mr-lab). In case you already belong to GitLab groups, or you have other identifiers, you should use the name space corresponding to your user name (**NOTE: this option is not available if you never used GitLab, just ignore it**). Add some description to the repository (e.g., This repo is for the CLOUDS course laboratory). Define the visibility level of your repository.
-
-- Once you click the button to create the project, you will be directed to an instruction page that you will need to follow to actually create the project on your **local machine**. When executing command "push", you will see an error about permission. Don't worry. After submitting the private key of your machine in the next steps, you will be able to push your repository without any problem.
-
-- Through the GitLab web interface, you can also define members of the project, so add anybody who is in your group as members, such that they will be able to work independently on the repository.
-
-Now, to complete the procedure of creating your repository, you need to upload an RSA public key through the web interface (Profile -> SSH Keys). This will allow you to "push" your changes without being asked a password for every operation. Proceed with the following steps:
-
 - Generate a private/public RSA key pair for your GitLab repository
   - On Linux, in the local machine, home directory, type: ```cd ~/.ssh/; ssh-keygen -t RSA```. On Windows, type: ```cd ~/.ssh/; ssh-keygen```
   - Give the key-pair a name, such as: ```id_rsa_gitlab``` then enter the password for this file if needed. You can just press *Enter* to leave it blank. **Note:** After this step, there are two generated file: ```id_rsa_gitlab.pub``` and ```id_rsa_gitlab```. The former is the public key. The latter is your gitlab private key . From now, when we talk ```<your_gitlab_private_key>```, it aims to this file. You will need them in order to connect to the GitLab repository.
+  
 - Upload your public key to GitLab
   - Run ```cat id_rsa_gitlab.pub``` to read the content of your public key.
-  - Go to the settings menu of your GitLab web-application ((Profile -> SSH Keys))
+  - Go to the settings menu of your GitLab web-application (Profile Settings -> SSH Keys))
   - Add the public key by paste the above content
-
-**Note**: By default, Git only use the private key *id_rsa* in authenticating. To tell git use our key, do the following:
-- ```[ ! -f ~/.ssh/config ] && touch ~/.ssh/config```
-- Open file ```~/.ssh/config``` and put the content below:
+  
+  **Note**: By default, Git only use the private key *id_rsa* in authenticating. To tell git use our key, do the following:
+    - ```[ ! -f ~/.ssh/config ] && touch ~/.ssh/config```
+    - Open file ```~/.ssh/config``` and put the content below:
 ```
 host gitlab.eurecom.fr
  HostName gitlab.eurecom.fr
  IdentityFile ~/.ssh/id_rsa_gitlab
  User git
 ```
+
+- Click the button to create a new project. Define your project name (e.g., mr-lab). In case you already belong to GitLab groups, or you have other identifiers, you should use the name space corresponding to your user name (**NOTE: this option is not available if you never used GitLab, just ignore it**). Add some description to the repository (e.g., This repo is for the CLOUDS course laboratory). Define the visibility level of your repository.
+
+- Once you click the button to create the project, you will be directed to an instruction page that you will need to follow to actually create the project on your **local machine**.
+
+- Through the GitLab web interface, you can also define members of the project, so add anybody who is in your group as members, such that they will be able to work independently on the repository.
+
 
 #### Make sure maven is properly configured
 Proceed with the following steps:
