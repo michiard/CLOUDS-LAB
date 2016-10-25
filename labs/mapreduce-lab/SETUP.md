@@ -280,6 +280,12 @@ When you are logged in the **Gateway Machine** you must check that you're using 
 #### Make sure the secret key of the GitLab repo is available in the Gateway Machine
 Since you will be working on the very same GitLab repository you created in your **local machine**, you need to copy the private key of the repo from your **local machine** to the **gateway machine**. Do the following:
 
+- On the **gateway machine**:
+  - Check if ```.ssh``` directory exists in your home directory.
+  - If it does not exists, execute the following commands:
+    - ``` mkdir ~/.ssh```
+    - ```chmod 700 ~/.ssh```
+
 - On your **local machine**:
   - ```scp your_GitLab_secret_key <groupID>@192.168.45.181:~/.ssh/```
   - ```[ -f ~/.ssh/config ] && scp ~/.ssh/config <groupID>@192.168.45.181:~/.ssh/```
@@ -287,7 +293,7 @@ Since you will be working on the very same GitLab repository you created in your
 #### Package and submit your MapReduce jobs
 At this point you have gained access to the Eurecom cloud computing platform, and you will be able to submit your MapReduce jobs. To do so, follow these steps:
 
-- Clone your own GitLab repository in a directory of your choice in the gateway machine
+- Clone your own GitLab repository (make sure to use the ssh link, not https) in a directory of your choice in the gateway machine
 - Generate **JAR** archives of your MapReduce job. This can be done once you are in the sub-directory of your repository containing the MapReduce job you want to submit: simply type ```mvn package```, and maven will download all required dependencies (it may take some time, the first time you "compile"), compile your job, and generate the **JAR** in the sub-directory ```target```.
 - Submit your job: ```hadoop jar <path/jarname.jar> <fully.qualified.class.Name> <Parameters>```
 
@@ -310,7 +316,7 @@ YARN publishes some web interfaces that display Resource Manager, Application Ma
 #### IMPORTANT NOTE
 The DNS service we use in our Cloud computing platform is currently not connected to the DNS service at Eurecom. This means that the IP addresses above are not matched to fully qualified names as they should.
 
-This is in general not a problem. In case you want to try an experimental setup, do the following:
+**This is in general not a problem.** In case you want to try an experimental setup, do the following:
 
 - From your **local machine** log to the **gateway machine**, but allow X forwarding: ```ssh -X  <groupID>@192.168.45.181```
 - Launch Firefox in the **gateway machine**: ```firefox&```
