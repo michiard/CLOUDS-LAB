@@ -192,7 +192,7 @@ There is one file for this exercise called `OrderInversion.java`. The `run` meth
 
 ### Example of usage
 ```
-hadoop jar <compiled_jar> fr.eurecom.fr.mapreduce.OrderInversion 4 <input_file> <output_path>
+hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.OrderInversion 4 <input_file> <output_path>
 ```
 
 To test your code use the file `/laboratory/input/quote.txt`, or the one provided in the HDFS cluster at eurecom.
