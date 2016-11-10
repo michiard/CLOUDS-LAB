@@ -197,7 +197,7 @@ hadoop jar <compiled_jar> fr.eurecom.dsg.mapreduce.OrderInversion 4 <input_file>
 
 To test your code use the file `/laboratory/input/quote.txt`, or the one provided in the HDFS cluster at eurecom.
 
-To run the final version of your job, you can use a larger file, `/laboratory/input/gutenberg-partial.txt`.
+To run the final version of your job, you can use a larger file, `/laboratory/input/gutenberg_very_small.txt`.
 
 ### Questions ###
 Answer the following questions. In answering the questions below, consider the role of the combiner.
