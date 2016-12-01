@@ -11,7 +11,7 @@ Tstat produces two files, "log_tcp_complete" and "log_tcp_nocomplete" files whic
 
 Tstat discards all the connections for which the three way handshake is not properly seen. Then, in case a connection is correctly closed, it is stored in log_tcp_complete, otherwise in log_tcp_nocomplete.
 
-In the following exercises we will use two files called **tstat-big.txt** and **tstat-sample.txt**, which contain only correctly closed connections. For EURECOM students, such files are located in HDFS under the usual ```/laboratory/input/``` directory.
+In the following exercises we will use two files called **tstat-big.txt** and **tstat-sample.txt**, which contain only correctly closed connections. For EURECOM students, such files are located in HDFS under the usual ```/laboratory/``` directory.
 
 Each file consists of a line per each TCP connection; each line consists of fields, separated by spaces. Columns are grouped according to C2S - Client-to-Server and S2C - Server-to-Client traffic directions. The exact TSTAT file format is reported in the table immediately below.
 
